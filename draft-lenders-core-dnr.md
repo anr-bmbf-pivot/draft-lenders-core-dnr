@@ -49,13 +49,22 @@ author:
     email: m.waehlisch@tu-dresden.de
 
 normative:
+  RFC7252: coap
+  RFC8613: oscore
   RFC9460: svcb
   RFC9461: svcb-for-dns
   RFC9462: ddr
   RFC9463: dnr
   I-D.ietf-core-dns-over-coap: doc
+  I-D.ietf-core-oscore-edhoc: edhoc
 
 informative:
+  RFC7858: dot
+  RFC7959: coap-block
+  RFC8323: coap-tcp
+  RFC8484: doh
+  RFC9250: doq
+  I-D.amsuess-core-coap-over-gatt: coap-gatt
 
 
 --- abstract
@@ -67,7 +76,30 @@ TODO Abstract
 
 # Introduction
 
-TODO Introduction
+{{-svcb-for-dns}}, {{-ddr}} and {{-dnr}} introduced ways to discover the encrypted DNS configuration
+of resolvers, both over DNS and in a local network using Router Advertisements or DHCP.
+They use SVCB records or their svcParam definitions to carry the information on a resolver.
+However, so far only DNS transfer protocols based on Transport Layer Security (TLS) were accounted
+for, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC
+(DoQ) {{-doq}}. This document aims to bridge this gap for DNS over CoAP (DoC) {{-doc}}.
+
+DoC provides a solution for encrypted DNS in constrained environments, i.e., where the usage of DoT,
+DoH, DoQ or similar TLS-based solutions typically are not possible.
+The Constrained Application Protocol (CoAP) {{-coap}}, the transfer protocol for DoC, is mostly
+agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
+{{-coap-tcp}}, and even more obscure transport such as Bluetooth GATT {{-coap-gatt}} or SMS
+[tbd-citation] are discussed.
+CoAP comes with 3 security modes that would need to be covered by the SvcParams:
+
+- **No Security:** No encryption, just plain CoAP. While not recommended with {{-doc}}, this mode
+  provides CoAP features, otherwise not present in classic DNS over UDP, such as
+  block-wise transfer {{-coap-block}} for datagram-based segmentation.
+- **Transport Security:** CoAP may use DTLS for when transfered over UDP {{-coap}} and TLS when
+  transfered over TCP {{-coap-tcp}}.
+- **Object Security:** Application-layer based object encryption within CoAP based on OSCORE
+  {{-oscore}}. OSCORE can be either used as an alternative or in addition to transport security.
+  EDHOC {{-edhoc}} is used to establish the encryption context between two hosts and OSCORE-ACE
+  [citation?] can be used for authentication of a server.
 
 ## Problems
 
