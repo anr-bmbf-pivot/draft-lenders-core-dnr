@@ -1,0 +1,260 @@
+
+
+
+
+Constrained RESTful Environments                           M. S. Lenders
+Internet-Draft                                                TU Dresden
+Intended status: Informational                                 C. Amsüss
+Expires: 24 August 2024                                                 
+                                                           T. C. Schmidt
+                                                             HAW Hamburg
+                                                             M. Wählisch
+                                        TU Dresden & Barkhausen Institut
+                                                        21 February 2024
+
+
+             Discovery of Network-designated CoRE Resolvers
+                     draft-lenders-core-dnr-latest
+
+Abstract
+
+   TODO Abstract
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at https://anr-bmbf-
+   pivot.github.io/draft-lenders-core-dnr/draft-lenders-core-dnr.html.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-lenders-core-dnr/.
+
+   Discussion of this document takes place on the Constrained RESTful
+   Environments Working Group mailing list (mailto:core@ietf.org), which
+   is archived at https://mailarchive.ietf.org/arch/browse/core/.
+   Subscribe at https://www.ietf.org/mailman/listinfo/core/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 24 August 2024.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+     1.1.  Problems
+   2.  Terminology
+   3.  Solution Sketches
+     3.1.  Unencrypted DoC
+     3.2.  DoC over DTLS
+     3.3.  DoC over OSCORE using EDHOC
+     3.4.  DoC over ACE-OSCORE
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  Normative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   TODO Introduction
+
+1.1.  Problems
+
+   TODO transform into sentences:
+
+   *  What do we need to find DoC using SvcParams [RFC9460] [RFC9463]?
+
+   *  Do we need sepcific ALPNs?
+
+      -  What should the fields in [RFC9463] RA / DHCP options give us?
+         (authentication-domain-name may not matter in EDHOC/ACE-OSCORE
+         setup, but audience value for ACE authorization server and the
+         servers address might)
+
+   *  How do we signal ALPN-equivalent information when there is not
+      “the one” transport layer security?
+
+   *  Can we indicate the transport (CoAP over UDP/TCP/etc.)
+      orthogonally from (object) security mechanism (EDHOC, ACE-OSCORE,
+      ...)
+
+   *  TBD but might be out-of-scope:
+
+      -  replace coap+... URI schemas with hostname literals
+
+      -  Increased RA size / fragmentation
+
+2.  Terminology
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Solution Sketches
+
+   What should the fields in RA / DHCP option give us?
+
+3.1.  Unencrypted DoC
+
+   TBD: Does DNR allow it?
+
+   authenticator-domain-name:
+       (I'm leaving it empty b/c there is no use for it)
+   ipv6-address: ...
+   svcb-params:
+       coaptransport="coap-over-tcp",
+       docpath="/dns",
+       port=61616
+
+3.2.  DoC over DTLS
+
+   TBD: - Not even a problem, just register the relevant ALPN. - Trigger
+   in CoRE, should be separate ALPN to “coap” (CoAP over TLS) ... and
+   bikeshed value “co”, “COAP”, “cod”, ... - docpath if not given = ""
+   (cmp.  URI-Path option in CoAP)?  > a la ‘When using the SVCB method
+   for obtaining a DoC server (eg. because querying _dns or > because it
+   comes in DNR), the server MUST set docpath unless it is empty, in
+   which case the > client MUST assume docpath=“”’ to avoid implying an
+   empty docpath even in places where no DoC is > done
+
+   authenticator-domain-name: dns.example.com
+   ipv6-address: ...
+   svcb-params: alpn="cod"/*TBD*/,docpath="/dns"
+
+3.3.  DoC over OSCORE using EDHOC
+
+   *  In a “web-browser style” (tell the device which name to
+      authenticate, and it’ll do the cert validation)
+
+   authenticator-domain-name: dns.example.com
+   ipv6-address: ...
+
+   svcb-params:
+       coaptransport="coap-over-tcp",
+       objectsecurity="edhoc",
+       docpath="/dns",
+       port=61616
+
+3.4.  DoC over ACE-OSCORE
+
+   *  ACE to authenticate server (not necessarily the client)
+
+   authenticator-domain-name:
+       (leaving empty b/c there is no use for it)
+   ipv6-address: ...
+   svcb-params:
+       coaptransport="coap-over-tcp" /* encoded as a numeric value */,
+       objectsecurity="edhoc"/* or ace-edhoc?, also encoded as a numeric value */,
+       docpath="/dns",
+       port=61616,
+       oauth-aud="dns.example.com",
+       oauth-scope="resolve DNS"/* should this be expressed at all? */,
+       oauth-as="coap://as.example.com" /* encoded as a CRI? */
+
+4.  Security Considerations
+
+   TODO Security
+
+5.  IANA Considerations
+
+   This document has no IANA actions.
+
+6.  Normative References
+
+   [I-D.ietf-core-dns-over-coap]
+              Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
+              and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
+              Internet-Draft, draft-ietf-core-dns-over-coap-05, 17
+              November 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-core-dns-over-coap-05>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC9460]  Schwartz, B., Bishop, M., and E. Nygren, "Service Binding
+              and Parameter Specification via the DNS (SVCB and HTTPS
+              Resource Records)", RFC 9460, DOI 10.17487/RFC9460,
+              November 2023, <https://www.rfc-editor.org/rfc/rfc9460>.
+
+   [RFC9461]  Schwartz, B., "Service Binding Mapping for DNS Servers",
+              RFC 9461, DOI 10.17487/RFC9461, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9461>.
+
+   [RFC9462]  Pauly, T., Kinnear, E., Wood, C. A., McManus, P., and T.
+              Jensen, "Discovery of Designated Resolvers", RFC 9462,
+              DOI 10.17487/RFC9462, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9462>.
+
+   [RFC9463]  Boucadair, M., Ed., Reddy.K, T., Ed., Wing, D., Cook, N.,
+              and T. Jensen, "DHCP and Router Advertisement Options for
+              the Discovery of Network-designated Resolvers (DNR)",
+              RFC 9463, DOI 10.17487/RFC9463, November 2023,
+              <https://www.rfc-editor.org/rfc/rfc9463>.
+
+Acknowledgments
+
+   TODO acknowledge.
+
+Authors' Addresses
+
+   Martine Sophie Lenders
+   TUD Dresden University of Technology
+   Helmholtzstr. 10
+   D-01069 Dresden
+   Germany
+   Email: martine.lenders@tu-dresden.de
+
+
+   Christian Amsüss
+   Email: christian@amsuess.com
+
+
+   Thomas C. Schmidt
+   HAW Hamburg
+   Email: t.schmidt@haw-hamburg.de
+
+
+   Matthias Wählisch
+   TUD Dresden University of Technology & Barkhausen Institut
+   Helmholtzstr. 10
+   D-01069 Dresden
+   Germany
+   Email: m.waehlisch@tu-dresden.de
