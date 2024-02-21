@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: "Applications"
-workgroup: TBD
+area: "Web and Internet Transport"
+workgroup: "Constrained RESTful Environments"
 keyword:
  - CoRE
  - CoAP
@@ -18,12 +18,12 @@ keyword:
  - DNR
  - SVCB
 venue:
-  group: TBD
-  type: Working Group
-  mail: TBD@example.com
-  arch: TBD
-  github: https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr
-  latest: https://example.com/TBD
+  group: "Constrained RESTful Environments"
+  type: "Working Group"
+  mail: "core@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/core/"
+  github: "anr-bmbf-pivot/draft-lenders-core-dnr"
+  latest: "https://anr-bmbf-pivot.github.io/draft-lenders-core-dnr/draft-lenders-core-dnr.html"
 
 author:
  -  fullname: Martine Sophie Lenders
