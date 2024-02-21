@@ -1216,16 +1216,24 @@ The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cit
 agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
 <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even more obscure transport such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS
 [tbd-citation] are discussed.
-CoAP comes with 3 security modes that would need to be covered by the SvcParams:
-- <strong>No Security:</strong> No encryption, just plain CoAP. While not recommended with <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span>, this mode
-  provides CoAP features, otherwise not present in classic DNS over UDP, such as
-  block-wise transfer <span>[<a href="#RFC7959" class="cite xref">RFC7959</a>]</span> for datagram-based segmentation.
-- <strong>Transport Security:</strong> CoAP may use DTLS for when transfered over UDP <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and TLS when
-  transfered over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>.
-- <strong>Object Security:</strong> Application-layer based object encryption within CoAP based on OSCORE
-  <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>. OSCORE can be either used as an alternative or in addition to transport security.
-  EDHOC <span>[<a href="#I-D.ietf-core-oscore-edhoc" class="cite xref">I-D.ietf-core-oscore-edhoc</a>]</span> is used to establish the encryption context between two hosts and OSCORE-ACE
-  [citation?] can be used for authentication of a server.<a href="#section-1-2" class="pilcrow">¶</a></p>
+CoAP comes with 3 security modes that would need to be covered by the SvcParams:<a href="#section-1-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-3.1">
+          <p id="section-1-3.1.1"><strong>No Security:</strong> No encryption, just plain CoAP. While not recommended with <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span>, this mode
+provides CoAP features, otherwise not present in classic DNS over UDP, such as
+block-wise transfer <span>[<a href="#RFC7959" class="cite xref">RFC7959</a>]</span> for datagram-based segmentation.<a href="#section-1-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.2">
+          <p id="section-1-3.2.1"><strong>Transport Security:</strong> CoAP may use DTLS for when transfered over UDP <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and TLS when
+transfered over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-1-3.3">
+          <p id="section-1-3.3.1"><strong>Object Security:</strong> Application-layer based object encryption within CoAP based on OSCORE
+<span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>. OSCORE can be either used as an alternative or in addition to transport security.
+EDHOC <span>[<a href="#I-D.ietf-core-oscore-edhoc" class="cite xref">I-D.ietf-core-oscore-edhoc</a>]</span> is used to establish the encryption context between two hosts and OSCORE-ACE
+[citation?] can be used for authentication of a server.<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 <div id="problems">
 <section id="section-1.1">
         <h3 id="name-problems">

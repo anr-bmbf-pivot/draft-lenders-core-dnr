@@ -107,18 +107,22 @@ Table of Contents
    obscure transport such as Bluetooth GATT
    [I-D.amsuess-core-coap-over-gatt] or SMS [tbd-citation] are
    discussed.  CoAP comes with 3 security modes that would need to be
-   covered by the SvcParams: - *No Security:* No encryption, just plain
-   CoAP.  While not recommended with [I-D.ietf-core-dns-over-coap], this
-   mode provides CoAP features, otherwise not present in classic DNS
-   over UDP, such as block-wise transfer [RFC7959] for datagram-based
-   segmentation. - *Transport Security:* CoAP may use DTLS for when
-   transfered over UDP [RFC7252] and TLS when transfered over TCP
-   [RFC8323]. - *Object Security:* Application-layer based object
-   encryption within CoAP based on OSCORE [RFC8613].  OSCORE can be
-   either used as an alternative or in addition to transport security.
-   EDHOC [I-D.ietf-core-oscore-edhoc] is used to establish the
-   encryption context between two hosts and OSCORE-ACE [citation?] can
-   be used for authentication of a server.
+   covered by the SvcParams:
+
+   *  *No Security:* No encryption, just plain CoAP.  While not
+      recommended with [I-D.ietf-core-dns-over-coap], this mode provides
+      CoAP features, otherwise not present in classic DNS over UDP, such
+      as block-wise transfer [RFC7959] for datagram-based segmentation.
+
+   *  *Transport Security:* CoAP may use DTLS for when transfered over
+      UDP [RFC7252] and TLS when transfered over TCP [RFC8323].
+
+   *  *Object Security:* Application-layer based object encryption
+      within CoAP based on OSCORE [RFC8613].  OSCORE can be either used
+      as an alternative or in addition to transport security.  EDHOC
+      [I-D.ietf-core-oscore-edhoc] is used to establish the encryption
+      context between two hosts and OSCORE-ACE [citation?] can be used
+      for authentication of a server.
 
 1.1.  Problems
 
