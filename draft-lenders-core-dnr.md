@@ -19,35 +19,54 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "Discovery of Network-designated CoRE Resolvers"
+abbrev: "CoRE DNR"
 category: info
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-lenders-core-dnr
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "Applications"
+workgroup: TBD
 keyword:
- - next generation
- - unicorn
- - sparkling distributed ledger
+ - CoRE
+ - CoAP
+ - DoC
+ - DNR
+ - SVCB
 venue:
-  group: WG
+  group: TBD
   type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  mail: TBD@example.com
+  arch: TBD
+  github: https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr
+  latest: https://example.com/TBD
 
 author:
- -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+ -  fullname: Martine Sophie Lenders
+    org: TUD Dresden University of Technology
+    abbrev: TU Dresden
+    street: Helmholtzstr. 10
+    city: Dresden
+    code: D-01069
+    country: Germany
+    email: martine.lenders@tu-dresden.de
+ -  name: Christian Amsüss
+    email: christian@amsuess.com
+ -  fullname: Thomas C. Schmidt
+    organization: HAW Hamburg
+    email: t.schmidt@haw-hamburg.de
+ -  name: Matthias Wählisch
+    org: TUD Dresden University of Technology & Barkhausen Institut
+    abbrev: TU Dresden & Barkhausen Institut
+    street: Helmholtzstr. 10
+    city: Dresden
+    code: D-01069
+    country: Germany
+    email: m.waehlisch@tu-dresden.de
 
 normative:
 
