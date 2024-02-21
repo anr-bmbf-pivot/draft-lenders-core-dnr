@@ -107,9 +107,11 @@ svcb-params:
 
 ## DoC over DTLS
 TBD:
+
 - Not even a problem, just register the relevant ALPN.
 - Trigger in CoRE, should be separate ALPN to “coap” (CoAP over TLS) ... and bikeshed value “co”, “COAP”, “cod”, ...
 - `docpath` if not given = `""` (cmp. URI-Path option in CoAP)?
+
   > a la ‘When using the SVCB method for obtaining a DoC server (eg. because querying _dns or
   > because it comes in DNR), the server MUST set docpath unless it is empty, in which case the
   > client MUST assume docpath=“”’ to avoid implying an empty docpath even in places where no DoC is
