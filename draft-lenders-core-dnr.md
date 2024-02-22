@@ -94,7 +94,7 @@ DoC provides a solution for encrypted DNS in constrained environments, i.e., whe
 DoH, DoQ or similar TLS-based solutions typically are not possible.
 The Constrained Application Protocol (CoAP) {{-coap}}, the transfer protocol for DoC, is mostly
 agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
-{{-coap-tcp}}, and even more obscure transport such as Bluetooth GATT {{-coap-gatt}} or SMS
+{{-coap-tcp}}, and even more obscure transports such as Bluetooth GATT {{-coap-gatt}} or SMS
 {{lwm2m}} are discussed.
 CoAP comes with 3 security modes that would need to be covered by the SvcParams:
 
@@ -112,6 +112,10 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
   as described in the ACE EDHOC profile {{-ace-edhoc}}.
   As an alternative to EDHOC,
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
+
+In consequence, for a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both transfer
+protocol and type and parameters for the security parameter need to be provided in the svcParams
+field of these mechanisms, which this document will discuss.
 
 ## Problems
 
