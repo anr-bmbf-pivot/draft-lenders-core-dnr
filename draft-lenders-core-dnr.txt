@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 24 August 2024                                                 
+Expires: 25 August 2024                                                 
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                        21 February 2024
+                                                        22 February 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2024.
+   This Internet-Draft will expire on 25 August 2024.
 
 Copyright Notice
 
@@ -105,9 +105,9 @@ Table of Contents
    is mostly agnostic to the transport layer, i.e., it can be
    transported over UDP, TCP, or WebSockets [RFC8323], and even more
    obscure transport such as Bluetooth GATT
-   [I-D.amsuess-core-coap-over-gatt] or SMS [tbd-citation] are
-   discussed.  CoAP comes with 3 security modes that would need to be
-   covered by the SvcParams:
+   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.  CoAP
+   comes with 3 security modes that would need to be covered by the
+   SvcParams:
 
    *  *No Security:* No encryption, just plain CoAP.  While not
       recommended with [I-D.ietf-core-dns-over-coap], this mode provides
@@ -119,10 +119,15 @@ Table of Contents
 
    *  *Object Security:* Application-layer based object encryption
       within CoAP based on OSCORE [RFC8613].  OSCORE can be either used
-      as an alternative or in addition to transport security.  EDHOC
-      [I-D.ietf-core-oscore-edhoc] is used to establish the encryption
-      context between two hosts and OSCORE-ACE [citation?] can be used
-      for authentication of a server.
+      as an alternative or in addition to transport security.
+
+      OSCORE keys are not usable indefinitely and need to be set up, for
+      example through an EDHOC key exchange
+      [I-D.ietf-core-oscore-edhoc], which may use credentials from
+      trusted authorization server (AS) as described in the ACE EDHOC
+      profile [I-D.ietf-ace-edhoc-oscore-profile].  As an alternative to
+      EDHOC, keys can be set up by such an AS as described in the ACE
+      OSCORE profile [RFC9203].
 
 1.1.  Problems
 
@@ -302,6 +307,20 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-amsuess-core-
               coap-over-gatt-05>.
 
+   [I-D.ietf-ace-edhoc-oscore-profile]
+              Selander, G., Mattsson, J. P., Tiloca, M., and R. Höglund,
+              "Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object
+              Security for Constrained Environments (OSCORE) Profile for
+              Authentication and Authorization for Constrained
+              Environments (ACE)", Work in Progress, Internet-Draft,
+              draft-ietf-ace-edhoc-oscore-profile-03, 23 October 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
+              edhoc-oscore-profile-03>.
+
+   [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
+              October 2018, <https://omaspecworks.org/white-paper-
+              lightweight-m2m-1-1/>.
+
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
@@ -321,6 +340,13 @@ Table of Contents
    [RFC8484]  Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
               <https://www.rfc-editor.org/rfc/rfc8484>.
+
+   [RFC9203]  Palombini, F., Seitz, L., Selander, G., and M. Gunnarsson,
+              "The Object Security for Constrained RESTful Environments
+              (OSCORE) Profile of the Authentication and Authorization
+              for Constrained Environments (ACE) Framework", RFC 9203,
+              DOI 10.17487/RFC9203, August 2022,
+              <https://www.rfc-editor.org/rfc/rfc9203>.
 
    [RFC9250]  Huitema, C., Dickinson, S., and A. Mankin, "DNS over
               Dedicated QUIC Connections", RFC 9250,

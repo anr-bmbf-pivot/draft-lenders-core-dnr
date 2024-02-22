@@ -1036,7 +1036,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lenders, et al.</td>
-<td class="center">Expires 24 August 2024</td>
+<td class="center">Expires 25 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1049,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lenders-core-dnr-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-21" class="published">21 February 2024</time>
+<time datetime="2024-02-22" class="published">22 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-24">24 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-25">25 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1115,7 +1115,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1215,7 +1215,7 @@ DoH, DoQ or similar TLS-based solutions typically are not possible.
 The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>, the transfer protocol for DoC, is mostly
 agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
 <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even more obscure transport such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS
-[tbd-citation] are discussed.
+<span>[<a href="#lwm2m" class="cite xref">lwm2m</a>]</span> are discussed.
 CoAP comes with 3 security modes that would need to be covered by the SvcParams:<a href="#section-1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-3.1">
@@ -1229,9 +1229,14 @@ transfered over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</sp
 </li>
         <li class="normal" id="section-1-3.3">
           <p id="section-1-3.3.1"><strong>Object Security:</strong> Application-layer based object encryption within CoAP based on OSCORE
-<span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>. OSCORE can be either used as an alternative or in addition to transport security.
-EDHOC <span>[<a href="#I-D.ietf-core-oscore-edhoc" class="cite xref">I-D.ietf-core-oscore-edhoc</a>]</span> is used to establish the encryption context between two hosts and OSCORE-ACE
-[citation?] can be used for authentication of a server.<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>. OSCORE can be either used as an alternative or in addition to transport security.<a href="#section-1-3.3.1" class="pilcrow">¶</a></p>
+<p id="section-1-3.3.2">
+OSCORE keys are not usable indefinitely and need to be set up,
+for example through an EDHOC key exchange <span>[<a href="#I-D.ietf-core-oscore-edhoc" class="cite xref">I-D.ietf-core-oscore-edhoc</a>]</span>,
+which may use credentials from trusted authorization server (AS)
+as described in the ACE EDHOC profile <span>[<a href="#I-D.ietf-ace-edhoc-oscore-profile" class="cite xref">I-D.ietf-ace-edhoc-oscore-profile</a>]</span>.
+As an alternative to EDHOC,
+keys can be set up by such an AS as described in the ACE OSCORE profile <span>[<a href="#RFC9203" class="cite xref">RFC9203</a>]</span>.<a href="#section-1-3.3.2" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <div id="problems">
@@ -1479,6 +1484,14 @@ svcb-params:
         <dd>
 <span class="refAuthor">Amsüss, C.</span>, <span class="refTitle">"CoAP over GATT (Bluetooth Low Energy Generic Attributes)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-amsuess-core-coap-over-gatt-05</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-amsuess-core-coap-over-gatt-05">https://datatracker.ietf.org/doc/html/draft-amsuess-core-coap-over-gatt-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.ietf-ace-edhoc-oscore-profile">[I-D.ietf-ace-edhoc-oscore-profile]</dt>
+        <dd>
+<span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Tiloca, M.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object Security for Constrained Environments (OSCORE) Profile for Authentication and Authorization for Constrained Environments (ACE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-edhoc-oscore-profile-03</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-03">https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="lwm2m">[lwm2m]</dt>
+        <dd>
+<span class="refAuthor">OMA SpecWorks</span>, <span class="refTitle">"White Paper – Lightweight M2M 1.1"</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://omaspecworks.org/white-paper-lightweight-m2m-1-1/">https://omaspecworks.org/white-paper-lightweight-m2m-1-1/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7858">[RFC7858]</dt>
         <dd>
 <span class="refAuthor">Hu, Z.</span>, <span class="refAuthor">Zhu, L.</span>, <span class="refAuthor">Heidemann, J.</span>, <span class="refAuthor">Mankin, A.</span>, <span class="refAuthor">Wessels, D.</span>, and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Specification for DNS over Transport Layer Security (TLS)"</span>, <span class="seriesInfo">RFC 7858</span>, <span class="seriesInfo">DOI 10.17487/RFC7858</span>, <time datetime="2016-05" class="refDate">May 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7858">https://www.rfc-editor.org/rfc/rfc7858</a>&gt;</span>. </dd>
@@ -1494,6 +1507,10 @@ svcb-params:
 <dt id="RFC8484">[RFC8484]</dt>
         <dd>
 <span class="refAuthor">Hoffman, P.</span> and <span class="refAuthor">P. McManus</span>, <span class="refTitle">"DNS Queries over HTTPS (DoH)"</span>, <span class="seriesInfo">RFC 8484</span>, <span class="seriesInfo">DOI 10.17487/RFC8484</span>, <time datetime="2018-10" class="refDate">October 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8484">https://www.rfc-editor.org/rfc/rfc8484</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9203">[RFC9203]</dt>
+        <dd>
+<span class="refAuthor">Palombini, F.</span>, <span class="refAuthor">Seitz, L.</span>, <span class="refAuthor">Selander, G.</span>, and <span class="refAuthor">M. Gunnarsson</span>, <span class="refTitle">"The Object Security for Constrained RESTful Environments (OSCORE) Profile of the Authentication and Authorization for Constrained Environments (ACE) Framework"</span>, <span class="seriesInfo">RFC 9203</span>, <span class="seriesInfo">DOI 10.17487/RFC9203</span>, <time datetime="2022-08" class="refDate">August 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9203">https://www.rfc-editor.org/rfc/rfc9203</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9250">[RFC9250]</dt>
       <dd>
