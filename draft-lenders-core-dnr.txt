@@ -104,7 +104,7 @@ Table of Contents
    Application Protocol (CoAP) [RFC7252], the transfer protocol for DoC,
    is mostly agnostic to the transport layer, i.e., it can be
    transported over UDP, TCP, or WebSockets [RFC8323], and even more
-   obscure transport such as Bluetooth GATT
+   obscure transports such as Bluetooth GATT
    [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.  CoAP
    comes with 3 security modes that would need to be covered by the
    SvcParams:
@@ -128,6 +128,11 @@ Table of Contents
       profile [I-D.ietf-ace-edhoc-oscore-profile].  As an alternative to
       EDHOC, keys can be set up by such an AS as described in the ACE
       OSCORE profile [RFC9203].
+
+   In consequence, for a DoC server to be discoverable via DDR [RFC9462]
+   and DNR [RFC9463], both transfer protocol and type and parameters for
+   the security parameter need to be provided in the svcParams field of
+   these mechanisms, which this document will discuss.
 
 1.1.  Problems
 

@@ -1214,7 +1214,7 @@ for, namely DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC78
 DoH, DoQ or similar TLS-based solutions typically are not possible.
 The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>, the transfer protocol for DoC, is mostly
 agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
-<span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even more obscure transport such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS
+<span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even more obscure transports such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS
 <span>[<a href="#lwm2m" class="cite xref">lwm2m</a>]</span> are discussed.
 CoAP comes with 3 security modes that would need to be covered by the SvcParams:<a href="#section-1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
@@ -1239,6 +1239,9 @@ As an alternative to EDHOC,
 keys can be set up by such an AS as described in the ACE OSCORE profile <span>[<a href="#RFC9203" class="cite xref">RFC9203</a>]</span>.<a href="#section-1-3.3.2" class="pilcrow">¶</a></p>
 </li>
       </ul>
+<p id="section-1-4">In consequence, for a DoC server to be discoverable via DDR <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> and DNR <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>, both transfer
+protocol and type and parameters for the security parameter need to be provided in the svcParams
+field of these mechanisms, which this document will discuss.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <div id="problems">
 <section id="section-1.1">
         <h3 id="name-problems">
