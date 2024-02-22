@@ -59,6 +59,7 @@ normative:
   I-D.ietf-core-oscore-edhoc: edhoc
 
 informative:
+  RFC7228: constr-nodes
   RFC7858: dot
   RFC7959: coap-block
   RFC8323: coap-tcp
@@ -117,7 +118,18 @@ For a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both tran
 protocol and type and parameters for the security parameter need to be provided in the SvcParams
 field of these mechanisms, which this document will discuss.
 
-## Problems
+# Terminology
+
+The terms “DoC server” and “DoC client” are used as defined in {{-doc}}.
+
+The term “constrained node” is used as defined in {{-constr-nodes}}.
+
+SvcParams denotes the field in either DNS SVCB/HTTPS records as defined in {{-svcb}}, or DHCP and RA
+messages as defined in {{-dnr}}.
+
+{::boilerplate bcp14-tagged}
+
+# Problems
 
 TODO transform into sentences:
 
@@ -131,10 +143,6 @@ TODO transform into sentences:
 - TBD but might be out-of-scope:
     - replace coap+... URI schemas with hostname literals
     - Increased RA size / fragmentation
-
-# Terminology
-
-{::boilerplate bcp14-tagged}
 
 # Solution Sketches
 
