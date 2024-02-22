@@ -71,6 +71,8 @@ informative:
       org: OMA SpecWorks
     date: 2018-10
     target: https://omaspecworks.org/white-paper-lightweight-m2m-1-1/
+  I-D.ietf-ace-edhoc-oscore-profile: ace-edhoc
+  RFC9203: ace-oscore
 
 --- abstract
 
@@ -103,8 +105,13 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
   transfered over TCP {{-coap-tcp}}.
 - **Object Security:** Application-layer based object encryption within CoAP based on OSCORE
   {{-oscore}}. OSCORE can be either used as an alternative or in addition to transport security.
-  EDHOC {{-edhoc}} is used to establish the encryption context between two hosts and OSCORE-ACE
-  [citation?] can be used for authentication of a server.
+
+  OSCORE keys are not usable indefinitely and need to be set up,
+  for example through an EDHOC key exchange {{-edhoc}},
+  which may use credentials from trusted authorization server (AS)
+  as described in the ACE EDHOC profile {{-ace-edhoc}}.
+  As an alternative to EDHOC,
+  keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
 ## Problems
 
