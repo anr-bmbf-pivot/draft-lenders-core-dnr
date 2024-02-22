@@ -65,7 +65,12 @@ informative:
   RFC8484: doh
   RFC9250: doq
   I-D.amsuess-core-coap-over-gatt: coap-gatt
-
+  lwm2m:
+    title: White Paper – Lightweight M2M 1.1
+    author:
+      org: OMA SpecWorks
+    date: 2018-10
+    target: https://omaspecworks.org/white-paper-lightweight-m2m-1-1/
 
 --- abstract
 
@@ -88,7 +93,7 @@ DoH, DoQ or similar TLS-based solutions typically are not possible.
 The Constrained Application Protocol (CoAP) {{-coap}}, the transfer protocol for DoC, is mostly
 agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
 {{-coap-tcp}}, and even more obscure transport such as Bluetooth GATT {{-coap-gatt}} or SMS
-[tbd-citation] are discussed.
+{{lwm2m}} are discussed.
 CoAP comes with 3 security modes that would need to be covered by the SvcParams:
 
 - **No Security:** No encryption, just plain CoAP. While not recommended with {{-doc}}, this mode
