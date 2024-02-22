@@ -317,9 +317,9 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
               edhoc-oscore-profile-03>.
 
-   [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1", n.d.,
-              <https://omaspecworks.org/white-paper-lightweight-m2m-
-              1-1/>.
+   [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
+              October 2018, <https://omaspecworks.org/white-paper-
+              lightweight-m2m-1-1/>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
