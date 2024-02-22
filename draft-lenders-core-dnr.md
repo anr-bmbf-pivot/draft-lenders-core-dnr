@@ -113,7 +113,7 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
   As an alternative to EDHOC,
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
-In consequence, for a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both transfer
+For a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both transfer
 protocol and type and parameters for the security parameter need to be provided in the SvcParams
 field of these mechanisms, which this document will discuss.
 
