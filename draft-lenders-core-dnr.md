@@ -85,7 +85,7 @@ TODO Abstract
 
 {{-svcb-for-dns}}, {{-ddr}} and {{-dnr}} introduced ways to discover the encrypted DNS configuration
 of resolvers, both over DNS and in a local network using Router Advertisements or DHCP.
-They use SVCB records or their svcParam definitions to carry the information on a resolver.
+They use SVCB records or their SvcParam definitions to carry the information on a resolver.
 However, so far only DNS transfer protocols based on Transport Layer Security (TLS) were accounted
 for, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC
 (DoQ) {{-doq}}. This document aims to bridge this gap for DNS over CoAP (DoC) {{-doc}}.
@@ -114,7 +114,7 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
 In consequence, for a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both transfer
-protocol and type and parameters for the security parameter need to be provided in the svcParams
+protocol and type and parameters for the security parameter need to be provided in the SvcParams
 field of these mechanisms, which this document will discuss.
 
 ## Problems
@@ -196,7 +196,8 @@ authenticator-domain-name:
 ipv6-address: ...
 svcb-params:
     coaptransport="coap-over-tcp" /* encoded as a numeric value */,
-    objectsecurity="edhoc"/* or ace-edhoc?, also encoded as a numeric value */,
+    /* or ace-edhoc?, also encoded as a numeric value */,
+    objectsecurity="edhoc"
     docpath="/dns",
     port=61616,
     oauth-aud="dns.example.com",
@@ -211,7 +212,7 @@ TODO Security
 
 # IANA Considerations
 
-This document has no IANA actions.
+TODO IANA Considerations
 
 
 --- back
