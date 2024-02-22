@@ -129,9 +129,9 @@ Table of Contents
       EDHOC, keys can be set up by such an AS as described in the ACE
       OSCORE profile [RFC9203].
 
-   In consequence, for a DoC server to be discoverable via DDR [RFC9462]
-   and DNR [RFC9463], both transfer protocol and type and parameters for
-   the security parameter need to be provided in the SvcParams field of
+   For a DoC server to be discoverable via DDR [RFC9462] and DNR
+   [RFC9463], both transfer protocol and type and parameters for the
+   security parameter need to be provided in the SvcParams field of
    these mechanisms, which this document will discuss.
 
 1.1.  Problems
