@@ -1206,7 +1206,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1"><span>[<a href="#RFC9461" class="cite xref">RFC9461</a>]</span>, <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> and <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span> introduced ways to discover the encrypted DNS configuration
 of resolvers, both over DNS and in a local network using Router Advertisements or DHCP.
-They use SVCB records or their svcParam definitions to carry the information on a resolver.
+They use SVCB records or their SvcParam definitions to carry the information on a resolver.
 However, so far only DNS transfer protocols based on Transport Layer Security (TLS) were accounted
 for, namely DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>, DNS over HTTPS (DoH) <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, and DNS over Dedicated QUIC
 (DoQ) <span>[<a href="#RFC9250" class="cite xref">RFC9250</a>]</span>. This document aims to bridge this gap for DNS over CoAP (DoC) <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
@@ -1240,7 +1240,7 @@ keys can be set up by such an AS as described in the ACE OSCORE profile <span>[<
 </li>
       </ul>
 <p id="section-1-4">In consequence, for a DoC server to be discoverable via DDR <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> and DNR <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>, both transfer
-protocol and type and parameters for the security parameter need to be provided in the svcParams
+protocol and type and parameters for the security parameter need to be provided in the SvcParams
 field of these mechanisms, which this document will discuss.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <div id="problems">
 <section id="section-1.1">
@@ -1396,7 +1396,8 @@ authenticator-domain-name:
 ipv6-address: ...
 svcb-params:
     coaptransport="coap-over-tcp" /* encoded as a numeric value */,
-    objectsecurity="edhoc"/* or ace-edhoc?, also encoded as a numeric value */,
+    /* or ace-edhoc?, also encoded as a numeric value */,
+    objectsecurity="edhoc"
     docpath="/dns",
     port=61616,
     oauth-aud="dns.example.com",
@@ -1421,7 +1422,7 @@ svcb-params:
       <h2 id="name-iana-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-5-1">This document has no IANA actions.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">TODO IANA Considerations<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <section id="section-6">

@@ -91,7 +91,7 @@ Table of Contents
    [RFC9461], [RFC9462] and [RFC9463] introduced ways to discover the
    encrypted DNS configuration of resolvers, both over DNS and in a
    local network using Router Advertisements or DHCP.  They use SVCB
-   records or their svcParam definitions to carry the information on a
+   records or their SvcParam definitions to carry the information on a
    resolver.  However, so far only DNS transfer protocols based on
    Transport Layer Security (TLS) were accounted for, namely DNS over
    TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484], and DNS over
@@ -131,7 +131,7 @@ Table of Contents
 
    In consequence, for a DoC server to be discoverable via DDR [RFC9462]
    and DNR [RFC9463], both transfer protocol and type and parameters for
-   the security parameter need to be provided in the svcParams field of
+   the security parameter need to be provided in the SvcParams field of
    these mechanisms, which this document will discuss.
 
 1.1.  Problems
@@ -228,7 +228,8 @@ Table of Contents
    ipv6-address: ...
    svcb-params:
        coaptransport="coap-over-tcp" /* encoded as a numeric value */,
-       objectsecurity="edhoc"/* or ace-edhoc?, also encoded as a numeric value */,
+       /* or ace-edhoc?, also encoded as a numeric value */,
+       objectsecurity="edhoc"
        docpath="/dns",
        port=61616,
        oauth-aud="dns.example.com",
@@ -241,7 +242,7 @@ Table of Contents
 
 5.  IANA Considerations
 
-   This document has no IANA actions.
+   TODO IANA Considerations
 
 6.  References
 
