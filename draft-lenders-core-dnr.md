@@ -50,6 +50,7 @@ author:
 
 normative:
   RFC7252: coap
+  RFC7301: alpn
   RFC8613: oscore
   RFC9460: svcb
   RFC9461: svcb-for-dns
@@ -65,15 +66,16 @@ informative:
   RFC8323: coap-tcp
   RFC8484: doh
   RFC9250: doq
+  RFC9203: ace-oscore
   I-D.amsuess-core-coap-over-gatt: coap-gatt
+  I-D.ietf-ace-edhoc-oscore-profile: ace-edhoc
+  I-D.ietf-core-href: cri
   lwm2m:
     title: White Paper – Lightweight M2M 1.1
     author:
       org: OMA SpecWorks
     date: 2018-10
     target: https://omaspecworks.org/white-paper-lightweight-m2m-1-1/
-  I-D.ietf-ace-edhoc-oscore-profile: ace-edhoc
-  RFC9203: ace-oscore
 
 --- abstract
 
@@ -114,9 +116,10 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
   As an alternative to EDHOC,
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
-For a DoC server to be discoverable via DDR {{-ddr}} and DNR {{-dnr}}, both transfer
-protocol and type and parameters for the security parameter need to be provided in the SvcParams
-field of these mechanisms, which this document will discuss.
+For a DoC server to be discoverable via Discovery of Designated Resolvers (DDR) {{-ddr}} and
+Discovery of Network-designated Resolvers (DNR) {{-dnr}}, both transfer protocol and type and
+parameters for the security parameter need to be provided in the SvcParams field of these
+mechanisms, which this document will discuss.
 
 # Terminology
 
@@ -125,60 +128,94 @@ The terms “DoC server” and “DoC client” are used as defined in {{-doc}}.
 The term “constrained node” is used as defined in {{-constr-nodes}}.
 
 SvcParams denotes the field in either DNS SVCB/HTTPS records as defined in {{-svcb}}, or DHCP and RA
-messages as defined in {{-dnr}}.
+messages as defined in {{-dnr}}. SvcParamKeys are used as defined in {{-svcb}}.
 
 {::boilerplate bcp14-tagged}
 
-# Problems
+# Problem Space
 
-TODO transform into sentences:
+The first and most important question to ask for the discoverability of DoC resolvers is if and what
+new SvcParamKeys need to be defined.
 
-- What do we need to find DoC using SvcParams {{-svcb}} {{-dnr}}?
-- Do we need sepcific ALPNs?
-    - What should the fields in {{-dnr}} RA / DHCP options give us?
-      (authentication-domain-name may not matter in EDHOC/ACE-OSCORE setup, but audience value for
-      ACE authorization server and the servers address might)
-- How do we signal ALPN-equivalent information when there is not “the one” transport layer security?
-- Can we indicate the transport (CoAP over UDP/TCP/etc.) orthogonally from (object) security mechanism (EDHOC, ACE-OSCORE, ...)
+{{-svcb}} defines the “alpn” key, which is used to identify the protocol suite of a service binding
+using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this is useful to
+identify classic transport layer security, the question is raised if this is needed or even helpful
+for when there is only object security. There is an ALPN ID for CoAP over TLS that was defined in
+{{-coap-tcp}} but it is not advisable to use the same ALPN ID for CoAP over DTLS. Object security
+may be selected in addition to transport layer security, so definining an ALPN ID for each
+combination might not be viable or scalable. For OSCORE specifically, additional information is
+needed for the establishment of an encryption context and for authentication with an authentication
+server (AS). Orthogonally to the security mechanism the transfer protocol needs to be established.
+
+Beyond the SvcParamKeys the question of what the field values of the Encrypted DNS Options defined
+in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
+“authentication-domain-name” (ADN) and its corresponding ADN field may not matter in the EDHOC case.
+
 - TBD but might be out-of-scope:
     - replace coap+... URI schemas with hostname literals
     - Increased RA size / fragmentation
 
 # Solution Sketches
 
-What should the fields in RA / DHCP option give us?
+To answer the raised questions, we first look at the general case then 4 base scenarios, from which
+other scenarios might be a combination of:
 
-## Unencrypted DoC
-TBD: Does DNR allow it?
+- Unencrypted DoC,
+- DoC over TLS/DTLS,
+- DoC over OSCORE using EDHOC, and
+- DoC over OSCORE using ACE-EDHOC.
+
+In the general case, we mostly need to answer the question for additional SvcParamKeys. {{-svcb}}
+defines the keys “mandatory”, “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint” were
+defined. Additionally, {{-svcb-for-dns}} defines “dohpath” which carries the URI template for the
+DNS recource at the DoH server in relative form.
+
+For DoC, the DNS resource needs to be identified as, so a corresponding “docpath” key should be
+provided that provides either a relative URI or CRI {{-cri}}. Since the URI-Path option in CoAP may
+be omitted (defaulting to the root path), this could also be done for the “docpath”.
+
+## Unencrypted DoC {#sec:solution-unencrypted}
+While unencrypted DoC is not recommended by {{-doc}} and might not even be viable using DDR/DNR, it
+provides additional benefits not provided by classic unencrypted DNS over UDP, such as segmentation
+block-wise transfer {{-coap-block}}. However, it provides the most simplest DoC configuration and
+thus is here discussed.
+
+At minimum a DoC server needs a way to identify the “docpath” (see above), an optional “port” (see
+{{-svcb}}), the IP address (either with an optional “ipv6hint”/“ipv4hint” or the respective IP
+address field in {{-dnr}}), and a yet to be defined SvcParamKey for the CoAP transfer protocol,
+e.g., “coaptransfer”. The latter can be used to identify the service binding as a CoAP service
+binding.
+
+The “authenticator-domain-name” field should remain empty as it does not serve a purpose without
+encryption.
+
+See this example for the possible values of a DNR option:
 
 ~~~~~~~~
-authenticator-domain-name:
-    (I'm leaving it empty b/c there is no use for it)
-ipv6-address: ...
+authenticator-domain-name: ""
+ipv6-address: <host address>
 svcb-params:
-    coaptransport="coap-over-tcp",
-    docpath="/dns",
-    port=61616
+ - coaptransfer="tcp"
+ - docpath="/dns"
+ - port=61616
 ~~~~~~~~
 
-## DoC over DTLS
-TBD:
+## DoC over TLS/DTLS
+In addition to the SvcParamKeys proposed in {{sec:solution-unencrypted}}, this scenario needs the
+“alpn” key. While there is a “coap” ALPN ID defined, it only identifies CoAP over TLS {{-coap-tcp}}.
+As such, a new ALPN ID for CoAP over DTLS is required.
 
-- Not even a problem, just register the relevant ALPN.
-- Trigger in CoRE, should be separate ALPN to “coap” (CoAP over TLS) ... and bikeshed value “co”, “COAP”, “cod”, ...
-- `docpath` if not given = `""` (cmp. URI-Path option in CoAP)?
-
-  > a la ‘When using the SVCB method for obtaining a DoC server (eg. because querying _dns or
-  > because it comes in DNR), the server MUST set docpath unless it is empty, in which case the
-  > client MUST assume docpath=“”’ to avoid implying an empty docpath even in places where no DoC is
-  > done
+See this example for the possible values of a DNR option:
 
 ~~~~~~~~
 authenticator-domain-name: dns.example.com
-ipv6-address: ...
-svcb-params: alpn="cod"/*TBD*/,docpath="/dns"
+ipv6-address: <host address>
+svcb-params:
+ - alpn="cod" /*TBD*/
+ - docpath="/dns"
 ~~~~~~~~
 
+Note that “coaptransfer” may not necessarily be needed, as it is implied by the ALPN ID.
 
 ## DoC over OSCORE using EDHOC
 - In a “web-browser style” (tell the device which name to authenticate, and it’ll do the cert
@@ -189,7 +226,7 @@ authenticator-domain-name: dns.example.com
 ipv6-address: ...
 
 svcb-params:
-    coaptransport="coap-over-tcp",
+    coaptransfer="coap-over-tcp",
     objectsecurity="edhoc",
     docpath="/dns",
     port=61616
