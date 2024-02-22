@@ -71,18 +71,18 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-     1.1.  Problems
    2.  Terminology
-   3.  Solution Sketches
-     3.1.  Unencrypted DoC
-     3.2.  DoC over DTLS
-     3.3.  DoC over OSCORE using EDHOC
-     3.4.  DoC over ACE-OSCORE
-   4.  Security Considerations
-   5.  IANA Considerations
-   6.  References
-     6.1.  Normative References
-     6.2.  Informative References
+   3.  Problem Space
+   4.  Solution Sketches
+     4.1.  Unencrypted DoC
+     4.2.  DoC over TLS/DTLS
+     4.3.  DoC over OSCORE using EDHOC
+     4.4.  DoC over ACE-OSCORE
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
    Authors' Addresses
 
@@ -129,38 +129,23 @@ Table of Contents
       EDHOC, keys can be set up by such an AS as described in the ACE
       OSCORE profile [RFC9203].
 
-   For a DoC server to be discoverable via DDR [RFC9462] and DNR
-   [RFC9463], both transfer protocol and type and parameters for the
-   security parameter need to be provided in the SvcParams field of
-   these mechanisms, which this document will discuss.
-
-1.1.  Problems
-
-   TODO transform into sentences:
-
-   *  What do we need to find DoC using SvcParams [RFC9460] [RFC9463]?
-
-   *  Do we need sepcific ALPNs?
-
-      -  What should the fields in [RFC9463] RA / DHCP options give us?
-         (authentication-domain-name may not matter in EDHOC/ACE-OSCORE
-         setup, but audience value for ACE authorization server and the
-         servers address might)
-
-   *  How do we signal ALPN-equivalent information when there is not
-      “the one” transport layer security?
-
-   *  Can we indicate the transport (CoAP over UDP/TCP/etc.)
-      orthogonally from (object) security mechanism (EDHOC, ACE-OSCORE,
-      ...)
-
-   *  TBD but might be out-of-scope:
-
-      -  replace coap+... URI schemas with hostname literals
-
-      -  Increased RA size / fragmentation
+   For a DoC server to be discoverable via Discovery of Designated
+   Resolvers (DDR) [RFC9462] and Discovery of Network-designated
+   Resolvers (DNR) [RFC9463], both transfer protocol and type and
+   parameters for the security parameter need to be provided in the
+   SvcParams field of these mechanisms, which this document will
+   discuss.
 
 2.  Terminology
+
+   The terms “DoC server” and “DoC client” are used as defined in
+   [I-D.ietf-core-dns-over-coap].
+
+   The term “constrained node” is used as defined in [RFC7228].
+
+   SvcParams denotes the field in either DNS SVCB/HTTPS records as
+   defined in [RFC9460], or DHCP and RA messages as defined in
+   [RFC9463].  SvcParamKeys are used as defined in [RFC9460].
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -168,44 +153,110 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Solution Sketches
+3.  Problem Space
 
-   What should the fields in RA / DHCP option give us?
+   The first and most important question to ask for the discoverability
+   of DoC resolvers is if and what new SvcParamKeys need to be defined.
 
-3.1.  Unencrypted DoC
+   [RFC9460] defines the “alpn” key, which is used to identify the
+   protocol suite of a service binding using its Application-Layer
+   Protocol Negotiation (ALPN) ID [RFC7301].  While this is useful to
+   identify classic transport layer security, the question is raised if
+   this is needed or even helpful for when there is only object
+   security.  There is an ALPN ID for CoAP over TLS that was defined in
+   [RFC8323] but it is not advisable to use the same ALPN ID for CoAP
+   over DTLS.  Object security may be selected in addition to transport
+   layer security, so definining an ALPN ID for each combination might
+   not be viable or scalable.  For OSCORE specifically, additional
+   information is needed for the establishment of an encryption context
+   and for authentication with an authentication server (AS).
+   Orthogonally to the security mechanism the transfer protocol needs to
+   be established.
 
-   TBD: Does DNR allow it?
+   Beyond the SvcParamKeys the question of what the field values of the
+   Encrypted DNS Options defined in [RFC9463] might be with EDHOC or ACE
+   EDHOC.  While most fields map, “authentication-domain-name” (ADN) and
+   its corresponding ADN field may not matter in the EDHOC case.
 
-   authenticator-domain-name:
-       (I'm leaving it empty b/c there is no use for it)
-   ipv6-address: ...
+   *  TBD but might be out-of-scope:
+
+      -  replace coap+... URI schemas with hostname literals
+
+      -  Increased RA size / fragmentation
+
+4.  Solution Sketches
+
+   To answer the raised questions, we first look at the general case
+   then 4 base scenarios, from which other scenarios might be a
+   combination of:
+
+   *  Unencrypted DoC,
+
+   *  DoC over TLS/DTLS,
+
+   *  DoC over OSCORE using EDHOC, and
+
+   *  DoC over OSCORE using ACE-EDHOC.
+
+   In the general case, we mostly need to answer the question for
+   additional SvcParamKeys.  [RFC9460] defines the keys “mandatory”,
+   “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint” were
+   defined.  Additionally, [RFC9461] defines “dohpath” which carries the
+   URI template for the DNS recource at the DoH server in relative form.
+
+   For DoC, the DNS resource needs to be identified as, so a
+   corresponding “docpath” key should be provided that provides either a
+   relative URI or CRI [I-D.ietf-core-href].  Since the URI-Path option
+   in CoAP may be omitted (defaulting to the root path), this could also
+   be done for the “docpath”.
+
+4.1.  Unencrypted DoC
+
+   While unencrypted DoC is not recommended by
+   [I-D.ietf-core-dns-over-coap] and might not even be viable using DDR/
+   DNR, it provides additional benefits not provided by classic
+   unencrypted DNS over UDP, such as segmentation block-wise transfer
+   [RFC7959].  However, it provides the most simplest DoC configuration
+   and thus is here discussed.
+
+   At minimum a DoC server needs a way to identify the “docpath” (see
+   above), an optional “port” (see [RFC9460]), the IP address (either
+   with an optional “ipv6hint”/“ipv4hint” or the respective IP address
+   field in [RFC9463]), and a yet to be defined SvcParamKey for the CoAP
+   transfer protocol, e.g., “coaptransfer”. The latter can be used to
+   identify the service binding as a CoAP service binding.
+
+   The “authenticator-domain-name” field should remain empty as it does
+   not serve a purpose without encryption.
+
+   See this example for the possible values of a DNR option:
+
+   authenticator-domain-name: ""
+   ipv6-address: <host address>
    svcb-params:
-       coaptransport="coap-over-tcp",
-       docpath="/dns",
-       port=61616
+    - coaptransfer="tcp"
+    - docpath="/dns"
+    - port=61616
 
-3.2.  DoC over DTLS
+4.2.  DoC over TLS/DTLS
 
-   TBD:
+   In addition to the SvcParamKeys proposed in Section 4.1, this
+   scenario needs the “alpn” key.  While there is a “coap” ALPN ID
+   defined, it only identifies CoAP over TLS [RFC8323].  As such, a new
+   ALPN ID for CoAP over DTLS is required.
 
-   *  Not even a problem, just register the relevant ALPN.
-
-   *  Trigger in CoRE, should be separate ALPN to “coap” (CoAP over TLS)
-      ... and bikeshed value “co”, “COAP”, “cod”, ...
-
-   *  docpath if not given = "" (cmp.  URI-Path option in CoAP)?
-
-         a la ‘When using the SVCB method for obtaining a DoC server
-         (eg. because querying _dns or because it comes in DNR), the
-         server MUST set docpath unless it is empty, in which case the
-         client MUST assume docpath=“”’ to avoid implying an empty
-         docpath even in places where no DoC is done
+   See this example for the possible values of a DNR option:
 
    authenticator-domain-name: dns.example.com
-   ipv6-address: ...
-   svcb-params: alpn="cod"/*TBD*/,docpath="/dns"
+   ipv6-address: <host address>
+   svcb-params:
+    - alpn="cod" /*TBD*/
+    - docpath="/dns"
 
-3.3.  DoC over OSCORE using EDHOC
+   Note that “coaptransfer” may not necessarily be needed, as it is
+   implied by the ALPN ID.
+
+4.3.  DoC over OSCORE using EDHOC
 
    *  In a “web-browser style” (tell the device which name to
       authenticate, and it’ll do the cert validation)
@@ -214,12 +265,12 @@ Table of Contents
    ipv6-address: ...
 
    svcb-params:
-       coaptransport="coap-over-tcp",
+       coaptransfer="coap-over-tcp",
        objectsecurity="edhoc",
        docpath="/dns",
        port=61616
 
-3.4.  DoC over ACE-OSCORE
+4.4.  DoC over ACE-OSCORE
 
    *  ACE to authenticate server (not necessarily the client)
 
@@ -236,17 +287,17 @@ Table of Contents
        oauth-scope="resolve DNS"/* should this be expressed at all? */,
        oauth-as="coap://as.example.com" /* encoded as a CRI? */
 
-4.  Security Considerations
+5.  Security Considerations
 
    TODO Security
 
-5.  IANA Considerations
+6.  IANA Considerations
 
    TODO IANA Considerations
 
-6.  References
+7.  References
 
-6.1.  Normative References
+7.1.  Normative References
 
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
@@ -274,6 +325,11 @@ Table of Contents
               Application Protocol (CoAP)", RFC 7252,
               DOI 10.17487/RFC7252, June 2014,
               <https://www.rfc-editor.org/rfc/rfc7252>.
+
+   [RFC7301]  Friedl, S., Popov, A., Langley, A., and E. Stephan,
+              "Transport Layer Security (TLS) Application-Layer Protocol
+              Negotiation Extension", RFC 7301, DOI 10.17487/RFC7301,
+              July 2014, <https://www.rfc-editor.org/rfc/rfc7301>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -304,7 +360,7 @@ Table of Contents
               RFC 9463, DOI 10.17487/RFC9463, November 2023,
               <https://www.rfc-editor.org/rfc/rfc9463>.
 
-6.2.  Informative References
+7.2.  Informative References
 
    [I-D.amsuess-core-coap-over-gatt]
               Amsüss, C., "CoAP over GATT (Bluetooth Low Energy Generic
@@ -323,9 +379,21 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
               edhoc-oscore-profile-03>.
 
+   [I-D.ietf-core-href]
+              Bormann, C. and H. Birkholz, "Constrained Resource
+              Identifiers", Work in Progress, Internet-Draft, draft-
+              ietf-core-href-14, 9 January 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-core-
+              href-14>.
+
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
               lightweight-m2m-1-1/>.
+
+   [RFC7228]  Bormann, C., Ersue, M., and A. Keranen, "Terminology for
+              Constrained-Node Networks", RFC 7228,
+              DOI 10.17487/RFC7228, May 2014,
+              <https://www.rfc-editor.org/rfc/rfc7228>.
 
    [RFC7858]  Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
