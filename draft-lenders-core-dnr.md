@@ -145,7 +145,7 @@ identify classic transport layer security, the question is raised if this is nee
 for when there is only object security. There is an ALPN ID for CoAP over TLS that was defined in
 {{-coap-tcp}} but it is not advisable to use the same ALPN ID for CoAP over DTLS. Object security
 may be selected in addition to transport layer security, so defining an ALPN ID for each
-combination might not be viable or scalable. For OSCORE specifically, additional information is
+combination might not be viable or scalable. For some ways of setting up object security, additional information is
 needed for the establishment of an encryption context and for authentication with an authentication
 server (AS). Orthogonally to the security mechanism the transfer protocol needs to be established.
 
