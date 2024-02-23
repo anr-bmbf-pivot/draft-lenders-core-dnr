@@ -147,7 +147,7 @@ for when there is only object security. There is an ALPN ID for CoAP over TLS th
 may be selected in addition to transport layer security, so defining an ALPN ID for each
 combination might not be viable or scalable. For some ways of setting up object security, additional information is
 needed for the establishment of an encryption context and for authentication with an authentication
-server (AS). Orthogonally to the security mechanism the transfer protocol needs to be established.
+server (AS). Orthogonally to the security mechanism, the transfer protocol needs to be established.
 
 Beyond the SvcParamKeys the question of what the field values of the Encrypted DNS Options defined
 in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
