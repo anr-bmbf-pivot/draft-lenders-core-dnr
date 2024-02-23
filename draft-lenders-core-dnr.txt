@@ -128,10 +128,10 @@ Table of Contents
       OSCORE keys are not usable indefinitely and need to be set up, for
       example through an EDHOC key exchange
       [I-D.ietf-core-oscore-edhoc], which may use credentials from
-      trusted authorization server (AS) as described in the ACE EDHOC
-      profile [I-D.ietf-ace-edhoc-oscore-profile].  As an alternative to
-      EDHOC, keys can be set up by such an AS as described in the ACE
-      OSCORE profile [RFC9203].
+      trusted ACE Authorization Server (AS) as described in the ACE
+      EDHOC profile [I-D.ietf-ace-edhoc-oscore-profile].  As an
+      alternative to EDHOC, keys can be set up by such an AS as
+      described in the ACE OSCORE profile [RFC9203].
 
    For a DoC server to be discoverable via Discovery of Designated
    Resolvers (DDR) [RFC9462] and Discovery of Network-designated
@@ -145,7 +145,8 @@ Table of Contents
    The terms “DoC server” and “DoC client” are used as defined in
    [I-D.ietf-core-dns-over-coap].
 
-   The term “constrained node” is used as defined in [RFC7228].
+   The terms “constrained node” and "constrained network" are used as
+   defined in [RFC7228].
 
    SvcParams denotes the field in either DNS SVCB/HTTPS records as
    defined in [RFC9460], or DHCP and RA messages as defined in
@@ -171,22 +172,33 @@ Table of Contents
    [RFC8323] but it is not advisable to use the same ALPN ID for CoAP
    over DTLS.  Object security may be selected in addition to transport
    layer security, so defining an ALPN ID for each combination might not
-   be viable or scalable.  For OSCORE specifically, additional
-   information is needed for the establishment of an encryption context
-   and for authentication with an authentication server (AS).
-   Orthogonally to the security mechanism the transfer protocol needs to
-   be established.
+   be viable or scalable.  For some ways of setting up object security,
+   additional information is needed for the establishment of an
+   encryption context and for authentication with an authentication
+   server (AS).  Orthogonally to the security mechanism, the transfer
+   protocol needs to be established.
 
-   Beyond the SvcParamKeys the question of what the field values of the
-   Encrypted DNS Options defined in [RFC9463] might be with EDHOC or ACE
-   EDHOC.  While most fields map, “authentication-domain-name” (ADN) and
-   its corresponding ADN field may not matter in the EDHOC case.
+   Beyond the SvcParamKeys, there is the question of what the field
+   values of the Encrypted DNS Options defined in [RFC9463] might be
+   with EDHOC or ACE EDHOC.  While most fields map, “authentication-
+   domain-name” (ADN) and its corresponding ADN length field may not
+   matter in ACE driven cases.
 
-   *  TBD but might be out-of-scope:
+   Out of scope of this document are related issues adjacent to its
+   problem space. they are listed both for conceptual delimitation, and
+   to aid in discussion of more comprehensive solutions:
 
-      -  replace coap+... URI schemas with hostname literals
+   *  There is ongoing work in addressing the trouble created by CoAP
+      using a diverse set of URI schemes in the shape of coap+..., such
+      as coap+tcp {?I-D.ietf-core-transport-indication}. The creation of
+      URI authority values that express the content of SVCB records
+      together with IP literals is part of the solution space that will
+      be explored there.
 
-      -  Increased RA size / fragmentation
+   *  Route Advertisements (RAs) as used in [RFC9463] can easily exceed
+      the link layer fragmentation threshold of constrained networks.
+      The presence of DNR information in an RA can contribute to that
+      issue.
 
 4.  Solution Sketches
 
@@ -258,8 +270,9 @@ Table of Contents
     - alpn="co" /*TBD*/
     - docpath="/dns"
 
-   Note that “coaptransfer” may not necessarily be needed, as it is
-   implied by the ALPN ID.
+   Note that “coaptransfer” is not needed, as it is implied by the ALPN
+   ID; thus, no values for it would be allocated for transfer protocols
+   that use transport security.
 
 4.3.  DoC over OSCORE using EDHOC
 
@@ -280,6 +293,10 @@ Table of Contents
     - objectsecurity="edhoc",
     - docpath="/dns",
     - port=61616
+
+   The use of objectsecurity="edhoc" with an authenticator-domain-name
+   and no further ACE details indicates that the client can use CA based
+   authentication of the server.
 
 4.4.  DoC over ACE-OSCORE
 

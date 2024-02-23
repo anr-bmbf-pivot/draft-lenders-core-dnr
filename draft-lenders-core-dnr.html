@@ -1237,7 +1237,7 @@ transferred over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</s
 <p id="section-1-3.3.2">
 OSCORE keys are not usable indefinitely and need to be set up,
 for example through an EDHOC key exchange <span>[<a href="#I-D.ietf-core-oscore-edhoc" class="cite xref">I-D.ietf-core-oscore-edhoc</a>]</span>,
-which may use credentials from trusted authorization server (AS)
+which may use credentials from trusted ACE Authorization Server (AS)
 as described in the ACE EDHOC profile <span>[<a href="#I-D.ietf-ace-edhoc-oscore-profile" class="cite xref">I-D.ietf-ace-edhoc-oscore-profile</a>]</span>.
 As an alternative to EDHOC,
 keys can be set up by such an AS as described in the ACE OSCORE profile <span>[<a href="#RFC9203" class="cite xref">RFC9203</a>]</span>.<a href="#section-1-3.3.2" class="pilcrow">¶</a></p>
@@ -1255,7 +1255,7 @@ mechanisms, which this document will discuss.<a href="#section-1-4" class="pilcr
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-terminology" class="section-name selfRef">Terminology</a>
       </h2>
 <p id="section-2-1">The terms “DoC server” and “DoC client” are used as defined in <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span>.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">The term “constrained node” is used as defined in <span>[<a href="#RFC7228" class="cite xref">RFC7228</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-2">The terms “constrained node” and "constrained network" are used as defined in <span>[<a href="#RFC7228" class="cite xref">RFC7228</a>]</span>.<a href="#section-2-2" class="pilcrow">¶</a></p>
 <p id="section-2-3">SvcParams denotes the field in either DNS SVCB/HTTPS records as defined in <span>[<a href="#RFC9460" class="cite xref">RFC9460</a>]</span>, or DHCP and RA
 messages as defined in <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>. SvcParamKeys are used as defined in <span>[<a href="#RFC9460" class="cite xref">RFC9460</a>]</span>.<a href="#section-2-3" class="pilcrow">¶</a></p>
 <p id="section-2-4">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
@@ -1277,23 +1277,25 @@ identify classic transport layer security, the question is raised if this is nee
 for when there is only object security. There is an ALPN ID for CoAP over TLS that was defined in
 <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span> but it is not advisable to use the same ALPN ID for CoAP over DTLS. Object security
 may be selected in addition to transport layer security, so defining an ALPN ID for each
-combination might not be viable or scalable. For OSCORE specifically, additional information is
+combination might not be viable or scalable. For some ways of setting up object security, additional information is
 needed for the establishment of an encryption context and for authentication with an authentication
-server (AS). Orthogonally to the security mechanism the transfer protocol needs to be established.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">Beyond the SvcParamKeys the question of what the field values of the Encrypted DNS Options defined
+server (AS). Orthogonally to the security mechanism, the transfer protocol needs to be established.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">Beyond the SvcParamKeys, there is the question of what the field values of the Encrypted DNS Options defined
 in <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span> might be with EDHOC or ACE EDHOC. While most fields map,
-“authentication-domain-name” (ADN) and its corresponding ADN field may not matter in the EDHOC case.<a href="#section-3-3" class="pilcrow">¶</a></p>
+“authentication-domain-name” (ADN) and its corresponding ADN length field may not matter in ACE driven cases.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">Out of scope of this document are related issues adjacent to its problem space.
+they are listed both for conceptual delimitation,
+and to aid in discussion of more comprehensive solutions:<a href="#section-3-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3-4.1">
-          <p id="section-3-4.1.1">TBD but might be out-of-scope:<a href="#section-3-4.1.1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-3-4.1.2.1">
-              <p id="section-3-4.1.2.1.1">replace coap+... URI schemas with hostname literals<a href="#section-3-4.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3-5.1">
+          <p id="section-3-5.1.1">There is ongoing work in addressing the trouble created by CoAP using a diverse set of URI schemes
+in the shape of <code>coap+...</code>, such as <code>coap+tcp</code> {?I-D.ietf-core-transport-indication}.
+The creation of URI authority values that express the content of SVCB records together with IP literals
+is part of the solution space that will be explored there.<a href="#section-3-5.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-3-4.1.2.2">
-              <p id="section-3-4.1.2.2.1">Increased RA size / fragmentation<a href="#section-3-4.1.2.2.1" class="pilcrow">¶</a></p>
-</li>
-          </ul>
+        <li class="normal" id="section-3-5.2">
+          <p id="section-3-5.2.1">Route Advertisements (RAs) as used in <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span> can easily exceed the link layer fragmentation threshold of constrained networks.
+The presence of DNR information in an RA can contribute to that issue.<a href="#section-3-5.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1373,7 +1375,8 @@ svc-params:
  - docpath="/dns"
 </pre><a href="#section-4.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-4">Note that “coaptransfer” may not necessarily be needed, as it is implied by the ALPN ID.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">Note that “coaptransfer” is not needed, as it is implied by the ALPN ID;
+thus, no values for it would be allocated for transfer protocols that use transport security.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="doc-over-oscore-using-edhoc">
@@ -1398,6 +1401,8 @@ svc-params:
  - port=61616
 </pre><a href="#section-4.3-4" class="pilcrow">¶</a>
 </div>
+<p id="section-4.3-5">The use of objectsecurity="edhoc" with an authenticator-domain-name and no further ACE details indicates
+that the client can use CA based authentication of the server.<a href="#section-4.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="doc-over-ace-oscore">
