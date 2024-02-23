@@ -255,7 +255,7 @@ Table of Contents
    authenticator-domain-name: "dns.example.com"
    ipv6-address: <DoC server address>
    svc-params:
-    - alpn="cod" /*TBD*/
+    - alpn="co" /*TBD*/
     - docpath="/dns"
 
    Note that “coaptransfer” may not necessarily be needed, as it is
