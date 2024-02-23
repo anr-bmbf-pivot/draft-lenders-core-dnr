@@ -149,7 +149,7 @@ combination might not be viable or scalable. For some ways of setting up object 
 needed for the establishment of an encryption context and for authentication with an authentication
 server (AS). Orthogonally to the security mechanism, the transfer protocol needs to be established.
 
-Beyond the SvcParamKeys the question of what the field values of the Encrypted DNS Options defined
+Beyond the SvcParamKeys, there is the question of what the field values of the Encrypted DNS Options defined
 in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
 “authentication-domain-name” (ADN) and its corresponding ADN field may not matter in the EDHOC case.
 
