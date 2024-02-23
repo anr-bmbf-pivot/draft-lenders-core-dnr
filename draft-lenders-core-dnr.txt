@@ -18,7 +18,11 @@ Expires: 26 August 2024
 
 Abstract
 
-   TODO Abstract
+   This document discusses problems and proposes potential solutions for
+   discovery of encrypted DNS configuration of DNS over CoAP resolvers
+   over DNS and in a local network using Router Advertisements or DHCP.
+   It discusses discovery of CoAP transfer protocols, security modes,
+   and configuration for said security modes.
 
 About This Document
 
@@ -91,7 +95,7 @@ Table of Contents
    [RFC9461], [RFC9462] and [RFC9463] introduced ways to discover the
    encrypted DNS configuration of resolvers, both over DNS and in a
    local network using Router Advertisements or DHCP.  They use SVCB
-   records or their SvcParam definitions to carry the information on a
+   records or their SvcParams definitions to carry the information on a
    resolver.  However, so far only DNS transfer protocols based on
    Transport Layer Security (TLS) were accounted for, namely DNS over
    TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484], and DNS over
@@ -114,8 +118,8 @@ Table of Contents
       CoAP features, otherwise not present in classic DNS over UDP, such
       as block-wise transfer [RFC7959] for datagram-based segmentation.
 
-   *  *Transport Security:* CoAP may use DTLS for when transfered over
-      UDP [RFC7252] and TLS when transfered over TCP [RFC8323].
+   *  *Transport Security:* CoAP may use DTLS for when transferred over
+      UDP [RFC7252] and TLS when transferred over TCP [RFC8323].
 
    *  *Object Security:* Application-layer based object encryption
       within CoAP based on OSCORE [RFC8613].  OSCORE can be either used
@@ -166,8 +170,8 @@ Table of Contents
    security.  There is an ALPN ID for CoAP over TLS that was defined in
    [RFC8323] but it is not advisable to use the same ALPN ID for CoAP
    over DTLS.  Object security may be selected in addition to transport
-   layer security, so definining an ALPN ID for each combination might
-   not be viable or scalable.  For OSCORE specifically, additional
+   layer security, so defining an ALPN ID for each combination might not
+   be viable or scalable.  For OSCORE specifically, additional
    information is needed for the establishment of an encryption context
    and for authentication with an authentication server (AS).
    Orthogonally to the security mechanism the transfer protocol needs to
@@ -202,7 +206,7 @@ Table of Contents
    additional SvcParamKeys.  [RFC9460] defines the keys “mandatory”,
    “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint” were
    defined.  Additionally, [RFC9461] defines “dohpath” which carries the
-   URI template for the DNS recource at the DoH server in relative form.
+   URI template for the DNS resource at the DoH server in relative form.
 
    For DoC, the DNS resource needs to be identified as, so a
    corresponding “docpath” key should be provided that provides either a
@@ -216,15 +220,16 @@ Table of Contents
    [I-D.ietf-core-dns-over-coap] and might not even be viable using DDR/
    DNR, it provides additional benefits not provided by classic
    unencrypted DNS over UDP, such as segmentation block-wise transfer
-   [RFC7959].  However, it provides the most simplest DoC configuration
-   and thus is here discussed.
+   [RFC7959].  However, it provides the simplest DoC configuration and
+   thus is here discussed.
 
-   At minimum a DoC server needs a way to identify the “docpath” (see
-   above), an optional “port” (see [RFC9460]), the IP address (either
-   with an optional “ipv6hint”/“ipv4hint” or the respective IP address
-   field in [RFC9463]), and a yet to be defined SvcParamKey for the CoAP
-   transfer protocol, e.g., “coaptransfer”. The latter can be used to
-   identify the service binding as a CoAP service binding.
+   At minimum for a DoC server a way to identify the following keys are
+   required. “docpath” (see above), an optional “port” (see [RFC9460]),
+   the IP address (either with an optional “ipv6hint”/“ipv4hint” or the
+   respective IP address field in [RFC9463]), and a yet to be defined
+   SvcParamKey for the CoAP transfer protocol, e.g., “coaptransfer”. The
+   latter can be used to identify the service binding as a CoAP service
+   binding.
 
    The “authenticator-domain-name” field should remain empty as it does
    not serve a purpose without encryption.
@@ -258,7 +263,7 @@ Table of Contents
 
 4.3.  DoC over OSCORE using EDHOC
 
-   While the “alpn” SvcParamKey is needed for the trasport layer
+   While the “alpn” SvcParamKey is needed for the transport layer
    security (see Section 4.2), we can implement a CA-style
    authentication with EDHOC when using object security with OSCORE
    using the authenticator-domain-name field.
@@ -278,18 +283,18 @@ Table of Contents
 
 4.4.  DoC over ACE-OSCORE
 
-   Using ACE, we need an OAuth context to authenticate the server in
+   Using ACE, we require an OAuth context to authenticate the server in
    addition to the “objectsecurity” key.  We propose three keys “oauth-
    aud” for the audience, “oauth-scope” for the OAuth scope, and “auth-
-   as” for the authentiation server. “oauth-aud” should be the valid
+   as” for the authentication server. “oauth-aud” should be the valid
    domain name of the DoC server, “oauth-scope” a list of identifiers
    for the scope, and “oauth-as” a valid URI or CRI.
 
    TBD: should oauth-scope be expressed at all?
 
    Since authentication is done over OAuth and not CA-style, the
-   “authenticator-domain-name” is not needed.  There might be merrit,
-   however, to use it instead of the “auth-aud” SvcParamKey.
+   “authenticator-domain-name” is not needed.  There might be merit,
+   however, to use it instead of the “oauth-aud” SvcParamKey.
 
    See this example for the possible values of a DNR option:
 
