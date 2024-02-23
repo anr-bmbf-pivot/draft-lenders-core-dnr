@@ -248,6 +248,9 @@ svc-params:
  - port=61616
 ~~~~~~~~
 
+The use of objectsecurity="edhoc" with an authenticator-domain-name and no further ACE details indicates
+that the client can use CA based authentication of the server.
+
 ## DoC over ACE-OSCORE
 Using ACE, we require an OAuth context to authenticate the server in addition to the
 “objectsecurity” key. We propose three keys “oauth-aud” for the audience, “oauth-scope” for the
