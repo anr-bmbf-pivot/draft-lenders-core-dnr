@@ -127,7 +127,7 @@ mechanisms, which this document will discuss.
 
 The terms “DoC server” and “DoC client” are used as defined in {{-doc}}.
 
-The term “constrained node” is used as defined in {{-constr-nodes}}.
+The terms “constrained node” and "constrained network" are used as defined in {{-constr-nodes}}.
 
 SvcParams denotes the field in either DNS SVCB/HTTPS records as defined in {{-svcb}}, or DHCP and RA
 messages as defined in {{-dnr}}. SvcParamKeys are used as defined in {{-svcb}}.
