@@ -226,7 +226,7 @@ svc-params:
 ~~~~~~~~
 
 Note that “coaptransfer” is not needed, as it is implied by the ALPN ID;
-thus, no values for it would be are allocated for transports that use transport security.
+thus, no values for it would be allocated for transfer protocols that use transport security.
 
 ## DoC over OSCORE using EDHOC
 While the “alpn” SvcParamKey is needed for the transport layer security (see {{sec:solution-tls}}),
