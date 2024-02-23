@@ -79,8 +79,10 @@ informative:
 
 --- abstract
 
-TODO Abstract
-
+This document discusses problems and proposes potential solutions for discovery of encrypted DNS
+configuration of DNS over CoAP resolvers over DNS and in a local network using Router Advertisements
+or DHCP. It discusses discovery of CoAP transfer protocols, security modes, and configuration for
+said security modes.
 
 --- middle
 
