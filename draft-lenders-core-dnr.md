@@ -113,7 +113,7 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
 
   OSCORE keys are not usable indefinitely and need to be set up,
   for example through an EDHOC key exchange {{-edhoc}},
-  which may use credentials from trusted authorization server (AS)
+  which may use credentials from trusted ACE Authorization Server (AS)
   as described in the ACE EDHOC profile {{-ace-edhoc}}.
   As an alternative to EDHOC,
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
