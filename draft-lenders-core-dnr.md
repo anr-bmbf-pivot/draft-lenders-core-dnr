@@ -193,14 +193,14 @@ See this example for the possible values of a DNR option:
 
 ~~~~~~~~
 authenticator-domain-name: ""
-ipv6-address: <host address>
-svcb-params:
+ipv6-address: <DoC server address>
+svc-params:
  - coaptransfer="tcp"
  - docpath="/dns"
  - port=61616
 ~~~~~~~~
 
-## DoC over TLS/DTLS
+## DoC over TLS/DTLS {#sec:solution-tls}
 In addition to the SvcParamKeys proposed in {{sec:solution-unencrypted}}, this scenario needs the
 “alpn” key. While there is a “coap” ALPN ID defined, it only identifies CoAP over TLS {{-coap-tcp}}.
 As such, a new ALPN ID for CoAP over DTLS is required.
@@ -208,9 +208,9 @@ As such, a new ALPN ID for CoAP over DTLS is required.
 See this example for the possible values of a DNR option:
 
 ~~~~~~~~
-authenticator-domain-name: dns.example.com
-ipv6-address: <host address>
-svcb-params:
+authenticator-domain-name: "dns.example.com"
+ipv6-address: <DoC server address>
+svc-params:
  - alpn="cod" /*TBD*/
  - docpath="/dns"
 ~~~~~~~~
@@ -218,36 +218,51 @@ svcb-params:
 Note that “coaptransfer” may not necessarily be needed, as it is implied by the ALPN ID.
 
 ## DoC over OSCORE using EDHOC
-- In a “web-browser style” (tell the device which name to authenticate, and it’ll do the cert
-  validation)
+While the “alpn” SvcParamKey is needed for the trasport layer security (see {{sec:solution-tls}}),
+we can implement a CA-style authentication with EDHOC when using object security with OSCORE using
+the authenticator-domain-name field.
+
+A new key SvcParamKey “objectsecurity” identifies the type of object security, using the value
+"edhoc" in this scenario.
+
+See this example for the possible values of a DNR option:
 
 ~~~~~~~~
-authenticator-domain-name: dns.example.com
-ipv6-address: ...
-
-svcb-params:
-    coaptransfer="coap-over-tcp",
-    objectsecurity="edhoc",
-    docpath="/dns",
-    port=61616
+authenticator-domain-name: "dns.example.com"
+ipv6-address: <DoC server address>
+svc-params:
+ - coaptransfer="udp",
+ - objectsecurity="edhoc",
+ - docpath="/dns",
+ - port=61616
 ~~~~~~~~
 
 ## DoC over ACE-OSCORE
-- ACE to authenticate server (not necessarily the client)
+Using ACE, we need an OAuth context to authenticate the server in addition to the “objectsecurity”
+key. We propose three keys “oauth-aud” for the audience, “oauth-scope” for the OAuth
+scope, and “auth-as” for the authentiation server. “oauth-aud” should be the valid domain name of
+the DoC server, “oauth-scope” a list of identifiers for the scope, and “oauth-as” a valid URI or
+CRI.
+
+TBD: should oauth-scope be expressed at all?
+
+Since authentication is done over OAuth and not CA-style, the “authenticator-domain-name” is not
+needed. There might be merrit, however, to use it instead of the “auth-aud” SvcParamKey.
+
+See this example for the possible values of a DNR option:
 
 ~~~~~~~~
-authenticator-domain-name:
-    (leaving empty b/c there is no use for it)
-ipv6-address: ...
-svcb-params:
-    coaptransport="coap-over-tcp" /* encoded as a numeric value */,
-    /* or ace-edhoc?, also encoded as a numeric value */,
-    objectsecurity="edhoc"
-    docpath="/dns",
-    port=61616,
-    oauth-aud="dns.example.com",
-    oauth-scope="resolve DNS"/* should this be expressed at all? */,
-    oauth-as="coap://as.example.com" /* encoded as a CRI? */
+authenticator-domain-name: ""
+ipv6-address: <DoC server address>
+svc-params:
+ - coaptransfer="tcp"
+ - /* or ace-edhoc?, also encoded as a numeric value */,
+ - objectsecurity="edhoc"
+ - docpath="/dns",
+ - port=61616,
+ - oauth-aud="dns.example.com",
+ - oauth-scope="resolve DNS"/* should this be expressed at all? */,
+ - oauth-as="coap://as.example.com" /* encoded as a CRI? */
 ~~~~~~~
 
 # Security Considerations
