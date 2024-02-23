@@ -213,7 +213,7 @@ See this example for the possible values of a DNR option:
 authenticator-domain-name: "dns.example.com"
 ipv6-address: <DoC server address>
 svc-params:
- - alpn="cod" /*TBD*/
+ - alpn="co" /*TBD*/
  - docpath="/dns"
 ~~~~~~~~
 
