@@ -153,9 +153,17 @@ Beyond the SvcParamKeys, there is the question of what the field values of the E
 in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
 “authentication-domain-name” (ADN) and its corresponding ADN length field may not matter in ACE driven cases.
 
-- TBD but might be out-of-scope:
-    - replace coap+... URI schemas with hostname literals
-    - Increased RA size / fragmentation
+Out of scope of this document are related issues adjacent to its problem space.
+they are listed both for conceptual delimitation,
+and to aid in discussion of more comprehensive solutions:
+
+* There is ongoing work in addressing the trouble created by CoAP using a diverse set of URI schemes
+  in the shape of `coap+...`, such as `coap+tcp` {?I-D.ietf-core-transport-indication}.
+  The creation of URI authority values that express the content of SVCB records together with IP literals
+  is part of the solution space that will be explored there.
+
+* Route Advertisements (RAs) as used in {{-dnr}} can easily exceed the link layer fragmentation threshold of constrained networks.
+  The presence of DNR information in an RA can contribute to that issue.
 
 # Solution Sketches
 
