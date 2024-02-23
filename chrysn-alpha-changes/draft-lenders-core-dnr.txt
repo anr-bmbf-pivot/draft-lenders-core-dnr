@@ -271,8 +271,8 @@ Table of Contents
     - docpath="/dns"
 
    Note that “coaptransfer” is not needed, as it is implied by the ALPN
-   ID; thus, no values for it would be are allocated for transports that
-   use transport security.
+   ID; thus, no values for it would be allocated for transfer protocols
+   that use transport security.
 
 4.3.  DoC over OSCORE using EDHOC
 
