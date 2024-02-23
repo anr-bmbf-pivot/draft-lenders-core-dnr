@@ -158,7 +158,7 @@ they are listed both for conceptual delimitation,
 and to aid in discussion of more comprehensive solutions:
 
 * There is ongoing work in addressing the trouble created by CoAP using a diverse set of URI schemes
-  in the shape of `coap+...`, such as `coap+tcp` {?I-D.ietf-core-transport-indication}.
+  in the shape of `coap+...`, such as `coap+tcp` {{?I-D.ietf-core-transport-indication}}.
   The creation of URI authority values that express the content of SVCB records together with IP literals
   is part of the solution space that will be explored there.
 
