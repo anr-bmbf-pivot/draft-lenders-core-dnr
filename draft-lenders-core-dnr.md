@@ -256,13 +256,12 @@ authenticator-domain-name: ""
 ipv6-address: <DoC server address>
 svc-params:
  - coaptransfer="tcp"
- - /* or ace-edhoc?, also encoded as a numeric value */,
- - objectsecurity="edhoc"
+ - objectsecurity="edhoc" /* TBD: or ace-edhoc? */
  - docpath="/dns",
  - port=61616,
  - oauth-aud="dns.example.com",
- - oauth-scope="resolve DNS"/* should this be expressed at all? */,
- - oauth-as="coap://as.example.com" /* encoded as a CRI? */
+ - oauth-scope="resolve DNS"
+ - oauth-as="coap://as.example.com"
 ~~~~~~~
 
 # Security Considerations
