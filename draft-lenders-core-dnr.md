@@ -90,7 +90,7 @@ said security modes.
 
 {{-svcb-for-dns}}, {{-ddr}} and {{-dnr}} introduced ways to discover the encrypted DNS configuration
 of resolvers, both over DNS and in a local network using Router Advertisements or DHCP.
-They use SVCB records or their SvcParam definitions to carry the information on a resolver.
+They use SVCB records or their SvcParams definitions to carry the information on a resolver.
 However, so far only DNS transfer protocols based on Transport Layer Security (TLS) were accounted
 for, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC
 (DoQ) {{-doq}}. This document aims to bridge this gap for DNS over CoAP (DoC) {{-doc}}.
@@ -106,8 +106,8 @@ CoAP comes with 3 security modes that would need to be covered by the SvcParams:
 - **No Security:** No encryption, just plain CoAP. While not recommended with {{-doc}}, this mode
   provides CoAP features, otherwise not present in classic DNS over UDP, such as
   block-wise transfer {{-coap-block}} for datagram-based segmentation.
-- **Transport Security:** CoAP may use DTLS for when transfered over UDP {{-coap}} and TLS when
-  transfered over TCP {{-coap-tcp}}.
+- **Transport Security:** CoAP may use DTLS for when transferred over UDP {{-coap}} and TLS when
+  transferred over TCP {{-coap-tcp}}.
 - **Object Security:** Application-layer based object encryption within CoAP based on OSCORE
   {{-oscore}}. OSCORE can be either used as an alternative or in addition to transport security.
 
@@ -144,7 +144,7 @@ using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this
 identify classic transport layer security, the question is raised if this is needed or even helpful
 for when there is only object security. There is an ALPN ID for CoAP over TLS that was defined in
 {{-coap-tcp}} but it is not advisable to use the same ALPN ID for CoAP over DTLS. Object security
-may be selected in addition to transport layer security, so definining an ALPN ID for each
+may be selected in addition to transport layer security, so defining an ALPN ID for each
 combination might not be viable or scalable. For OSCORE specifically, additional information is
 needed for the establishment of an encryption context and for authentication with an authentication
 server (AS). Orthogonally to the security mechanism the transfer protocol needs to be established.
@@ -170,7 +170,7 @@ other scenarios might be a combination of:
 In the general case, we mostly need to answer the question for additional SvcParamKeys. {{-svcb}}
 defines the keys “mandatory”, “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint” were
 defined. Additionally, {{-svcb-for-dns}} defines “dohpath” which carries the URI template for the
-DNS recource at the DoH server in relative form.
+DNS resource at the DoH server in relative form.
 
 For DoC, the DNS resource needs to be identified as, so a corresponding “docpath” key should be
 provided that provides either a relative URI or CRI {{-cri}}. Since the URI-Path option in CoAP may
@@ -179,14 +179,14 @@ be omitted (defaulting to the root path), this could also be done for the “doc
 ## Unencrypted DoC {#sec:solution-unencrypted}
 While unencrypted DoC is not recommended by {{-doc}} and might not even be viable using DDR/DNR, it
 provides additional benefits not provided by classic unencrypted DNS over UDP, such as segmentation
-block-wise transfer {{-coap-block}}. However, it provides the most simplest DoC configuration and
-thus is here discussed.
+block-wise transfer {{-coap-block}}. However, it provides the simplest DoC configuration and thus is
+here discussed.
 
-At minimum a DoC server needs a way to identify the “docpath” (see above), an optional “port” (see
-{{-svcb}}), the IP address (either with an optional “ipv6hint”/“ipv4hint” or the respective IP
-address field in {{-dnr}}), and a yet to be defined SvcParamKey for the CoAP transfer protocol,
-e.g., “coaptransfer”. The latter can be used to identify the service binding as a CoAP service
-binding.
+At minimum for a DoC server a way to identify the following keys are required. “docpath” (see
+above), an optional “port” (see {{-svcb}}), the IP address (either with an optional
+“ipv6hint”/“ipv4hint” or the respective IP address field in {{-dnr}}), and a yet to be defined
+SvcParamKey for the CoAP transfer protocol, e.g., “coaptransfer”. The latter can be used to identify
+the service binding as a CoAP service binding.
 
 The “authenticator-domain-name” field should remain empty as it does not serve a purpose without
 encryption.
@@ -220,7 +220,7 @@ svc-params:
 Note that “coaptransfer” may not necessarily be needed, as it is implied by the ALPN ID.
 
 ## DoC over OSCORE using EDHOC
-While the “alpn” SvcParamKey is needed for the trasport layer security (see {{sec:solution-tls}}),
+While the “alpn” SvcParamKey is needed for the transport layer security (see {{sec:solution-tls}}),
 we can implement a CA-style authentication with EDHOC when using object security with OSCORE using
 the authenticator-domain-name field.
 
@@ -240,16 +240,16 @@ svc-params:
 ~~~~~~~~
 
 ## DoC over ACE-OSCORE
-Using ACE, we need an OAuth context to authenticate the server in addition to the “objectsecurity”
-key. We propose three keys “oauth-aud” for the audience, “oauth-scope” for the OAuth
-scope, and “auth-as” for the authentiation server. “oauth-aud” should be the valid domain name of
-the DoC server, “oauth-scope” a list of identifiers for the scope, and “oauth-as” a valid URI or
-CRI.
+Using ACE, we require an OAuth context to authenticate the server in addition to the
+“objectsecurity” key. We propose three keys “oauth-aud” for the audience, “oauth-scope” for the
+OAuth scope, and “auth-as” for the authentication server. “oauth-aud” should be the valid domain
+name of the DoC server, “oauth-scope” a list of identifiers for the scope, and “oauth-as” a valid
+URI or CRI.
 
 TBD: should oauth-scope be expressed at all?
 
 Since authentication is done over OAuth and not CA-style, the “authenticator-domain-name” is not
-needed. There might be merrit, however, to use it instead of the “auth-aud” SvcParamKey.
+needed. There might be merit, however, to use it instead of the “oauth-aud” SvcParamKey.
 
 See this example for the possible values of a DNR option:
 
