@@ -225,7 +225,8 @@ svc-params:
  - docpath="/dns"
 ~~~~~~~~
 
-Note that “coaptransfer” may not necessarily be needed, as it is implied by the ALPN ID.
+Note that “coaptransfer” is not needed, as it is implied by the ALPN ID;
+thus, no values for it would be are allocated for transports that use transport security.
 
 ## DoC over OSCORE using EDHOC
 While the “alpn” SvcParamKey is needed for the transport layer security (see {{sec:solution-tls}}),
