@@ -190,7 +190,7 @@ Table of Contents
 
    *  There is ongoing work in addressing the trouble created by CoAP
       using a diverse set of URI schemes in the shape of coap+..., such
-      as coap+tcp {?I-D.ietf-core-transport-indication}. The creation of
+      as coap+tcp [I-D.ietf-core-transport-indication].  The creation of
       URI authority values that express the content of SVCB records
       together with IP literals is part of the solution space that will
       be explored there.
@@ -424,6 +424,12 @@ Table of Contents
               ietf-core-href-14, 9 January 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
               href-14>.
+
+   [I-D.ietf-core-transport-indication]
+              Amsüss, C., "CoAP Protocol Indication", Work in Progress,
+              Internet-Draft, draft-ietf-core-transport-indication-03,
+              23 October 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-core-transport-indication-03>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
