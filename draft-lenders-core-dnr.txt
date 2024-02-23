@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 25 August 2024                                                 
+Expires: 26 August 2024                                                 
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                        22 February 2024
+                                                        23 February 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 August 2024.
+   This Internet-Draft will expire on 26 August 2024.
 
 Copyright Notice
 
@@ -232,8 +232,8 @@ Table of Contents
    See this example for the possible values of a DNR option:
 
    authenticator-domain-name: ""
-   ipv6-address: <host address>
-   svcb-params:
+   ipv6-address: <DoC server address>
+   svc-params:
     - coaptransfer="tcp"
     - docpath="/dns"
     - port=61616
@@ -247,9 +247,9 @@ Table of Contents
 
    See this example for the possible values of a DNR option:
 
-   authenticator-domain-name: dns.example.com
-   ipv6-address: <host address>
-   svcb-params:
+   authenticator-domain-name: "dns.example.com"
+   ipv6-address: <DoC server address>
+   svc-params:
     - alpn="cod" /*TBD*/
     - docpath="/dns"
 
@@ -258,34 +258,52 @@ Table of Contents
 
 4.3.  DoC over OSCORE using EDHOC
 
-   *  In a “web-browser style” (tell the device which name to
-      authenticate, and it’ll do the cert validation)
+   While the “alpn” SvcParamKey is needed for the trasport layer
+   security (see Section 4.2), we can implement a CA-style
+   authentication with EDHOC when using object security with OSCORE
+   using the authenticator-domain-name field.
 
-   authenticator-domain-name: dns.example.com
-   ipv6-address: ...
+   A new key SvcParamKey “objectsecurity” identifies the type of object
+   security, using the value "edhoc" in this scenario.
 
-   svcb-params:
-       coaptransfer="coap-over-tcp",
-       objectsecurity="edhoc",
-       docpath="/dns",
-       port=61616
+   See this example for the possible values of a DNR option:
+
+   authenticator-domain-name: "dns.example.com"
+   ipv6-address: <DoC server address>
+   svc-params:
+    - coaptransfer="udp",
+    - objectsecurity="edhoc",
+    - docpath="/dns",
+    - port=61616
 
 4.4.  DoC over ACE-OSCORE
 
-   *  ACE to authenticate server (not necessarily the client)
+   Using ACE, we need an OAuth context to authenticate the server in
+   addition to the “objectsecurity” key.  We propose three keys “oauth-
+   aud” for the audience, “oauth-scope” for the OAuth scope, and “auth-
+   as” for the authentiation server. “oauth-aud” should be the valid
+   domain name of the DoC server, “oauth-scope” a list of identifiers
+   for the scope, and “oauth-as” a valid URI or CRI.
 
-   authenticator-domain-name:
-       (leaving empty b/c there is no use for it)
-   ipv6-address: ...
-   svcb-params:
-       coaptransport="coap-over-tcp" /* encoded as a numeric value */,
-       /* or ace-edhoc?, also encoded as a numeric value */,
-       objectsecurity="edhoc"
-       docpath="/dns",
-       port=61616,
-       oauth-aud="dns.example.com",
-       oauth-scope="resolve DNS"/* should this be expressed at all? */,
-       oauth-as="coap://as.example.com" /* encoded as a CRI? */
+   TBD: should oauth-scope be expressed at all?
+
+   Since authentication is done over OAuth and not CA-style, the
+   “authenticator-domain-name” is not needed.  There might be merrit,
+   however, to use it instead of the “auth-aud” SvcParamKey.
+
+   See this example for the possible values of a DNR option:
+
+   authenticator-domain-name: ""
+   ipv6-address: <DoC server address>
+   svc-params:
+    - coaptransfer="tcp"
+    - /* or ace-edhoc?, also encoded as a numeric value */,
+    - objectsecurity="edhoc"
+    - docpath="/dns",
+    - port=61616,
+    - oauth-aud="dns.example.com",
+    - oauth-scope="resolve DNS"/* should this be expressed at all? */,
+    - oauth-as="coap://as.example.com" /* encoded as a CRI? */
 
 5.  Security Considerations
 
