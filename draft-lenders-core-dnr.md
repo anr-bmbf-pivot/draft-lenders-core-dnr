@@ -151,7 +151,7 @@ server (AS). Orthogonally to the security mechanism, the transfer protocol needs
 
 Beyond the SvcParamKeys, there is the question of what the field values of the Encrypted DNS Options defined
 in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
-“authentication-domain-name” (ADN) and its corresponding ADN field may not matter in the EDHOC case.
+“authentication-domain-name” (ADN) and its corresponding ADN length field may not matter in the EDHOC case.
 
 - TBD but might be out-of-scope:
     - replace coap+... URI schemas with hostname literals
