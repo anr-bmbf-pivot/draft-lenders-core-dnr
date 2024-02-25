@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-22T00:04:50.787777+00:00",
+  "timestamp": "2024-02-25T00:05:26.007006+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -50,5 +50,189 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOLV9kgc5nojhZ",
+      "title": "Explain EDHOC or alternatives as OSCORE boostraps, add citations",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/1",
+      "state": "MERGED",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-22T11:12:04Z",
+      "updatedAt": "2024-02-22T11:32:04Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "c66162bb23a1ba19eac9e6cf4948da66e381a534",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "citations",
+      "headRefOid": "3e8bba009017cb3919f5b9348c8d93336aaf0cab",
+      "closedAt": "2024-02-22T11:31:41Z",
+      "mergedAt": "2024-02-22T11:31:41Z",
+      "mergedBy": "miri64",
+      "mergeCommit": {
+        "oid": "b11dff0be7fd538e42b5c2a4f8a13515b2ca896b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc5w_Mmu",
+          "commit": {
+            "abbreviatedOid": "e293e31"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-02-22T11:25:28Z",
+          "updatedAt": "2024-02-22T11:29:33Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "Can you add a date here as well, please, so the citation is complete. Currently it says `n.d.` in the rendered HTML\r\n\r\n![image](https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/assets/675644/5166af4b-a526-4132-9a49-834f51d912b8)\r\n\r\n```suggestion\r\n    date: 2018-10\r\n    target: https://omaspecworks.org/white-paper-lightweight-m2m-1-1/\r\n```",
+              "createdAt": "2024-02-22T11:25:28Z",
+              "updatedAt": "2024-02-22T11:29:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc5w_PLF",
+          "commit": {
+            "abbreviatedOid": "3e8bba0"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-22T11:31:13Z",
+          "updatedAt": "2024-02-22T11:31:13Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOLV9kgc5nxLJx",
+      "title": "Changes set from looking over the current alpha",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/2",
+      "state": "MERGED",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-02-23T15:30:42Z",
+      "updatedAt": "2024-02-23T16:14:49Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "8f27d5a1cfbf1533fd13a93d200f9c560ce18c7d",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "chrysn-alpha-changes",
+      "headRefOid": "82e3d7faf11dd300c4299cca6fba016a9051cf55",
+      "closedAt": "2024-02-23T16:14:49Z",
+      "mergedAt": "2024-02-23T16:14:49Z",
+      "mergedBy": "miri64",
+      "mergeCommit": {
+        "oid": "f25c5aace56dfbf4be7c7ddaba1b6716db095772"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc5xJz69",
+          "commit": {
+            "abbreviatedOid": "ab9e003"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-23T15:36:43Z",
+          "updatedAt": "2024-02-23T15:39:59Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "```suggestion\r\n* There is ongoing work in addressing the trouble created by CoAP using a diverse set of URI schemas\r\n```\r\n\r\nIsn't it?",
+              "createdAt": "2024-02-23T15:36:43Z",
+              "updatedAt": "2024-02-23T15:39:59Z"
+            },
+            {
+              "originalPosition": 37,
+              "body": "Should we also add \u201cconstrained networks\u201d to the Terminology section?",
+              "createdAt": "2024-02-23T15:38:02Z",
+              "updatedAt": "2024-02-23T15:39:59Z"
+            },
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\r\nthus, no values for it would be allocated for transports that use transport security.\r\n```\r\n\r\nand\r\n\r\n```suggestion\r\nthus, no values for it would be are allocated for transfer protocols that use transport security.\r\n```",
+              "createdAt": "2024-02-23T15:39:51Z",
+              "updatedAt": "2024-02-23T15:39:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc5xJ-Dl",
+          "commit": {
+            "abbreviatedOid": "2c9587c"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-23T15:57:38Z",
+          "updatedAt": "2024-02-23T15:57:38Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "schemas would be the plural of schema; https://en.wikipedia.org/wiki/List_of_URI_schemes (the URI literal) says that \"schemes\" is correct here.",
+              "createdAt": "2024-02-23T15:57:38Z",
+              "updatedAt": "2024-02-23T15:57:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc5xJ_HS",
+          "commit": {
+            "abbreviatedOid": "2c9587c"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-23T15:59:52Z",
+          "updatedAt": "2024-02-23T15:59:52Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "It was used in the introduction before, but yes, added it.",
+              "createdAt": "2024-02-23T15:59:52Z",
+              "updatedAt": "2024-02-23T15:59:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc5xKAHW",
+          "commit": {
+            "abbreviatedOid": "ab9e003"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-23T16:01:56Z",
+          "updatedAt": "2024-02-23T16:01:57Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "Applied.",
+              "createdAt": "2024-02-23T16:01:56Z",
+              "updatedAt": "2024-02-23T16:01:57Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
