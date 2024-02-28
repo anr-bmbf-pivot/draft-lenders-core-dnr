@@ -143,7 +143,7 @@ new SvcParamKeys need to be defined.
 using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this is useful to
 identify classic transport layer security, the question is raised if this is needed or even helpful
 for when there is only object security. There is an ALPN ID for CoAP over TLS that was defined in
-{{-coap-tcp}} but it is not advisable to use the same ALPN ID for CoAP over DTLS. Object security
+{{-coap-tcp}}. As using the same ALPN ID for different transport layers is not recommended, an ALPN for CoAP over UDP is being requested in {{iana}}. Object security
 may be selected in addition to transport layer security, so defining an ALPN ID for each
 combination might not be viable or scalable. For some ways of setting up object security, additional information is
 needed for the establishment of an encryption context and for authentication with an authentication
@@ -221,7 +221,7 @@ See this example for the possible values of a DNR option:
 authenticator-domain-name: "dns.example.com"
 ipv6-address: <DoC server address>
 svc-params:
- - alpn="co" /*TBD*/
+ - alpn="co"
  - docpath="/dns"
 ~~~~~~~~
 
@@ -283,9 +283,19 @@ svc-params:
 TODO Security
 
 
-# IANA Considerations
+# IANA Considerations {#iana}
 
-TODO IANA Considerations
+## TLS ALPN for CoAP
+
+The TLS registration review team was asked to enter the following into the registry called
+TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs:
+
+* Protocol: CoAP (over DTLS)
+* Identification sequence: 0x63 0x6f ("co")
+* Reference: {{-coap}} and \[this document\]
+
+Note that {{-coap}} does not prescribe the use of the ALPN TLS extension during connection the DTLS handshake.
+This document does not change that, and thus does not establish any rules like those in {{Section 8.2 of -coap-tcp}}.
 
 
 --- back
