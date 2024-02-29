@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 31 August 2024                                                 
+Expires: 1 September 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                        28 February 2024
+                                                        29 February 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 August 2024.
+   This Internet-Draft will expire on 1 September 2024.
 
 Copyright Notice
 
@@ -336,9 +336,10 @@ Table of Contents
 
 6.1.  TLS ALPN for CoAP
 
-   The TLS registration review team was asked to enter the following
-   into the registry called TLS Application-Layer Protocol Negotiation
-   (ALPN) Protocol IDs:
+   The following entry is being requested for addition into the "TLS
+   Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry,
+   which is part of the "Transport Layer Security (TLS) Extensions"
+   group.
 
    *  Protocol: CoAP (over DTLS)
 
