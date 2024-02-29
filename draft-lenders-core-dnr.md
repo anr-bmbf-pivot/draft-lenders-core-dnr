@@ -287,8 +287,9 @@ TODO Security
 
 ## TLS ALPN for CoAP
 
-The TLS registration review team was asked to enter the following into the registry called
-TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs:
+The following entry is being requested for addition into the
+"TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry,
+which is part of the "Transport Layer Security (TLS) Extensions" group.
 
 * Protocol: CoAP (over DTLS)
 * Identification sequence: 0x63 0x6f ("co")
