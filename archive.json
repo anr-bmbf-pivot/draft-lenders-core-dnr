@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-27T00:05:35.903633+00:00",
+  "timestamp": "2024-02-29T00:04:32.491776+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -125,7 +125,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-02-23T15:30:42Z",
-      "updatedAt": "2024-02-23T16:14:49Z",
+      "updatedAt": "2024-02-28T19:05:15Z",
       "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "baseRefName": "main",
       "baseRefOid": "8f27d5a1cfbf1533fd13a93d200f9c560ce18c7d",
@@ -233,6 +233,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOLV9kgc5oNt4P",
+      "title": "IANA actions to establish \"co\" ALPN",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/3",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This picks up https://mailarchive.ietf.org/arch/msg/tls-reg-review/meMm8LYSxvn4BGIkikScM3BblOw/ -- once that is out in a draft, we'll get the ALPN.\r\n\r\nWe don't need to worry about document normativity here, the registry is expert review only -- they just want *some* place that has text.\r\n\r\nAnd spare us a round trip: Yes, this is a problem statement document. If you insist on problem-statement-ish text, that may be\r\n\r\n> The problem is trival for the DTLS case, as illustrated in section IANA considerations \u2013 those lines and a mail to the list was all it took to just register it. For the non-transport layer security layers, we're writing all the rest of that text.\r\n\r\n(Granted, the document might warrant a less flippant tone, but I hope it suffices to convince you that it does indeed fit in this document.)\r\n\r\nThis could go into literally any other related document as well, but this one is most suitable because for the time being, this is the only document that does something with it, even if it's just illustrative examples. If it turns out that our solutions document also covers part of the TLS case, there is nothing to stop us from moving the comment as the document is advanced, and asking the experts to update the reference.",
+      "createdAt": "2024-02-28T19:59:28Z",
+      "updatedAt": "2024-02-28T20:00:05Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "c3d1d925f9d1ed59544eff45636c5f3acc1e926e",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "iana-for-alpn",
+      "headRefOid": "47041d0961285f41fc089e68b6dc073ab651ecdd",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
