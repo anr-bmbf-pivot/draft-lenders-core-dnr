@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 26 August 2024                                                 
+Expires: 1 September 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                        23 February 2024
+                                                        29 February 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -56,7 +56,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 August 2024.
+   This Internet-Draft will expire on 1 September 2024.
 
 Copyright Notice
 
@@ -84,6 +84,7 @@ Table of Contents
      4.4.  DoC over ACE-OSCORE
    5.  Security Considerations
    6.  IANA Considerations
+     6.1.  TLS ALPN for CoAP
    7.  References
      7.1.  Normative References
      7.2.  Informative References
@@ -169,8 +170,9 @@ Table of Contents
    identify classic transport layer security, the question is raised if
    this is needed or even helpful for when there is only object
    security.  There is an ALPN ID for CoAP over TLS that was defined in
-   [RFC8323] but it is not advisable to use the same ALPN ID for CoAP
-   over DTLS.  Object security may be selected in addition to transport
+   [RFC8323].  As using the same ALPN ID for different transport layers
+   is not recommended, an ALPN for CoAP over UDP is being requested in
+   Section 6.  Object security may be selected in addition to transport
    layer security, so defining an ALPN ID for each combination might not
    be viable or scalable.  For some ways of setting up object security,
    additional information is needed for the establishment of an
@@ -267,7 +269,7 @@ Table of Contents
    authenticator-domain-name: "dns.example.com"
    ipv6-address: <DoC server address>
    svc-params:
-    - alpn="co" /*TBD*/
+    - alpn="co"
     - docpath="/dns"
 
    Note that “coaptransfer” is not needed, as it is implied by the ALPN
@@ -332,7 +334,23 @@ Table of Contents
 
 6.  IANA Considerations
 
-   TODO IANA Considerations
+6.1.  TLS ALPN for CoAP
+
+   The following entry is being requested for addition into the "TLS
+   Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry,
+   which is part of the "Transport Layer Security (TLS) Extensions"
+   group.
+
+   *  Protocol: CoAP (over DTLS)
+
+   *  Identification sequence: 0x63 0x6f ("co")
+
+   *  Reference: [RFC7252] and [this document]
+
+   Note that [RFC7252] does not prescribe the use of the ALPN TLS
+   extension during connection the DTLS handshake.  This document does
+   not change that, and thus does not establish any rules like those in
+   Section 8.2 of [RFC8323].
 
 7.  References
 
