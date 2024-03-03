@@ -79,10 +79,12 @@ informative:
 
 --- abstract
 
-This document discusses problems and proposes potential solutions for discovery of encrypted DNS
-configuration of DNS over CoAP resolvers over DNS and in a local network using Router Advertisements
-or DHCP. It discusses discovery of CoAP transfer protocols, security modes, and configuration for
-said security modes.
+This document specifies solutions to discover DNS resolvers that support
+encrypted DNS resolution in constrained environments. The discovery is
+based on Router Advertisements or DHCP. In particular, the proposed
+specification allows a host to learn DNS over CoAP (DoC) servers, including
+configurations to use DoC over TLS/DTLS, OSCORE, and EDHOC when
+resolving names.
 
 --- middle
 
