@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 1 September 2024                                               
+Expires: 4 September 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                        29 February 2024
+                                                            3 March 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -18,11 +18,12 @@ Expires: 1 September 2024
 
 Abstract
 
-   This document discusses problems and proposes potential solutions for
-   discovery of encrypted DNS configuration of DNS over CoAP resolvers
-   over DNS and in a local network using Router Advertisements or DHCP.
-   It discusses discovery of CoAP transfer protocols, security modes,
-   and configuration for said security modes.
+   This document specifies solutions to discover DNS resolvers that
+   support encrypted DNS resolution in constrained environments.  The
+   discovery is based on Router Advertisements or DHCP.  In particular,
+   the proposed specification allows a host to learn DNS over CoAP (DoC)
+   servers, including configurations to use DoC over TLS/DTLS, OSCORE,
+   and EDHOC when resolving names.
 
 About This Document
 
@@ -56,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 September 2024.
+   This Internet-Draft will expire on 4 September 2024.
 
 Copyright Notice
 
