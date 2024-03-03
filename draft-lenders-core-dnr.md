@@ -90,40 +90,50 @@ resolving names.
 
 # Introduction
 
-{{-svcb-for-dns}}, {{-ddr}} and {{-dnr}} introduced ways to discover the encrypted DNS configuration
-of resolvers, both over DNS and in a local network using Router Advertisements or DHCP.
-They use SVCB records or their SvcParams definitions to carry the information on a resolver.
-However, so far only DNS transfer protocols based on Transport Layer Security (TLS) were accounted
-for, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC
-(DoQ) {{-doq}}. This document aims to bridge this gap for DNS over CoAP (DoC) {{-doc}}.
+{{-svcb-for-dns}}, {{-ddr}} and {{-dnr}} specify options to discover DNS
+resolvers that allow for encrypted DNS resolution, using either DNS or, in
+a local network, Router Advertisements or DHCP.  These specifications use
+Service Binding (SVCB) resource records or Service Parameters (SvcParams)
+to carry information required for configuration of such resolvers.  So far,
+however, only DNS transfer protocols based on Transport Layer Security
+(TLS) are supported, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS
+(DoH) {{-doh}}, and DNS over Dedicated QUIC (DoQ) {{-doq}}. This document
+discusses and specifies options to discover DNS resolvers in constrained
+environments, mainly based on DNS over CoAP (DoC) {{-doc}}.
 
-DoC provides a solution for encrypted DNS in constrained environments, i.e., where the usage of DoT,
-DoH, DoQ or similar TLS-based solutions typically are not possible.
+DoC provides a solution for encrypted DNS in constrained environments.  In
+such scenarios, the usage of DoT, DoH, DoQ, or similar TLS-based solutions
+is often not possible.
 The Constrained Application Protocol (CoAP) {{-coap}}, the transfer protocol for DoC, is mostly
-agnostic to the transport layer, i.e., it can be transported over UDP, TCP, or WebSockets
-{{-coap-tcp}}, and even more obscure transports such as Bluetooth GATT {{-coap-gatt}} or SMS
+agnostic to the transport layer, i.e., CoAP can be transported over UDP, TCP, or WebSockets
+{{-coap-tcp}}, and even less common transports such as Bluetooth GATT {{-coap-gatt}} or SMS
 {{lwm2m}} are discussed.
-CoAP comes with 3 security modes that would need to be covered by the SvcParams:
 
-- **No Security:** No encryption, just plain CoAP. While not recommended with {{-doc}}, this mode
-  provides CoAP features, otherwise not present in classic DNS over UDP, such as
-  block-wise transfer {{-coap-block}} for datagram-based segmentation.
-- **Transport Security:** CoAP may use DTLS for when transferred over UDP {{-coap}} and TLS when
+CoAP offers three security modes, which would need to be covered by the SvcParams:
+
+- **No Security:** This plain CoAP mode does not support any encryption. It
+  is not recommended when using {{-doc}} but inherits core CoAP features
+  such as block-wise transfer {{-coap-block}} for datagram-based
+  segmentation.  Such features are beneficial in constrained settings even
+  without encryption.
+- **Transport Security:** CoAP may use DTLS when transferred over UDP {{-coap}} and TLS when
   transferred over TCP {{-coap-tcp}}.
-- **Object Security:** Application-layer based object encryption within CoAP based on OSCORE
-  {{-oscore}}. OSCORE can be either used as an alternative or in addition to transport security.
+- **Object Security:** Securing content objects can be achieved using
+  OSCORE {{-oscore}}. OSCORE can be used either as an alternative or in
+  addition to transport security.
 
-  OSCORE keys are not usable indefinitely and need to be set up,
+  OSCORE keys have a limited lifetime and need to be set up,
   for example through an EDHOC key exchange {{-edhoc}},
   which may use credentials from trusted ACE Authorization Server (AS)
   as described in the ACE EDHOC profile {{-ace-edhoc}}.
   As an alternative to EDHOC,
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
-For a DoC server to be discoverable via Discovery of Designated Resolvers (DDR) {{-ddr}} and
-Discovery of Network-designated Resolvers (DNR) {{-dnr}}, both transfer protocol and type and
-parameters for the security parameter need to be provided in the SvcParams field of these
-mechanisms, which this document will discuss.
+To discover a DoC server via Discovery of Designated Resolvers (DDR) {{-ddr}} and
+Discovery of Network-designated Resolvers (DNR) {{-dnr}}, the SvcParams
+field needs to convey both transfer protocol and type and
+parameters of the security parameters. We will specify extensions of SvcParams in
+this document.
 
 # Terminology
 
