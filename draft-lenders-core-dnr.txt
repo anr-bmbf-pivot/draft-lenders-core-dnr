@@ -94,40 +94,46 @@ Table of Contents
 
 1.  Introduction
 
-   [RFC9461], [RFC9462] and [RFC9463] introduced ways to discover the
-   encrypted DNS configuration of resolvers, both over DNS and in a
-   local network using Router Advertisements or DHCP.  They use SVCB
-   records or their SvcParams definitions to carry the information on a
-   resolver.  However, so far only DNS transfer protocols based on
-   Transport Layer Security (TLS) were accounted for, namely DNS over
-   TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484], and DNS over
-   Dedicated QUIC (DoQ) [RFC9250].  This document aims to bridge this
-   gap for DNS over CoAP (DoC) [I-D.ietf-core-dns-over-coap].
+   [RFC9461], [RFC9462] and [RFC9463] specify options to discover DNS
+   resolvers that allow for encrypted DNS resolution, using either DNS
+   or, in a local network, Router Advertisements or DHCP.  These
+   specifications use Service Binding (SVCB) resource records or Service
+   Parameters (SvcParams) to carry information required for
+   configuration of such resolvers.  So far, however, only DNS transfer
+   protocols based on Transport Layer Security (TLS) are supported,
+   namely DNS over TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484],
+   and DNS over Dedicated QUIC (DoQ) [RFC9250].  This document discusses
+   and specifies options to discover DNS resolvers in constrained
+   environments, mainly based on DNS over CoAP (DoC)
+   [I-D.ietf-core-dns-over-coap].
 
    DoC provides a solution for encrypted DNS in constrained
-   environments, i.e., where the usage of DoT, DoH, DoQ or similar TLS-
-   based solutions typically are not possible.  The Constrained
+   environments.  In such scenarios, the usage of DoT, DoH, DoQ, or
+   similar TLS-based solutions is often not possible.  The Constrained
    Application Protocol (CoAP) [RFC7252], the transfer protocol for DoC,
-   is mostly agnostic to the transport layer, i.e., it can be
-   transported over UDP, TCP, or WebSockets [RFC8323], and even more
-   obscure transports such as Bluetooth GATT
-   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.  CoAP
-   comes with 3 security modes that would need to be covered by the
-   SvcParams:
+   is mostly agnostic to the transport layer, i.e., CoAP can be
+   transported over UDP, TCP, or WebSockets [RFC8323], and even less
+   common transports such as Bluetooth GATT
+   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
 
-   *  *No Security:* No encryption, just plain CoAP.  While not
-      recommended with [I-D.ietf-core-dns-over-coap], this mode provides
-      CoAP features, otherwise not present in classic DNS over UDP, such
+   CoAP offers three security modes, which would need to be covered by
+   the SvcParams:
+
+   *  *No Security:* This plain CoAP mode does not support any
+      encryption.  It is not recommended when using
+      [I-D.ietf-core-dns-over-coap] but inherits core CoAP features such
       as block-wise transfer [RFC7959] for datagram-based segmentation.
+      Such features are beneficial in constrained settings even without
+      encryption.
 
-   *  *Transport Security:* CoAP may use DTLS for when transferred over
-      UDP [RFC7252] and TLS when transferred over TCP [RFC8323].
+   *  *Transport Security:* CoAP may use DTLS when transferred over UDP
+      [RFC7252] and TLS when transferred over TCP [RFC8323].
 
-   *  *Object Security:* Application-layer based object encryption
-      within CoAP based on OSCORE [RFC8613].  OSCORE can be either used
-      as an alternative or in addition to transport security.
+   *  *Object Security:* Securing content objects can be achieved using
+      OSCORE [RFC8613].  OSCORE can be used either as an alternative or
+      in addition to transport security.
 
-      OSCORE keys are not usable indefinitely and need to be set up, for
+      OSCORE keys have a limited lifetime and need to be set up, for
       example through an EDHOC key exchange
       [I-D.ietf-core-oscore-edhoc], which may use credentials from
       trusted ACE Authorization Server (AS) as described in the ACE
@@ -135,12 +141,11 @@ Table of Contents
       alternative to EDHOC, keys can be set up by such an AS as
       described in the ACE OSCORE profile [RFC9203].
 
-   For a DoC server to be discoverable via Discovery of Designated
-   Resolvers (DDR) [RFC9462] and Discovery of Network-designated
-   Resolvers (DNR) [RFC9463], both transfer protocol and type and
-   parameters for the security parameter need to be provided in the
-   SvcParams field of these mechanisms, which this document will
-   discuss.
+   To discover a DoC server via Discovery of Designated Resolvers (DDR)
+   [RFC9462] and Discovery of Network-designated Resolvers (DNR)
+   [RFC9463], the SvcParams field needs to convey both transfer protocol
+   and type and parameters of the security parameters.  We will specify
+   extensions of SvcParams in this document.
 
 2.  Terminology
 
