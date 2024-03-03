@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T00:04:32.491776+00:00",
+  "timestamp": "2024-03-03T00:05:13.136186+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -239,26 +239,84 @@
       "id": "PR_kwDOLV9kgc5oNt4P",
       "title": "IANA actions to establish \"co\" ALPN",
       "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/3",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "chrysn",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This picks up https://mailarchive.ietf.org/arch/msg/tls-reg-review/meMm8LYSxvn4BGIkikScM3BblOw/ -- once that is out in a draft, we'll get the ALPN.\r\n\r\nWe don't need to worry about document normativity here, the registry is expert review only -- they just want *some* place that has text.\r\n\r\nAnd spare us a round trip: Yes, this is a problem statement document. If you insist on problem-statement-ish text, that may be\r\n\r\n> The problem is trival for the DTLS case, as illustrated in section IANA considerations \u2013 those lines and a mail to the list was all it took to just register it. For the non-transport layer security layers, we're writing all the rest of that text.\r\n\r\n(Granted, the document might warrant a less flippant tone, but I hope it suffices to convince you that it does indeed fit in this document.)\r\n\r\nThis could go into literally any other related document as well, but this one is most suitable because for the time being, this is the only document that does something with it, even if it's just illustrative examples. If it turns out that our solutions document also covers part of the TLS case, there is nothing to stop us from moving the comment as the document is advanced, and asking the experts to update the reference.",
       "createdAt": "2024-02-28T19:59:28Z",
-      "updatedAt": "2024-02-28T20:00:05Z",
+      "updatedAt": "2024-02-29T17:57:04Z",
       "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "baseRefName": "main",
       "baseRefOid": "c3d1d925f9d1ed59544eff45636c5f3acc1e926e",
       "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "headRefName": "iana-for-alpn",
-      "headRefOid": "47041d0961285f41fc089e68b6dc073ab651ecdd",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "16dcf279ae827562b571d17f08c7ae4365bf2ad9",
+      "closedAt": "2024-02-29T15:39:15Z",
+      "mergedAt": "2024-02-29T15:39:14Z",
+      "mergedBy": "miri64",
+      "mergeCommit": {
+        "oid": "b71c0b4745260ca711689552977c03b78b77c9c7"
+      },
+      "comments": [
+        {
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If we'd manage to publish the -00 ahead of the cut-off (say, tomorrow?), it's well possible that we can already do a -01 with \"has been added to\".",
+          "createdAt": "2024-02-29T10:29:45Z",
+          "updatedAt": "2024-02-29T10:29:45Z"
+        },
+        {
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> If we'd manage to publish the -00 ahead of the cut-off (say, tomorrow?), it's well possible that we can already do a -01 with \"has been added to\".\r\n\r\nWhat do you say @waehlisch, @tcschmidt? We can also iterate to -01 until monday which would include your feedback.",
+          "createdAt": "2024-02-29T11:32:31Z",
+          "updatedAt": "2024-02-29T11:32:31Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc5xwJJa",
+          "commit": {
+            "abbreviatedOid": "47041d0"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-29T09:57:26Z",
+          "updatedAt": "2024-02-29T09:57:27Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "Everytime I read this, I stumble over it... this usually means something is not right ;-). Also, I think it helps finding the entry bye also naming the registry above the sub-registry. How about\r\n\r\n```suggestion\r\nThe following entry was added to the \u201cTLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs\u201d sub-registry of the \u201dTransport Layer Security (TLS) Extensions\u201c in consultation with the TLS registration review team:\r\n```",
+              "createdAt": "2024-02-29T09:57:26Z",
+              "updatedAt": "2024-02-29T09:57:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc5xwZ4U",
+          "commit": {
+            "abbreviatedOid": "47041d0"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-29T10:28:23Z",
+          "updatedAt": "2024-02-29T10:28:23Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "\"was added\" will only be correct in the next revision; \"is requested\" is the usual terminology for while a document will request something at publication, and it's changed once IANA has done it (shortly before publication) to \"has been requested\" -- so in this situation \"team was asked\" sounds right to me. It's also not a sub-registry (cf. [faq](https://www.iana.org/help/protocol-registration)).\r\n\r\nThe rest of the changes I'm working into an update; may not even need the review team mention in there because that is implied by how the registration works, and more importantly not helpful to the reader.",
+              "createdAt": "2024-02-29T10:28:23Z",
+              "updatedAt": "2024-02-29T10:28:23Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
