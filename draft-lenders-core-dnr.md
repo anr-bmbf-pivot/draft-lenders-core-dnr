@@ -287,7 +287,7 @@ TODO Security
 
 ## TLS ALPN for CoAP
 
-The following entry is being requested for addition into the
+The following entry has been added to the
 "TLS Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry,
 which is part of the "Transport Layer Security (TLS) Extensions" group.
 
