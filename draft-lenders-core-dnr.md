@@ -81,7 +81,7 @@ informative:
 
 This document specifies solutions to discover DNS resolvers that support
 encrypted DNS resolution in constrained environments. The discovery is
-based on Router Advertisements or DHCP. In particular, the proposed
+based on DNS SVCB records as well as on Router Advertisements or DHCP. In particular, the proposed
 specification allows a host to learn DNS over CoAP (DoC) servers, including
 configurations to use DoC over TLS/DTLS, OSCORE, and EDHOC when
 resolving names.
