@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-03T00:05:13.136186+00:00",
+  "timestamp": "2024-03-05T00:04:23.650957+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -317,6 +317,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDOLV9kgc5ol9ww",
+      "title": "IANA has processed the ALPN",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/4",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "They have actually not yet; this will stay a draft PR until TLS experts have confirmed and IANA has acted.",
+      "createdAt": "2024-03-04T13:52:23Z",
+      "updatedAt": "2024-03-04T13:52:23Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "df4698971ff19868caaff1bee9fc248293fb61f9",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "co-has-been-assigned",
+      "headRefOid": "ab61ae9531de0b4a663836857dbc9d0e568af4c0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
