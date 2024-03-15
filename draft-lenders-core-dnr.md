@@ -313,6 +313,14 @@ This document does not change that, and thus does not establish any rules like t
 
 --- back
 
+# Change Log
+
+## Since [draft-lenders-core-dnr-00]
+
+- IANA has processed the "co" ALPN and it is now added to the registry
+
+[draft-lenders-core-dnr-00]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00
+
 # Acknowledgments
 {:numbered="false"}
 
