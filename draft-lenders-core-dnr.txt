@@ -89,6 +89,8 @@ Table of Contents
    7.  References
      7.1.  Normative References
      7.2.  Informative References
+   Appendix A.  Change Log
+     A.1.  Since draft-lenders-core-dnr-00
    Acknowledgments
    Authors' Addresses
 
@@ -495,6 +497,14 @@ Table of Contents
               Dedicated QUIC Connections", RFC 9250,
               DOI 10.17487/RFC9250, May 2022,
               <https://www.rfc-editor.org/rfc/rfc9250>.
+
+Appendix A.  Change Log
+
+A.1.  Since draft-lenders-core-dnr-00
+      (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00)
+
+   *  IANA has processed the "co" ALPN and it is now added to the
+      registry
 
 Acknowledgments
 
