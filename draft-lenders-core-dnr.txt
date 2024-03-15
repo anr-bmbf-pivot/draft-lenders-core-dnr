@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 5 September 2024                                               
+Expires: 16 September 2024                                              
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                            4 March 2024
+                                                           15 March 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 16 September 2024.
 
 Copyright Notice
 
@@ -342,10 +342,9 @@ Table of Contents
 
 6.1.  TLS ALPN for CoAP
 
-   The following entry is being requested for addition into the "TLS
-   Application-Layer Protocol Negotiation (ALPN) Protocol IDs" registry,
-   which is part of the "Transport Layer Security (TLS) Extensions"
-   group.
+   The following entry has been added to the "TLS Application-Layer
+   Protocol Negotiation (ALPN) Protocol IDs" registry, which is part of
+   the "Transport Layer Security (TLS) Extensions" group.
 
    *  Protocol: CoAP (over DTLS)
 
@@ -365,9 +364,9 @@ Table of Contents
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
               and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
-              Internet-Draft, draft-ietf-core-dns-over-coap-05, 17
-              November 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-dns-over-coap-05>.
+              Internet-Draft, draft-ietf-core-dns-over-coap-06, 4 March
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              core-dns-over-coap-06>.
 
    [I-D.ietf-core-oscore-edhoc]
               Palombini, F., Tiloca, M., Höglund, R., Hristozov, S., and
@@ -438,9 +437,9 @@ Table of Contents
               Security for Constrained Environments (OSCORE) Profile for
               Authentication and Authorization for Constrained
               Environments (ACE)", Work in Progress, Internet-Draft,
-              draft-ietf-ace-edhoc-oscore-profile-03, 23 October 2023,
+              draft-ietf-ace-edhoc-oscore-profile-04, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
-              edhoc-oscore-profile-03>.
+              edhoc-oscore-profile-04>.
 
    [I-D.ietf-core-href]
               Bormann, C. and H. Birkholz, "Constrained Resource
@@ -450,10 +449,11 @@ Table of Contents
               href-14>.
 
    [I-D.ietf-core-transport-indication]
-              Amsüss, C., "CoAP Protocol Indication", Work in Progress,
-              Internet-Draft, draft-ietf-core-transport-indication-03,
-              23 October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-transport-indication-03>.
+              Amsüss, C. and M. S. Lenders, "CoAP Protocol Indication",
+              Work in Progress, Internet-Draft, draft-ietf-core-
+              transport-indication-04, 4 March 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-core-
+              transport-indication-04>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
