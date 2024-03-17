@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-14T00:04:36.146518+00:00",
+  "timestamp": "2024-03-17T00:05:06.092833+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -323,26 +323,50 @@
       "id": "PR_kwDOLV9kgc5ol9ww",
       "title": "IANA has processed the ALPN",
       "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "chrysn",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "They have actually not yet; this will stay a draft PR until TLS experts have confirmed and IANA has acted.",
       "createdAt": "2024-03-04T13:52:23Z",
-      "updatedAt": "2024-03-04T13:52:23Z",
+      "updatedAt": "2024-03-15T08:47:23Z",
       "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "baseRefName": "main",
       "baseRefOid": "df4698971ff19868caaff1bee9fc248293fb61f9",
       "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "headRefName": "co-has-been-assigned",
       "headRefOid": "ab61ae9531de0b4a663836857dbc9d0e568af4c0",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2024-03-15T08:47:19Z",
+      "mergedAt": "2024-03-15T08:47:18Z",
+      "mergedBy": "miri64",
+      "mergeCommit": {
+        "oid": "d52d5e8e9e436ea8d8da153c1e65dc4db14aaa25"
+      },
+      "comments": [
+        {
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ALPN has been assigned.",
+          "createdAt": "2024-03-15T06:52:41Z",
+          "updatedAt": "2024-03-15T06:52:41Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc5ziXhF",
+          "commit": {
+            "abbreviatedOid": "ab61ae9"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-15T08:47:09Z",
+          "updatedAt": "2024-03-15T08:47:09Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
