@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 16 September 2024                                              
+Expires: 20 September 2024                                              
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                           15 March 2024
+                                                           19 March 2024
 
 
              Discovery of Network-designated CoRE Resolvers
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 September 2024.
+   This Internet-Draft will expire on 20 September 2024.
 
 Copyright Notice
 
@@ -429,9 +429,9 @@ Table of Contents
    [I-D.amsuess-core-coap-over-gatt]
               Amsüss, C., "CoAP over GATT (Bluetooth Low Energy Generic
               Attributes)", Work in Progress, Internet-Draft, draft-
-              amsuess-core-coap-over-gatt-05, 23 October 2023,
+              amsuess-core-coap-over-gatt-06, 18 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-amsuess-core-
-              coap-over-gatt-05>.
+              coap-over-gatt-06>.
 
    [I-D.ietf-ace-edhoc-oscore-profile]
               Selander, G., Mattsson, J. P., Tiloca, M., and R. Höglund,
@@ -451,11 +451,11 @@ Table of Contents
               href-14>.
 
    [I-D.ietf-core-transport-indication]
-              Amsüss, C. and M. S. Lenders, "CoAP Protocol Indication",
+              Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
               Work in Progress, Internet-Draft, draft-ietf-core-
-              transport-indication-04, 4 March 2024,
+              transport-indication-05, 18 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              transport-indication-04>.
+              transport-indication-05>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
