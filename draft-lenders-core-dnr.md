@@ -3,7 +3,7 @@ title: "Discovery of Network-designated CoRE Resolvers"
 abbrev: "CoRE DNR"
 category: info
 
-docname: draft-lenders-core-dnr-latest
+docname: draft-lenders-core-coap-dtls-svcb-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -22,8 +22,8 @@ venue:
   type: "Working Group"
   mail: "core@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/core/"
-  github: "anr-bmbf-pivot/draft-lenders-core-dnr"
-  latest: "https://anr-bmbf-pivot.github.io/draft-lenders-core-dnr/draft-lenders-core-dnr.html"
+  github: "anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb"
+  latest: "https://anr-bmbf-pivot.github.io/draft-lenders-core-coap-dtls-svcb/draft-lenders-core-dnr.html"
 
 author:
  -  fullname: Martine Sophie Lenders
@@ -315,11 +315,11 @@ This document does not change that, and thus does not establish any rules like t
 
 # Change Log
 
-## Since [draft-lenders-core-dnr-00]
+## Since [draft-lenders-core-coap-dtls-svcb-00]
 
 - IANA has processed the "co" ALPN and it is now added to the registry
 
-[draft-lenders-core-dnr-00]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00
+[draft-lenders-core-coap-dtls-svcb-00]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00
 
 # Acknowledgments
 {:numbered="false"}
