@@ -1,7 +1,7 @@
 ---
-title: "Discovery of Network-designated CoRE Resolvers"
-abbrev: "CoRE DNR"
-category: info
+title: "Service Binding and Parameter Specification for CoAP over (D)TLS "
+abbrev: "CoRE SVCB"
+category: std
 
 docname: draft-lenders-core-coap-dtls-svcb-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
@@ -14,8 +14,6 @@ workgroup: "Constrained RESTful Environments"
 keyword:
  - CoRE
  - CoAP
- - DoC
- - DNR
  - SVCB
 venue:
   group: "Constrained RESTful Environments"
@@ -315,11 +313,6 @@ This document does not change that, and thus does not establish any rules like t
 
 # Change Log
 
-## Since [draft-lenders-core-coap-dtls-svcb-00]
-
-- IANA has processed the "co" ALPN and it is now added to the registry
-
-[draft-lenders-core-coap-dtls-svcb-00]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00
 
 # Acknowledgments
 {:numbered="false"}
