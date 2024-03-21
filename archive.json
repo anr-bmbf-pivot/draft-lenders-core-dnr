@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-19T00:04:47.918581+00:00",
+  "timestamp": "2024-03-21T00:04:57.428840+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -49,7 +49,24 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 5,
+      "id": "I_kwDOLV9kgc6C-PuY",
+      "title": "Remove things that were moved into draft-lenders-core-coap-dtls-svcb ",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/issues/5",
+      "state": "OPEN",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Parts of this document are moved out as requested in the IETF119 CoRE meeting.\r\n\r\nOnce https://github.com/anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb is stripped down to what should be in there, those parts should be removed from this document.",
+      "createdAt": "2024-03-20T11:58:17Z",
+      "updatedAt": "2024-03-20T11:58:17Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": [
     {
       "number": 1,
