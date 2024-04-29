@@ -81,7 +81,7 @@ SvcParams can also be used to discover DNS over CoAP (DoC) servers (see
 
 Future work may also provide guidance on how to discover CoAP services that secure their messages
 using OSCORE or use transport layers other than TCP or UDP (see, e.g.,
-{{coap-gatt}} or {{lwm2m}}). They are, however, out of bounds for this document.
+{{-coap-gatt}} or {{lwm2m}}). They are, however, out of bounds for this document.
 
 # Terminology
 
