@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-28T00:05:58.956236+00:00",
+  "timestamp": "2024-04-30T00:04:38.180111+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -384,6 +384,74 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOLV9kgc5t_OR9",
+      "title": "Return to OSCORE problem statement only",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/6",
+      "state": "OPEN",
+      "author": "miri64",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This\r\n\r\n- Removes the parts that specify the discovery of CoAP transport protocols (will be specified in https://github.com/core-wg/transport-indication),\r\n- Removes the parts that specify the discovery of CoAP over DTLS endpoinds (now specified in https://github.com/anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb), and\r\n- Removes solution sketches and rather set objectives to solve problem space, making this document again more of a problem statement",
+      "createdAt": "2024-04-29T09:36:35Z",
+      "updatedAt": "2024-04-29T11:09:19Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "92c506c715dce205f6f3838556e9c097dd93c738",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "dnr-dtls-cleanup",
+      "headRefOid": "e4ce7a245ceb7cc23559a3699d87154b84362fc4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "body": "/me wonders where to best park the removed parts that do *not* yet have a better home.",
+          "createdAt": "2024-04-29T11:09:18Z",
+          "updatedAt": "2024-04-29T11:09:18Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOLV9kgc5t_ysR",
+      "title": "Fill section on SVCB URI conversion",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/7",
+      "state": "CLOSED",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is way more verbose than I hoped.\r\n\r\nOne reason it is this verbose is that it aims to be a set of rules not only usable for DNR style cases (where we get a SVCB record for some non-CoAP service) but also for HTTPS style cases (where host and authority come from a URI, and we're not building the URI to connect to, but just a transport); the next iteration of transport-indication can build on this and provide a use case from there.",
+      "createdAt": "2024-04-29T11:02:03Z",
+      "updatedAt": "2024-04-29T11:02:33Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "92c506c715dce205f6f3838556e9c097dd93c738",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb",
+      "headRefName": "svcb-uri",
+      "headRefOid": "7f18138d5e658a56d5f753fffb490f946e05842d",
+      "closedAt": "2024-04-29T11:02:32Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Sorry, pushed to the wrong remote.",
+          "createdAt": "2024-04-29T11:02:32Z",
+          "updatedAt": "2024-04-29T11:02:32Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
