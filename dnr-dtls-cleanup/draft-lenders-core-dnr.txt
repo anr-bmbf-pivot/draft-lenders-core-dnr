@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 31 October 2024                                                
+Expires: 7 November 2024                                                
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                           29 April 2024
+                                                              6 May 2024
 
 
    Problem Statement for Discovery of Network-designated OSCORE-based
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 October 2024.
+   This Internet-Draft will expire on 7 November 2024.
 
 Copyright Notice
 
@@ -96,14 +96,15 @@ Table of Contents
    [RFC9460] specifies the "SVCB" ("Service Binding") DNS resource
    records to lookup information on how to communicate with a service.
    Service Parameters (SvcParams) are used to carry that information.
-   On top of that, specify [RFC9461], [RFC9462] and [RFC9463] options to
-   discover DNS resolvers that allow for encrypted DNS resolution, using
-   either DNS or, in a local network, Router Advertisements or DHCP.
-   These specifications use SvcParams to carry information required for
-   configuration of such resolvers.  So far, however, only DNS transfer
-   protocols based on Transport Layer Security (TLS) are supported,
-   namely DNS over TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484],
-   and DNS over Dedicated QUIC (DoQ) [RFC9250].
+   On top of that, options to discover DNS resolvers that allow for
+   encrypted DNS resolution are specified in other document.  These use
+   either DNS ([RFC9461], [RFC9462]) or, in a local network, Router
+   Advertisements or DHCP ([RFC9463]).  The specifications use SvcParams
+   to carry information required for configuration of such resolvers.
+   So far, however, only DNS transfer protocols based on Transport Layer
+   Security (TLS) are supported, namely DNS over TLS (DoT) [RFC7858],
+   DNS over HTTPS (DoH) [RFC8484], and DNS over Dedicated QUIC (DoQ)
+   [RFC9250].
 
    DNS over CoAP [I-D.ietf-core-dns-over-coap] provides a solution for
    encrypted DNS in constrained environments.  In such scenarios, the
@@ -113,9 +114,10 @@ Table of Contents
    i.e., CoAP can be transported over UDP, TCP, or WebSockets [RFC8323],
    and even less common transports such as Bluetooth GATT
    [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
+   [I-D.ietf-core-transport-indication] covers the selection of this
+   transport via SVCB records.
 
-   CoAP offers three security modes, which would need to be covered by
-   the SvcParams:
+   However, CoAP offers three security modes:
 
    *  *No Security:* This plain CoAP mode does not support any
       encryption.  It is not recommended when using
@@ -139,15 +141,11 @@ Table of Contents
       keys can be set up by such an AS as described in the ACE OSCORE
       profile [RFC9203].
 
-   To discover a DoC server via Discovery of Designated Resolvers (DDR)
-   [RFC9462] and Discovery of Network-designated Resolvers (DNR)
-   [RFC9463], or any other CoAP server via [RFC9460], the SvcParams
-   field needs to convey both transfer protocol and type and parameters
-   of the security parameters.  [I-D.ietf-core-transport-indication]
-   covers the selection of the transport in CoAP and [RFC8323] as well
-   as [TBD: -coap-dtls-svcb] cover the case for Transport Security.
-   However, there is still a gap for Object Security.  This document
-   provides a problem statement for what is needed to fill this gap.
+   The case of no security is sufficiently covered by
+   [I-D.ietf-core-transport-indication].  [RFC8323] and [TBD: -coap-
+   dtls-svcb] cover the case for transport security.  However, there is
+   still a gap for object security.  This document provides a problem
+   statement for what is needed to fill this gap.
 
    For simplicity, we will talk about the discovery CoAP servers in the
    following, even though the discovery and configuration of DoC servers
@@ -173,8 +171,9 @@ Table of Contents
 
 3.  Problem Space
 
-   The first and most important question to ask for the discoverability
-   of CoAP is if and what new SvcParamKeys need to be defined.
+   The first and most important point of discussion for the
+   discoverability of CoAP is if and what new SvcParamKeys need to be
+   defined and what is already there.
 
    [RFC9460] defines the “alpn” key, which is used to identify the
    protocol suite of a service binding using its Application-Layer
@@ -185,15 +184,16 @@ Table of Contents
    [RFC8323].  As using the same ALPN ID for different transport layers
    is not recommended, another ALPN ID for CoAP over DTLS was introduced
    in [TBD: -coap-dtls-svcb].  Object security may be selected in
-   addition to transport layer security or without it, and,
-   orthogonally, with different CoAP transports.  The selection of CoAP
-   transport protocols is covered in
-   [I-D.ietf-core-transport-indication].  Defining an ALPN ID for each
-   combination of object security, mode of transport layer security, and
-   transport protocol might not be viable or scalable.  For some ways of
-   setting up object security, additional information is needed for the
-   establishment of an encryption context and for authentication with an
-   authentication server (AS).
+   addition to transport layer security or without it.  Additionally,
+   different CoAP transports can be selected, which may be orthogonal to
+   the transport security.  For instance, DTLS can be used over
+   transports other than UDP.  The selection of CoAP transport protocols
+   is covered in [I-D.ietf-core-transport-indication].  Defining an ALPN
+   ID for each combination of object security, mode of transport layer
+   security, and transport protocol might not be viable or scalable.
+   For some ways of setting up object security, additional information
+   is needed, such as an establishment options for an encryption context
+   with EDHOC or an authentication server (AS) with ACE.
 
    Beyond the SvcParamKeys, there is the question of what the field
    values of the Encrypted DNS Options defined in [RFC9463] might be
@@ -207,19 +207,18 @@ Table of Contents
    SVCB records are not meant and should not be used to exchange
    security contexts, so this eliminates scenarios that use pre-shared
    keys with OSCORE.  This leaves 2 base scenarios for OSCORE, which may
-   occur in combination or with scenarios using transport security or
+   occur in combination, with scenarios using transport security, or
    alternative transport protocols:
 
    *  DoC over OSCORE using EDHOC, and
 
    *  DoC over OSCORE using ACE.
 
-   In the general case, we mostly need to answer the question for
-   additional SvcParamKeys.  [RFC9460] defines the keys “mandatory”,
-   “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint” were
-   defined.  Additionally, [I-D.ietf-core-dns-over-coap] defines
-   “docpath” which carries the path for the DNS resource at the DoC
-   server as a CBOR sequence.
+   We mostly need to answer the question for additional SvcParamKeys.
+   [RFC9460] defines the keys “mandatory”, “alpn”, “no-default-alpn”,
+   “port”, “ipv4hint”, and “ipv6hint”. Additionally,
+   [I-D.ietf-core-dns-over-coap] defines “docpath” which carries the
+   path for the DNS resource at the DoC server as a CBOR sequence.
 
    Since “alpn” is needed for transport layer security, the type of
    object security (OSCORE using EDHOC, OSCORE using ACE, OSCORE using
