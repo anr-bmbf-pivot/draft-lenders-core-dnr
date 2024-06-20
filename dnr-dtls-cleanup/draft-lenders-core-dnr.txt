@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 7 November 2024                                                
+Expires: 22 December 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                              6 May 2024
+                                                            20 June 2024
 
 
    Problem Statement for Discovery of Network-designated OSCORE-based
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 November 2024.
+   This Internet-Draft will expire on 22 December 2024.
 
 Copyright Notice
 
@@ -113,9 +113,9 @@ Table of Contents
    transfer protocol for DoC, is mostly agnostic to the transport layer,
    i.e., CoAP can be transported over UDP, TCP, or WebSockets [RFC8323],
    and even less common transports such as Bluetooth GATT
-   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
-   [I-D.ietf-core-transport-indication] covers the selection of this
-   transport via SVCB records.
+   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.  A
+   future iteration of [I-D.ietf-core-transport-indication] will cover
+   the selection of this transport via SVCB records.
 
    However, CoAP offers three security modes:
 
