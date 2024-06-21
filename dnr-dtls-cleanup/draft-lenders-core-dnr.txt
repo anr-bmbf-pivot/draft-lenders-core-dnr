@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 22 December 2024                                               
+Expires: 23 December 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                            20 June 2024
+                                                            21 June 2024
 
 
    Problem Statement for Discovery of Network-designated OSCORE-based
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 December 2024.
+   This Internet-Draft will expire on 23 December 2024.
 
 Copyright Notice
 
@@ -142,10 +142,11 @@ Table of Contents
       profile [RFC9203].
 
    The case of no security is sufficiently covered by
-   [I-D.ietf-core-transport-indication].  [RFC8323] and [TBD: -coap-
-   dtls-svcb] cover the case for transport security.  However, there is
-   still a gap for object security.  This document provides a problem
-   statement for what is needed to fill this gap.
+   [I-D.ietf-core-transport-indication].  [RFC8323] and
+   [I-D.lenders-core-coap-dtls-svcb] cover the case for transport
+   security.  However, there is still a gap for object security.  This
+   document provides a problem statement for what is needed to fill this
+   gap.
 
    For simplicity, we will talk about the discovery CoAP servers in the
    following, even though the discovery and configuration of DoC servers
@@ -183,17 +184,18 @@ Table of Contents
    security.  There is an ALPN ID for CoAP over TLS that was defined in
    [RFC8323].  As using the same ALPN ID for different transport layers
    is not recommended, another ALPN ID for CoAP over DTLS was introduced
-   in [TBD: -coap-dtls-svcb].  Object security may be selected in
-   addition to transport layer security or without it.  Additionally,
-   different CoAP transports can be selected, which may be orthogonal to
-   the transport security.  For instance, DTLS can be used over
-   transports other than UDP.  The selection of CoAP transport protocols
-   is covered in [I-D.ietf-core-transport-indication].  Defining an ALPN
-   ID for each combination of object security, mode of transport layer
-   security, and transport protocol might not be viable or scalable.
-   For some ways of setting up object security, additional information
-   is needed, such as an establishment options for an encryption context
-   with EDHOC or an authentication server (AS) with ACE.
+   in [I-D.lenders-core-coap-dtls-svcb].  Object security may be
+   selected in addition to transport layer security or without it.
+   Additionally, different CoAP transports can be selected, which may be
+   orthogonal to the transport security.  For instance, DTLS can be used
+   over transports other than UDP.  The selection of CoAP transport
+   protocols is covered in [I-D.ietf-core-transport-indication].
+   Defining an ALPN ID for each combination of object security, mode of
+   transport layer security, and transport protocol might not be viable
+   or scalable.  For some ways of setting up object security, additional
+   information is needed, such as an establishment options for an
+   encryption context with EDHOC or an authentication server (AS) with
+   ACE.
 
    Beyond the SvcParamKeys, there is the question of what the field
    values of the Encrypted DNS Options defined in [RFC9463] might be
@@ -306,6 +308,14 @@ Table of Contents
               transport-indication-05, 18 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
               transport-indication-05>.
+
+   [I-D.lenders-core-coap-dtls-svcb]
+              Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
+              Wählisch, "Service Binding and Parameter Specification for
+              CoAP over (D)TLS", Work in Progress, Internet-Draft,
+              draft-lenders-core-coap-dtls-svcb-00, 21 June 2024,
+              <https://datatracker.ietf.org/doc/html/draft-lenders-core-
+              coap-dtls-svcb-00>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
