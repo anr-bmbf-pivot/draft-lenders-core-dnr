@@ -71,7 +71,7 @@ informative:
   I-D.ietf-ace-edhoc-oscore-profile: ace-edhoc
   I-D.ietf-core-dns-over-coap: doc
   I-D.ietf-core-transport-indication: coap-indication
-  # I-D.lenders-core-coap-dtls-svcb: coap-dtls-svcb
+  I-D.lenders-core-coap-dtls-svcb: coap-dtls-svcb
   lwm2m:
     title: White Paper – Lightweight M2M 1.1
     author:
@@ -131,7 +131,7 @@ Furthermore, CoAP offers three security modes:
   keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
 
 The case of no security will be sufficiently covered by {{-coap-indication}}.
-{{-coap-tcp}} and \[TBD: -coap-dtls-svcb\] cover the case for transport security.
+{{-coap-tcp}} and {{-coap-dtls-svcb}} cover the case for transport security.
 However, there is still a gap for object security. This document provides a problem statement for
 what is needed to fill this gap.
 
@@ -161,7 +161,7 @@ using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this
 identify classic transport layer security, the question is raised if this is needed or even helpful
 for when there is only object security. There is an ALPN ID for CoAP over TLS that is defined in
 {{-coap-tcp}}. As using the same ALPN ID for different transport layers is not recommended, another
-ALPN ID for CoAP over DTLS is introduced in \[TBD: -coap-dtls-svcb\]. Object security may be
+ALPN ID for CoAP over DTLS is introduced in {{-coap-dtls-svcb}}. Object security may be
 selected in addition to transport layer security or without it. Additionally, different
 CoAP transports can be selected, which may be orthogonal to the transport security.
 For instance, DTLS can be used over transports other than UDP. The selection of CoAP transport
