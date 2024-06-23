@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-20T00:05:05.202255+00:00",
+  "timestamp": "2024-06-23T00:05:36.527233+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -397,13 +397,13 @@
       "labels": [],
       "body": "This\r\n\r\n- Removes the parts that specify the discovery of CoAP transport protocols (will be specified in https://github.com/core-wg/transport-indication),\r\n- Removes the parts that specify the discovery of CoAP over DTLS endpoinds (now specified in https://github.com/anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb), and\r\n- Removes solution sketches and rather set objectives to solve problem space, making this document again more of a problem statement",
       "createdAt": "2024-04-29T09:36:35Z",
-      "updatedAt": "2024-05-06T14:08:38Z",
+      "updatedAt": "2024-06-21T10:06:52Z",
       "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "baseRefName": "main",
       "baseRefOid": "92c506c715dce205f6f3838556e9c097dd93c738",
       "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
       "headRefName": "dnr-dtls-cleanup",
-      "headRefOid": "45e1c29dd1ccf24cea46c219aba0b4366b7b91dc",
+      "headRefOid": "7c071c47327f3341215cb61e16d8c4113c387f6c",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -424,7 +424,21 @@
           "updatedAt": "2024-04-30T09:32:31Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc5-_jbu",
+          "commit": {
+            "abbreviatedOid": "9319c93"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-20T14:20:11Z",
+          "updatedAt": "2024-06-20T14:20:11Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 7,
