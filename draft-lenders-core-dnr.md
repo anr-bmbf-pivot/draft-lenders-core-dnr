@@ -81,11 +81,10 @@ informative:
 
 --- abstract
 
-This document provides a problem statement for the discovery of endpoints that communicate over
-Object Security for Constrained RESTful Environments (OSCORE) {{-oscore}} over DNS SVCB records.
-This will ultimately allow a host to learn about CoAP servers, but also DNS over CoAP resolvers,
-that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC) {{-edhoc}} for
-key exchange.
+This document states problems when designing DNS SVCB records to discover endpoints that communicate over
+Object Security for Constrained RESTful Environments (OSCORE) {{-oscore}}.
+As a consequence of learning about OSCORE, this discovery will allow a host to learn both CoAP servers and DNS over CoAP resolvers that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC) {{-edhoc}} for key exchange.
+Challenges arise because SVCB records are not meant to be used to exchange security contexts, which is required in OSCORE scenarios.
 
 --- middle
 
