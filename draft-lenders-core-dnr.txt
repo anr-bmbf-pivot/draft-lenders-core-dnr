@@ -13,8 +13,8 @@ Expires: 30 December 2024
                                                             28 June 2024
 
 
-   Problem Statement for Discovery of Network-designated OSCORE-based
-                               Resolvers
+    Discovery of Network-designated OSCORE-based Resolvers: Problem
+                               Statement
                      draft-lenders-core-dnr-latest
 
 Abstract
