@@ -19,13 +19,15 @@ Expires: 30 December 2024
 
 Abstract
 
-   This document provides a problem statement for the discovery of
-   endpoints that communicate over Object Security for Constrained
-   RESTful Environments (OSCORE) [RFC8613] over DNS SVCB records.  This
-   will ultimately allow a host to learn about CoAP servers, but also
-   DNS over CoAP resolvers, that use OSCORE to encrypt messages and
-   Ephemeral Diffie-Hellman Over COSE (EDHOC) [RFC9528] for key
-   exchange.
+   This document states problems when designing DNS SVCB records to
+   discover endpoints that communicate over Object Security for
+   Constrained RESTful Environments (OSCORE) [RFC8613].  As a
+   consequence of learning about OSCORE, this discovery will allow a
+   host to learn both CoAP servers and DNS over CoAP resolvers that use
+   OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE
+   (EDHOC) [RFC9528] for key exchange.  Challenges arise because SVCB
+   records are not meant to be used to exchange security contexts, which
+   is required in OSCORE scenarios.
 
 About This Document
 
@@ -301,9 +303,9 @@ Table of Contents
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
               and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
-              Internet-Draft, draft-ietf-core-dns-over-coap-06, 4 March
+              Internet-Draft, draft-ietf-core-dns-over-coap-07, 28 June
               2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              core-dns-over-coap-06>.
+              core-dns-over-coap-07>.
 
    [I-D.ietf-core-transport-indication]
               Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",

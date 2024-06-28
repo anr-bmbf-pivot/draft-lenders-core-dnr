@@ -10,11 +10,10 @@
 <meta content="Thomas C. Schmidt" name="author">
 <meta content="Matthias Wählisch" name="author">
 <meta content="
-       This document provides a problem statement for the discovery of endpoints that communicate over
-Object Security for Constrained RESTful Environments (OSCORE)   over DNS SVCB records.
-This will ultimately allow a host to learn about CoAP servers, but also DNS over CoAP resolvers,
-that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC)   for
-key exchange. 
+       This document states problems when designing DNS SVCB records to discover endpoints that communicate over
+Object Security for Constrained RESTful Environments (OSCORE)  .
+As a consequence of learning about OSCORE, this discovery will allow a host to learn both CoAP servers and DNS over CoAP resolvers that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC)   for key exchange.
+Challenges arise because SVCB records are not meant to be used to exchange security contexts, which is required in OSCORE scenarios. 
     " name="description">
 <meta content="xml2rfc 3.21.0" name="generator">
 <meta content="CoRE" name="keyword">
@@ -1082,11 +1081,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">Discovery of Network-designated OSCORE-based Resolvers: Problem Statement</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document provides a problem statement for the discovery of endpoints that communicate over
-Object Security for Constrained RESTful Environments (OSCORE) <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span> over DNS SVCB records.
-This will ultimately allow a host to learn about CoAP servers, but also DNS over CoAP resolvers,
-that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC) <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span> for
-key exchange.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document states problems when designing DNS SVCB records to discover endpoints that communicate over
+Object Security for Constrained RESTful Environments (OSCORE) <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>.
+As a consequence of learning about OSCORE, this discovery will allow a host to learn both CoAP servers and DNS over CoAP resolvers that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC) <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span> for key exchange.
+Challenges arise because SVCB records are not meant to be used to exchange security contexts, which is required in OSCORE scenarios.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1402,7 +1400,7 @@ definition for authenticator-domain-name field, shall be part of future work.<a 
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-dns-over-coap">[I-D.ietf-core-dns-over-coap]</dt>
         <dd>
-<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Gündoğan, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"DNS over CoAP (DoC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-dns-over-coap-06</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-06">https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Gündoğan, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"DNS over CoAP (DoC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-dns-over-coap-07</span>, <time datetime="2024-06-28" class="refDate">28 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-07">https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-07</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-transport-indication">[I-D.ietf-core-transport-indication]</dt>
         <dd>
