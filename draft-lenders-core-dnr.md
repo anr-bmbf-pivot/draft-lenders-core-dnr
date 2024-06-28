@@ -1,5 +1,5 @@
 ---
-title: "Problem Statement for Discovery of Network-designated OSCORE-based Resolvers"
+title: "Discovery of Network-designated OSCORE-based Resolvers: Problem Statement"
 abbrev: "CoRE DNR"
 category: info
 
