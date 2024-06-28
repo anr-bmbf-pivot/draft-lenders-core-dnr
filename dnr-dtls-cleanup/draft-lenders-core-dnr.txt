@@ -19,12 +19,13 @@ Expires: 30 December 2024
 
 Abstract
 
-   This document specifies a problem statement for the discovery over
-   DNS SVCB records of endpoints that communicate over Object Security
-   for Constrained RESTful Environments (OSCORE) [RFC8613].  This will
-   ultimately allow a host to learn about CoAP servers, but also DNS
-   over CoAP resolvers, including configurations to use OSCORE and
-   Ephemeral Diffie-Hellman Over COSE (EDHOC) [RFC9528].
+   This document provides a problem statement for the discovery of
+   endpoints that communicate over Object Security for Constrained
+   RESTful Environments (OSCORE) [RFC8613] over DNS SVCB records.  This
+   will ultimately allow a host to learn about CoAP servers, but also
+   DNS over CoAP resolvers, that use OSCORE to encrypt messages and
+   Ephemeral Diffie-Hellman Over COSE (EDHOC) [RFC9528] for key
+   exchange.
 
 About This Document
 
@@ -99,12 +100,12 @@ Table of Contents
    On top of that, options to discover DNS resolvers that allow for
    encrypted DNS resolution are specified in other document.  These use
    either DNS ([RFC9461], [RFC9462]) or, in a local network, Router
-   Advertisements or DHCP ([RFC9463]).  The specifications use SvcParams
-   to carry information required for configuration of such resolvers.
-   So far, however, only DNS transfer protocols based on Transport Layer
-   Security (TLS) are supported, namely DNS over TLS (DoT) [RFC7858],
-   DNS over HTTPS (DoH) [RFC8484], and DNS over Dedicated QUIC (DoQ)
-   [RFC9250].
+   Advertisements or DHCP ([RFC9463]).  These specifications use
+   SvcParams to carry information required for configuration of such
+   resolvers.  So far, however, only DNS transfer protocols based on
+   Transport Layer Security (TLS) are supported, namely DNS over TLS
+   (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484], and DNS over
+   Dedicated QUIC (DoQ) [RFC9250].
 
    DNS over CoAP [I-D.ietf-core-dns-over-coap] provides a solution for
    encrypted DNS in constrained environments.  In such scenarios, the
@@ -117,7 +118,7 @@ Table of Contents
    future iteration of [I-D.ietf-core-transport-indication] will cover
    the selection of this transport via SVCB records.
 
-   However, CoAP offers three security modes:
+   Furthermore, CoAP offers three security modes:
 
    *  *No Security:* This plain CoAP mode does not support any
       encryption.  It is not recommended when using
@@ -141,7 +142,7 @@ Table of Contents
       keys can be set up by such an AS as described in the ACE OSCORE
       profile [RFC9203].
 
-   The case of no security is sufficiently covered by
+   The case of no security will be sufficiently covered by
    [I-D.ietf-core-transport-indication].  [RFC8323] and
    [I-D.lenders-core-coap-dtls-svcb] cover the case for transport
    security.  However, there is still a gap for object security.  This
@@ -150,7 +151,9 @@ Table of Contents
 
    For simplicity, we will talk about the discovery CoAP servers in the
    following, even though the discovery and configuration of DoC servers
-   over DDR and DNR is currently the main use case for this.
+   over DDR and DNR is currently the main use case for this, as
+   [RFC9176] already provides resource discovery, and consequently CoAP
+   service discovery, for constrained environments.
 
 2.  Terminology
 
@@ -181,21 +184,21 @@ Table of Contents
    Protocol Negotiation (ALPN) ID [RFC7301].  While this is useful to
    identify classic transport layer security, the question is raised if
    this is needed or even helpful for when there is only object
-   security.  There is an ALPN ID for CoAP over TLS that was defined in
+   security.  There is an ALPN ID for CoAP over TLS that is defined in
    [RFC8323].  As using the same ALPN ID for different transport layers
-   is not recommended, another ALPN ID for CoAP over DTLS was introduced
+   is not recommended, another ALPN ID for CoAP over DTLS is introduced
    in [I-D.lenders-core-coap-dtls-svcb].  Object security may be
    selected in addition to transport layer security or without it.
    Additionally, different CoAP transports can be selected, which may be
    orthogonal to the transport security.  For instance, DTLS can be used
    over transports other than UDP.  The selection of CoAP transport
-   protocols is covered in [I-D.ietf-core-transport-indication].
-   Defining an ALPN ID for each combination of object security, mode of
-   transport layer security, and transport protocol might not be viable
-   or scalable.  For some ways of setting up object security, additional
-   information is needed, such as an establishment options for an
-   encryption context with EDHOC or an authentication server (AS) with
-   ACE.
+   protocols will be covered in future versions of
+   [I-D.ietf-core-transport-indication].  Defining an ALPN ID for each
+   combination of object security, mode of transport layer security, and
+   transport protocol might not be viable or scalable.  For some ways of
+   setting up object security, additional information is needed, such as
+   an establishment options for an encryption context with EDHOC or an
+   authentication server (AS) with ACE.
 
    Beyond the SvcParamKeys, there is the question of what the field
    values of the Encrypted DNS Options defined in [RFC9463] might be
@@ -360,6 +363,11 @@ Table of Contents
               "Object Security for Constrained RESTful Environments
               (OSCORE)", RFC 8613, DOI 10.17487/RFC8613, July 2019,
               <https://www.rfc-editor.org/rfc/rfc8613>.
+
+   [RFC9176]  Amsüss, C., Ed., Shelby, Z., Koster, M., Bormann, C., and
+              P. van der Stok, "Constrained RESTful Environments (CoRE)
+              Resource Directory", RFC 9176, DOI 10.17487/RFC9176, April
+              2022, <https://www.rfc-editor.org/rfc/rfc9176>.
 
    [RFC9203]  Palombini, F., Seitz, L., Selander, G., and M. Gunnarsson,
               "The Object Security for Constrained RESTful Environments
