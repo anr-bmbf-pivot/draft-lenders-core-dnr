@@ -3,7 +3,7 @@ title: "Discovery of Network-designated OSCORE-based Resolvers: Problem Statemen
 abbrev: "CoRE DNR"
 category: info
 
-docname: draft-lenders-core-dnr-latest
+docname: draft-lenders-core-dnr-02
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
