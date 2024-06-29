@@ -100,8 +100,8 @@ Table of Contents
    Name System (DNS).  To discover services of the constrained Internet
    of Things (IoT) using the DNS, two challenges must be solved.  First,
    the discovery of a DNS resolver that supports DNS resolution based on
-   secure, IoT-friendly protocols---otherwise the subsequent discovery
-   of IoT-tailored services would be limited to resolution protocols
+   secure, IoT-friendly protocols—otherwise the subsequent discovery of
+   IoT-tailored services would be limited to resolution protocols
    conflicting with constrained resources.  Second, the discovery of an
    IoT-friendly service beyond the DNS resolution.
 
@@ -124,8 +124,8 @@ Table of Contents
    transport layer CoAP can be transported over UDP, TCP, or WebSockets
    [RFC8323], and even less common transports such as Bluetooth GATT
    [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
-   [I-D.ietf-core-transport-indication] covers the selection of
-   different CoAP transports using SVCB records.
+   [I-D.ietf-core-transport-indication] will cover the selection of
+   different CoAP transports using SVCB records in a future version.
 
    CoAP offers three security modes:
 
@@ -146,24 +146,24 @@ Table of Contents
       OSCORE keys have a limited lifetime and need to be set up.  Keys
       can be received from an ACE Authorization Server (AS), as
       described in the ACE OSCORE profile [RFC9203], or, alternatively
-      to support “zero-touch”, through an EDHOC key exchange [RFC9528],
+      to support "zero-touch", through an EDHOC key exchange [RFC9528],
       as described in the ACE EDHOC profile
       [I-D.ietf-ace-edhoc-oscore-profile].
 
-   The SVCB-based discovery of a CoAP service in mode “no security” is
+   The SVCB-based discovery of a CoAP service in mode "no security" is
    covered in [I-D.ietf-core-transport-indication], and a CoAP service
-   in the mode “transport security” in
+   in the mode "transport security" in
    [I-D.lenders-core-coap-dtls-svcb].  The discovery of CoAP services in
-   mode “object security” is not specified.  To guide future
+   mode "object security" is not specified.  To guide future
    specifications, this document clarifies aspects when using SVCB in
    the context of CoAP and object security.
 
 2.  Terminology
 
-   The terms “DoC server” and “DoC client” are used as defined in
+   The terms "DoC server" and "DoC client" are used as defined in
    [I-D.ietf-core-dns-over-coap].
 
-   The terms “constrained node” and "constrained network" are used as
+   The terms "constrained node" and "constrained network" are used as
    defined in [RFC7228].
 
    SvcParams denotes the field in either DNS SVCB/HTTPS records as
@@ -182,7 +182,7 @@ Table of Contents
    discoverability of CoAP is if and what new SvcParamKeys need to be
    defined and what is already there.
 
-   [RFC9460] defines the “alpn” key, which is used to identify the
+   [RFC9460] defines the "alpn" key, which is used to identify the
    protocol suite of a service binding using its Application-Layer
    Protocol Negotiation (ALPN) ID [RFC7301].  While this is useful to
    identify classic transport layer security, the question is raised if
@@ -205,8 +205,8 @@ Table of Contents
 
    Beyond the SvcParamKeys, there is the question of what the field
    values of the Encrypted DNS Options defined in [RFC9463] might be
-   with EDHOC or ACE EDHOC.  While most fields map, “authentication-
-   domain-name” (ADN) and its corresponding ADN length field may not
+   with EDHOC or ACE EDHOC.  While most fields map, "authentication-
+   domain-name" (ADN) and its corresponding ADN length field may not
    matter when authentication is driven by Authorization for Constrained
    Environments (ACE) [RFC9203] [I-D.ietf-ace-edhoc-oscore-profile].
 
@@ -223,12 +223,12 @@ Table of Contents
    *  DoC over OSCORE using ACE.
 
    We mostly need to answer the question for additional SvcParamKeys.
-   [RFC9460] defines the keys “mandatory”, “alpn”, “no-default-alpn”,
-   “port”, “ipv4hint”, and “ipv6hint”. Additionally,
-   [I-D.ietf-core-dns-over-coap] defines “docpath” which carries the
+   [RFC9460] defines the keys "mandatory", "alpn", "no-default-alpn",
+   "port", "ipv4hint", and "ipv6hint".  Additionally,
+   [I-D.ietf-core-dns-over-coap] defines "docpath" which carries the
    path for the DNS resource at the DoC server as a CBOR sequence.
 
-   Since “alpn” is needed for transport layer security, the type of
+   Since "alpn" is needed for transport layer security, the type of
    object security (OSCORE using EDHOC, OSCORE using ACE, OSCORE using
    EDHOC using ACE), needs to be conveyed in a different SvcParamKey.
    The semantics and necessacity of the authenticator-domain-name field
