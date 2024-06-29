@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 30 December 2024                                               
+Expires: 31 December 2024                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                            28 June 2024
+                                                            29 June 2024
 
 
     Discovery of Network-designated OSCORE-based Resolvers: Problem
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 December 2024.
+   This Internet-Draft will expire on 31 December 2024.
 
 Copyright Notice
 
@@ -96,31 +96,38 @@ Table of Contents
 
 1.  Introduction
 
+   The discovery of Internet services can be facilitated by the Domain
+   Name System (DNS).  To discover services of the constrained Internet
+   of Things (IoT) using the DNS, two challenges must be solved.  First,
+   the discovery of a DNS resolver that supports DNS resolution based on
+   secure, IoT-friendly protocols---otherwise the subsequent discovery
+   of IoT-tailored services would be limited to resolution protocols
+   conflicting with constrained resources.  Second, the discovery of an
+   IoT-friendly service beyond the DNS resolution.
+
    [RFC9460] specifies the "SVCB" ("Service Binding") DNS resource
-   records to lookup information on how to communicate with a service.
-   Service Parameters (SvcParams) are used to carry that information.
-   On top of that, options to discover DNS resolvers that allow for
-   encrypted DNS resolution are specified in other document.  These use
-   either DNS ([RFC9461], [RFC9462]) or, in a local network, Router
-   Advertisements or DHCP ([RFC9463]).  These specifications use
-   SvcParams to carry information required for configuration of such
-   resolvers.  So far, however, only DNS transfer protocols based on
-   Transport Layer Security (TLS) are supported, namely DNS over TLS
-   (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484], and DNS over
-   Dedicated QUIC (DoQ) [RFC9250].
+   record to lookup information needed to connect to a network service.
+   Service Parameters (SvcParams) carry that information within the SVCB
+   record.
+
+   The discovery of DNS resolvers can be enabled by the DNS itself
+   [RFC9461], [RFC9462] or, in a local network, by Router Advertisements
+   and DHCP [RFC9463].  In all theses cases, the SvcParams is used, but
+   supports only DNS transfer based on Transport Layer Security (TLS),
+   namely DNS over TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484],
+   and DNS over Dedicated QUIC (DoQ) [RFC9250].  The use of DoT, DoH, or
+   DoQ, however, is not recommended in IoT scenarios.
 
    DNS over CoAP [I-D.ietf-core-dns-over-coap] provides a solution for
-   encrypted DNS in constrained environments.  In such scenarios, the
-   usage of DoT, DoH, DoQ, or similar TLS-based solutions is often not
-   possible.  The Constrained Application Protocol (CoAP) [RFC7252], the
-   transfer protocol for DoC, is mostly agnostic to the transport layer,
-   i.e., CoAP can be transported over UDP, TCP, or WebSockets [RFC8323],
-   and even less common transports such as Bluetooth GATT
-   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.  A
-   future iteration of [I-D.ietf-core-transport-indication] will cover
-   the selection of this transport via SVCB records.
+   encrypted DNS in constrained environments.  The Constrained
+   Application Protocol (CoAP) [RFC7252] is mostly agnostic to the
+   transport layer CoAP can be transported over UDP, TCP, or WebSockets
+   [RFC8323], and even less common transports such as Bluetooth GATT
+   [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
+   [I-D.ietf-core-transport-indication] covers the selection of
+   different CoAP transports using SVCB records.
 
-   Furthermore, CoAP offers three security modes:
+   CoAP offers three security modes:
 
    *  *No Security:* This plain CoAP mode does not support any
       encryption.  It is not recommended when using
@@ -136,26 +143,20 @@ Table of Contents
       OSCORE [RFC8613].  OSCORE can be used either as an alternative or
       in addition to transport security.
 
-      OSCORE keys have a limited lifetime and need to be set up, for
-      example through an EDHOC key exchange [RFC9528], which may use
-      credentials from trusted ACE Authorization Server (AS) as
-      described in the ACE EDHOC profile
-      [I-D.ietf-ace-edhoc-oscore-profile].  As an alternative to EDHOC,
-      keys can be set up by such an AS as described in the ACE OSCORE
-      profile [RFC9203].
+      OSCORE keys have a limited lifetime and need to be set up.  Keys
+      can be received from an ACE Authorization Server (AS), as
+      described in the ACE OSCORE profile [RFC9203], or, alternatively
+      to support “zero-touch”, through an EDHOC key exchange [RFC9528],
+      as described in the ACE EDHOC profile
+      [I-D.ietf-ace-edhoc-oscore-profile].
 
-   The case of no security will be sufficiently covered by
-   [I-D.ietf-core-transport-indication].  [RFC8323] and
-   [I-D.lenders-core-coap-dtls-svcb] cover the case for transport
-   security.  However, there is still a gap for object security.  This
-   document provides a problem statement for what is needed to fill this
-   gap.
-
-   For simplicity, we will talk about the discovery CoAP servers in the
-   following, even though the discovery and configuration of DoC servers
-   over DDR and DNR is currently the main use case for this, as
-   [RFC9176] already provides resource discovery, and consequently CoAP
-   service discovery, for constrained environments.
+   The SVCB-based discovery of a CoAP service in mode “no security” is
+   covered in [I-D.ietf-core-transport-indication], and a CoAP service
+   in the mode “transport security” in
+   [I-D.lenders-core-coap-dtls-svcb].  The discovery of CoAP services in
+   mode “object security” is not specified.  To guide future
+   specifications, this document clarifies aspects when using SVCB in
+   the context of CoAP and object security.
 
 2.  Terminology
 
@@ -365,11 +366,6 @@ Table of Contents
               "Object Security for Constrained RESTful Environments
               (OSCORE)", RFC 8613, DOI 10.17487/RFC8613, July 2019,
               <https://www.rfc-editor.org/rfc/rfc8613>.
-
-   [RFC9176]  Amsüss, C., Ed., Shelby, Z., Koster, M., Bormann, C., and
-              P. van der Stok, "Constrained RESTful Environments (CoRE)
-              Resource Directory", RFC 9176, DOI 10.17487/RFC9176, April
-              2022, <https://www.rfc-editor.org/rfc/rfc9176>.
 
    [RFC9203]  Palombini, F., Seitz, L., Selander, G., and M. Gunnarsson,
               "The Object Security for Constrained RESTful Environments

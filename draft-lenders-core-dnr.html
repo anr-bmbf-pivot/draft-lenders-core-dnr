@@ -1039,7 +1039,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lenders, et al.</td>
-<td class="center">Expires 30 December 2024</td>
+<td class="center">Expires 31 December 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1052,12 +1052,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lenders-core-dnr-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-06-28" class="published">28 June 2024</time>
+<time datetime="2024-06-29" class="published">29 June 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-30">30 December 2024</time></dd>
+<dd class="expires"><time datetime="2024-12-31">31 December 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1121,7 +1121,7 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 30 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 31 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1205,57 +1205,42 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1"><span>[<a href="#RFC9460" class="cite xref">RFC9460</a>]</span> specifies the "SVCB" ("Service Binding") DNS resource records to lookup information on
-how to communicate with a service. Service Parameters (SvcParams) are used to
-carry that information. On top of that, options to discover DNS resolvers that allow for encrypted
-DNS resolution are specified in other document. These use either DNS (<span>[<a href="#RFC9461" class="cite xref">RFC9461</a>]</span>, <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span>)
-or, in a local network, Router Advertisements or DHCP (<span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>). These specifications use
-SvcParams to carry information required for configuration of such resolvers.
-So far, however, only DNS transfer protocols based on Transport Layer Security
-(TLS) are supported, namely DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>, DNS over HTTPS
-(DoH) <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, and DNS over Dedicated QUIC (DoQ) <span>[<a href="#RFC9250" class="cite xref">RFC9250</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">DNS over CoAP <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span> provides a solution for encrypted DNS in constrained environments.  In
-such scenarios, the usage of DoT, DoH, DoQ, or similar TLS-based solutions
-is often not possible.
-The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>, the transfer protocol for DoC, is mostly
-agnostic to the transport layer, i.e., CoAP can be transported over UDP, TCP, or WebSockets
-<span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even less common transports such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS
-<span>[<a href="#lwm2m" class="cite xref">lwm2m</a>]</span> are discussed. A future iteration of <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span> will cover the selection of this
-transport via SVCB records.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">Furthermore, CoAP offers three security modes:<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-1">The discovery of Internet services can be facilitated by the Domain Name System (DNS).
+To discover services of the constrained Internet of Things (IoT) using the DNS, two challenges must be solved.
+First, the discovery of a DNS resolver that supports DNS resolution based on secure, IoT-friendly protocols---otherwise the subsequent discovery of IoT-tailored services would be limited to resolution protocols conflicting with constrained resources.
+Second, the discovery of an IoT-friendly service beyond the DNS resolution.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2"><span>[<a href="#RFC9460" class="cite xref">RFC9460</a>]</span> specifies the "SVCB" ("Service Binding") DNS resource record to lookup information needed to connect to a network service. Service Parameters (SvcParams) carry
+that information within the SVCB record.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">The discovery of DNS resolvers can be enabled by the DNS itself <span>[<a href="#RFC9461" class="cite xref">RFC9461</a>]</span>, <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> or, in a local network, by Router Advertisements and DHCP <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>.
+In all theses cases, the SvcParams is used, but supports only DNS transfer based on Transport Layer Security (TLS), namely DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>, DNS over HTTPS (DoH) <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, and DNS over Dedicated QUIC (DoQ) <span>[<a href="#RFC9250" class="cite xref">RFC9250</a>]</span>.
+The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-4">DNS over CoAP <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span> provides a solution for encrypted DNS in constrained environments.
+The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> is mostly agnostic to the transport layer CoAP can be transported over UDP, TCP, or WebSockets <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even less common transports such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS <span>[<a href="#lwm2m" class="cite xref">lwm2m</a>]</span> are discussed.
+<span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span> covers the selection of different CoAP transports using SVCB records.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<p id="section-1-5">CoAP offers three security modes:<a href="#section-1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-1-4.1">
-          <p id="section-1-4.1.1"><strong>No Security:</strong> This plain CoAP mode does not support any encryption. It
+<li class="normal" id="section-1-6.1">
+          <p id="section-1-6.1.1"><strong>No Security:</strong> This plain CoAP mode does not support any encryption. It
 is not recommended when using <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span> but inherits core CoAP features
 such as block-wise transfer <span>[<a href="#RFC7959" class="cite xref">RFC7959</a>]</span> for datagram-based
 segmentation.  Such features are beneficial in constrained settings even
-without encryption.<a href="#section-1-4.1.1" class="pilcrow">¶</a></p>
+without encryption.<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-4.2">
-          <p id="section-1-4.2.1"><strong>Transport Security:</strong> CoAP may use DTLS when transferred over UDP <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and TLS when
-transferred over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>.<a href="#section-1-4.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-1-6.2">
+          <p id="section-1-6.2.1"><strong>Transport Security:</strong> CoAP may use DTLS when transferred over UDP <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and TLS when transferred over TCP <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-1-4.3">
-          <p id="section-1-4.3.1"><strong>Object Security:</strong> Securing content objects can be achieved using
+        <li class="normal" id="section-1-6.3">
+          <p id="section-1-6.3.1"><strong>Object Security:</strong> Securing content objects can be achieved using
 OSCORE <span>[<a href="#RFC8613" class="cite xref">RFC8613</a>]</span>. OSCORE can be used either as an alternative or in
-addition to transport security.<a href="#section-1-4.3.1" class="pilcrow">¶</a></p>
-<p id="section-1-4.3.2">
-OSCORE keys have a limited lifetime and need to be set up,
-for example through an EDHOC key exchange <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>,
-which may use credentials from trusted ACE Authorization Server (AS)
-as described in the ACE EDHOC profile <span>[<a href="#I-D.ietf-ace-edhoc-oscore-profile" class="cite xref">I-D.ietf-ace-edhoc-oscore-profile</a>]</span>.
-As an alternative to EDHOC,
-keys can be set up by such an AS as described in the ACE OSCORE profile <span>[<a href="#RFC9203" class="cite xref">RFC9203</a>]</span>.<a href="#section-1-4.3.2" class="pilcrow">¶</a></p>
+addition to transport security.<a href="#section-1-6.3.1" class="pilcrow">¶</a></p>
+<p id="section-1-6.3.2">
+OSCORE keys have a limited lifetime and need to be set up.
+Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile <span>[<a href="#RFC9203" class="cite xref">RFC9203</a>]</span>, or, alternatively to support “zero-touch”, through an EDHOC key exchange <span>[<a href="#RFC9528" class="cite xref">RFC9528</a>]</span>, as described in the ACE EDHOC profile <span>[<a href="#I-D.ietf-ace-edhoc-oscore-profile" class="cite xref">I-D.ietf-ace-edhoc-oscore-profile</a>]</span>.<a href="#section-1-6.3.2" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-1-5">The case of no security will be sufficiently covered by <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span>.
-<span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span> and <span>[<a href="#I-D.lenders-core-coap-dtls-svcb" class="cite xref">I-D.lenders-core-coap-dtls-svcb</a>]</span> cover the case for transport security.
-However, there is still a gap for object security. This document provides a problem statement for
-what is needed to fill this gap.<a href="#section-1-5" class="pilcrow">¶</a></p>
-<p id="section-1-6">For simplicity, we will talk about the discovery CoAP servers in the following, even though the
-discovery and configuration of DoC servers over DDR and DNR is currently the main use case for this,
-as <span>[<a href="#RFC9176" class="cite xref">RFC9176</a>]</span> already provides resource discovery, and consequently CoAP service discovery, for
-constrained environments.<a href="#section-1-6" class="pilcrow">¶</a></p>
+<p id="section-1-7">The SVCB-based discovery of a CoAP service in mode “no security” is covered in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span>, and a CoAP service in the mode “transport security” in <span>[<a href="#I-D.lenders-core-coap-dtls-svcb" class="cite xref">I-D.lenders-core-coap-dtls-svcb</a>]</span>.
+The discovery of CoAP services in mode “object security” is not specified.
+To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="terminology">
@@ -1445,10 +1430,6 @@ definition for authenticator-domain-name field, shall be part of future work.<a 
 <dt id="RFC8613">[RFC8613]</dt>
         <dd>
 <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J.</span>, <span class="refAuthor">Palombini, F.</span>, and <span class="refAuthor">L. Seitz</span>, <span class="refTitle">"Object Security for Constrained RESTful Environments (OSCORE)"</span>, <span class="seriesInfo">RFC 8613</span>, <span class="seriesInfo">DOI 10.17487/RFC8613</span>, <time datetime="2019-07" class="refDate">July 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8613">https://www.rfc-editor.org/rfc/rfc8613</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC9176">[RFC9176]</dt>
-        <dd>
-<span class="refAuthor">Amsüss, C., Ed.</span>, <span class="refAuthor">Shelby, Z.</span>, <span class="refAuthor">Koster, M.</span>, <span class="refAuthor">Bormann, C.</span>, and <span class="refAuthor">P. van der Stok</span>, <span class="refTitle">"Constrained RESTful Environments (CoRE) Resource Directory"</span>, <span class="seriesInfo">RFC 9176</span>, <span class="seriesInfo">DOI 10.17487/RFC9176</span>, <time datetime="2022-04" class="refDate">April 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9176">https://www.rfc-editor.org/rfc/rfc9176</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9203">[RFC9203]</dt>
         <dd>
