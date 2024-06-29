@@ -391,7 +391,7 @@ A.1.  Since draft-lenders-core-dnr-01
 
    *  Remove parts specified in [I-D.ietf-core-transport-indication]
 
-   *  Remove parts specified in [TBD: -coap-dtls-svcb]
+   *  Remove parts specified in [I-D.lenders-core-coap-dtls-svcb]
 
    *  Remove solution sketches, set objectives to solve problem space
 
