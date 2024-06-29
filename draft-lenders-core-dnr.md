@@ -63,7 +63,6 @@ informative:
   RFC8323: coap-tcp
   RFC8484: doh
   RFC8613: oscore
-  RFC9176: core-rd
   RFC9250: doq
   RFC9203: ace-oscore
   RFC9528: edhoc
@@ -90,54 +89,40 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
 
 # Introduction
 
-{{-svcb}} specifies the "SVCB" ("Service Binding") DNS resource records to lookup information on
-how to communicate with a service. Service Parameters (SvcParams) are used to
-carry that information. On top of that, options to discover DNS resolvers that allow for encrypted
-DNS resolution are specified in other document. These use either DNS ({{-svcb-for-dns}}, {{-ddr}})
-or, in a local network, Router Advertisements or DHCP ({{-dnr}}). These specifications use
-SvcParams to carry information required for configuration of such resolvers.
-So far, however, only DNS transfer protocols based on Transport Layer Security
-(TLS) are supported, namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS
-(DoH) {{-doh}}, and DNS over Dedicated QUIC (DoQ) {{-doq}}.
+The discovery of Internet services can be facilitated by the Domain Name System (DNS).
+To discover services of the constrained Internet of Things (IoT) using the DNS, two challenges must be solved.
+First, the discovery of a DNS resolver that supports DNS resolution based on secure, IoT-friendly protocols---otherwise the subsequent discovery of IoT-tailored services would be limited to resolution protocols conflicting with constrained resources.
+Second, the discovery of an IoT-friendly service beyond the DNS resolution.
 
-DNS over CoAP {{-doc}} provides a solution for encrypted DNS in constrained environments.  In
-such scenarios, the usage of DoT, DoH, DoQ, or similar TLS-based solutions
-is often not possible.
-The Constrained Application Protocol (CoAP) {{-coap}}, the transfer protocol for DoC, is mostly
-agnostic to the transport layer, i.e., CoAP can be transported over UDP, TCP, or WebSockets
-{{-coap-tcp}}, and even less common transports such as Bluetooth GATT {{-coap-gatt}} or SMS
-{{lwm2m}} are discussed. A future iteration of {{-coap-indication}} will cover the selection of this
-transport via SVCB records.
+{{-svcb}} specifies the "SVCB" ("Service Binding") DNS resource record to lookup information needed to connect to a network service. Service Parameters (SvcParams) carry
+that information within the SVCB record.
 
-Furthermore, CoAP offers three security modes:
+The discovery of DNS resolvers can be enabled by the DNS itself {{-svcb-for-dns}}, {{-ddr}} or, in a local network, by Router Advertisements and DHCP {{-dnr}}.
+In all theses cases, the SvcParams is used, but supports only DNS transfer based on Transport Layer Security (TLS), namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC (DoQ) {{-doq}}.
+The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.
+
+DNS over CoAP {{-doc}} provides a solution for encrypted DNS in constrained environments.
+The Constrained Application Protocol (CoAP) {{-coap}} is mostly agnostic to the transport layer CoAP can be transported over UDP, TCP, or WebSockets {{-coap-tcp}}, and even less common transports such as Bluetooth GATT {{-coap-gatt}} or SMS {{lwm2m}} are discussed.
+{{-coap-indication}} covers the selection of different CoAP transports using SVCB records.
+
+CoAP offers three security modes:
 
 - **No Security:** This plain CoAP mode does not support any encryption. It
   is not recommended when using {{-doc}} but inherits core CoAP features
   such as block-wise transfer {{-coap-block}} for datagram-based
   segmentation.  Such features are beneficial in constrained settings even
   without encryption.
-- **Transport Security:** CoAP may use DTLS when transferred over UDP {{-coap}} and TLS when
-  transferred over TCP {{-coap-tcp}}.
+- **Transport Security:** CoAP may use DTLS when transferred over UDP {{-coap}} and TLS when transferred over TCP {{-coap-tcp}}.
 - **Object Security:** Securing content objects can be achieved using
   OSCORE {{-oscore}}. OSCORE can be used either as an alternative or in
   addition to transport security.
 
-  OSCORE keys have a limited lifetime and need to be set up,
-  for example through an EDHOC key exchange {{-edhoc}},
-  which may use credentials from trusted ACE Authorization Server (AS)
-  as described in the ACE EDHOC profile {{-ace-edhoc}}.
-  As an alternative to EDHOC,
-  keys can be set up by such an AS as described in the ACE OSCORE profile {{-ace-oscore}}.
+  OSCORE keys have a limited lifetime and need to be set up.
+  Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile {{-ace-oscore}}, or, alternatively to support “zero-touch”, through an EDHOC key exchange {{-edhoc}}, as described in the ACE EDHOC profile {{-ace-edhoc}}.
 
-The case of no security will be sufficiently covered by {{-coap-indication}}.
-{{-coap-tcp}} and {{-coap-dtls-svcb}} cover the case for transport security.
-However, there is still a gap for object security. This document provides a problem statement for
-what is needed to fill this gap.
-
-For simplicity, we will talk about the discovery CoAP servers in the following, even though the
-discovery and configuration of DoC servers over DDR and DNR is currently the main use case for this,
-as {{-core-rd}} already provides resource discovery, and consequently CoAP service discovery, for
-constrained environments.
+The SVCB-based discovery of a CoAP service in mode “no security” is covered in {{-coap-indication}}, and a CoAP service in the mode “transport security” in {{-coap-dtls-svcb}}.
+The discovery of CoAP services in mode “object security” is not specified.
+To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.
 
 # Terminology
 
