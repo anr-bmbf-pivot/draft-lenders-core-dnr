@@ -103,7 +103,7 @@ The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.
 
 DNS over CoAP {{-doc}} provides a solution for encrypted DNS in constrained environments.
 The Constrained Application Protocol (CoAP) {{-coap}} is mostly agnostic to the transport layer CoAP can be transported over UDP, TCP, or WebSockets {{-coap-tcp}}, and even less common transports such as Bluetooth GATT {{-coap-gatt}} or SMS {{lwm2m}} are discussed.
-{{-coap-indication}} covers the selection of different CoAP transports using SVCB records.
+{{-coap-indication}} will cover the selection of different CoAP transports using SVCB records in a future version.
 
 CoAP offers three security modes:
 
