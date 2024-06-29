@@ -91,7 +91,7 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
 
 The discovery of Internet services can be facilitated by the Domain Name System (DNS).
 To discover services of the constrained Internet of Things (IoT) using the DNS, two challenges must be solved.
-First, the discovery of a DNS resolver that supports DNS resolution based on secure, IoT-friendly protocols---otherwise the subsequent discovery of IoT-tailored services would be limited to resolution protocols conflicting with constrained resources.
+First, the discovery of a DNS resolver that supports DNS resolution based on secure, IoT-friendly protocols&mdash;otherwise the subsequent discovery of IoT-tailored services would be limited to resolution protocols conflicting with constrained resources.
 Second, the discovery of an IoT-friendly service beyond the DNS resolution.
 
 {{-svcb}} specifies the "SVCB" ("Service Binding") DNS resource record to lookup information needed to connect to a network service. Service Parameters (SvcParams) carry
@@ -118,17 +118,17 @@ CoAP offers three security modes:
   addition to transport security.
 
   OSCORE keys have a limited lifetime and need to be set up.
-  Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile {{-ace-oscore}}, or, alternatively to support “zero-touch”, through an EDHOC key exchange {{-edhoc}}, as described in the ACE EDHOC profile {{-ace-edhoc}}.
+  Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile {{-ace-oscore}}, or, alternatively to support "zero-touch", through an EDHOC key exchange {{-edhoc}}, as described in the ACE EDHOC profile {{-ace-edhoc}}.
 
-The SVCB-based discovery of a CoAP service in mode “no security” is covered in {{-coap-indication}}, and a CoAP service in the mode “transport security” in {{-coap-dtls-svcb}}.
-The discovery of CoAP services in mode “object security” is not specified.
+The SVCB-based discovery of a CoAP service in mode "no security" is covered in {{-coap-indication}}, and a CoAP service in the mode "transport security" in {{-coap-dtls-svcb}}.
+The discovery of CoAP services in mode "object security" is not specified.
 To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.
 
 # Terminology
 
-The terms “DoC server” and “DoC client” are used as defined in {{-doc}}.
+The terms "DoC server" and "DoC client" are used as defined in {{-doc}}.
 
-The terms “constrained node” and "constrained network" are used as defined in {{-constr-nodes}}.
+The terms "constrained node" and "constrained network" are used as defined in {{-constr-nodes}}.
 
 SvcParams denotes the field in either DNS SVCB/HTTPS records as defined in {{-svcb}}, or DHCP and RA
 messages as defined in {{-dnr}}. SvcParamKeys are used as defined in {{-svcb}}.
@@ -140,7 +140,7 @@ messages as defined in {{-dnr}}. SvcParamKeys are used as defined in {{-svcb}}.
 The first and most important point of discussion for the discoverability of CoAP is if and what
 new SvcParamKeys need to be defined and what is already there.
 
-{{-svcb}} defines the “alpn” key, which is used to identify the protocol suite of a service binding
+{{-svcb}} defines the "alpn" key, which is used to identify the protocol suite of a service binding
 using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this is useful to
 identify classic transport layer security, the question is raised if this is needed or even helpful
 for when there is only object security. There is an ALPN ID for CoAP over TLS that is defined in
@@ -157,7 +157,7 @@ server (AS) with ACE.
 
 Beyond the SvcParamKeys, there is the question of what the field values of the Encrypted DNS Options
 defined in {{-dnr}} might be with EDHOC or ACE EDHOC. While most fields map,
-“authentication-domain-name” (ADN) and its corresponding ADN length field may not matter
+"authentication-domain-name" (ADN) and its corresponding ADN length field may not matter
 when authentication is driven by Authorization for Constrained Environments (ACE) {{-ace-oscore}}
 {{-ace-edhoc}}.
 
@@ -171,11 +171,11 @@ occur in combination, with scenarios using transport security, or alternative tr
 - DoC over OSCORE using ACE.
 
 We mostly need to answer the question for additional SvcParamKeys. {{-svcb}} defines the keys
-“mandatory”, “alpn”, “no-default-alpn”, “port”, “ipv4hint”, and “ipv6hint”.
-Additionally, {{-doc}} defines “docpath” which carries the path for the DNS resource at the DoC
+"mandatory", "alpn", "no-default-alpn", "port", "ipv4hint", and "ipv6hint".
+Additionally, {{-doc}} defines "docpath" which carries the path for the DNS resource at the DoC
 server as a CBOR sequence.
 
-Since “alpn” is needed for transport layer security, the type of object security (OSCORE using
+Since "alpn" is needed for transport layer security, the type of object security (OSCORE using
 EDHOC, OSCORE using ACE, OSCORE using EDHOC using ACE), needs to be conveyed in a different
 SvcParamKey. The semantics and necessacity of the authenticator-domain-name field in {{-dnr}} needs
 to be evaluated in each case.
