@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 31 December 2024                                               
+Expires: 9 January 2025                                                 
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                            29 June 2024
+                                                             8 July 2024
 
 
     Discovery of Network-designated OSCORE-based Resolvers: Problem
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 December 2024.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -89,8 +89,9 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Change Log
-     A.1.  Since draft-lenders-core-dnr-01
-     A.2.  Since draft-lenders-core-dnr-00
+     A.1.  Since draft-lenders-core-dnr-02
+     A.2.  Since draft-lenders-core-dnr-01
+     A.3.  Since draft-lenders-core-dnr-00
    Acknowledgments
    Authors' Addresses
 
@@ -124,8 +125,8 @@ Table of Contents
    transport layer CoAP can be transported over UDP, TCP, or WebSockets
    [RFC8323], and even less common transports such as Bluetooth GATT
    [I-D.amsuess-core-coap-over-gatt] or SMS [lwm2m] are discussed.
-   [I-D.ietf-core-transport-indication] will cover the selection of
-   different CoAP transports using SVCB records in a future version.
+   [I-D.ietf-core-transport-indication] covers the selection of
+   different CoAP transports using SVCB records.
 
    CoAP offers three security modes:
 
@@ -297,9 +298,9 @@ Table of Contents
               Security for Constrained Environments (OSCORE) Profile for
               Authentication and Authorization for Constrained
               Environments (ACE)", Work in Progress, Internet-Draft,
-              draft-ietf-ace-edhoc-oscore-profile-04, 4 March 2024,
+              draft-ietf-ace-edhoc-oscore-profile-05, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
-              edhoc-oscore-profile-04>.
+              edhoc-oscore-profile-05>.
 
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
@@ -311,9 +312,9 @@ Table of Contents
    [I-D.ietf-core-transport-indication]
               Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
               Work in Progress, Internet-Draft, draft-ietf-core-
-              transport-indication-05, 18 March 2024,
+              transport-indication-06, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              transport-indication-05>.
+              transport-indication-06>.
 
    [I-D.lenders-core-coap-dtls-svcb]
               Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
@@ -386,7 +387,13 @@ Table of Contents
 
 Appendix A.  Change Log
 
-A.1.  Since draft-lenders-core-dnr-01
+A.1.  Since draft-lenders-core-dnr-02
+      (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02)
+
+   *  Forward reference to upcoming changes in
+      [I-D.ietf-core-transport-indication] updated
+
+A.2.  Since draft-lenders-core-dnr-01
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01)
 
    *  Remove parts specified in [I-D.ietf-core-transport-indication]
@@ -395,7 +402,7 @@ A.1.  Since draft-lenders-core-dnr-01
 
    *  Remove solution sketches, set objectives to solve problem space
 
-A.2.  Since draft-lenders-core-dnr-00
+A.3.  Since draft-lenders-core-dnr-00
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00)
 
    *  IANA has processed the "co" ALPN and it is now added to the

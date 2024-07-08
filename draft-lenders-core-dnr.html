@@ -15,7 +15,7 @@ Object Security for Constrained RESTful Environments (OSCORE)  .
 As a consequence of learning about OSCORE, this discovery will allow a host to learn both CoAP servers and DNS over CoAP resolvers that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC)   for key exchange.
 Challenges arise because SVCB records are not meant to be used to exchange security contexts, which is required in OSCORE scenarios. 
     " name="description">
-<meta content="xml2rfc 3.21.0" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="CoRE" name="keyword">
 <meta content="CoAP" name="keyword">
 <meta content="DoC" name="keyword">
@@ -23,7 +23,7 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
 <meta content="SVCB" name="keyword">
 <meta content="draft-lenders-core-dnr-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.21.0
+  xml2rfc 3.22.0
     Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -33,9 +33,8 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
     platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
+    requests 2.32.3
     setuptools 69.5.1
-    six 1.16.0
     wcwidth 0.2.13
 -->
 <link href="draft-lenders-core-dnr.xml" rel="alternate" type="application/rfc+xml">
@@ -1035,11 +1034,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CoRE DNR</td>
-<td class="right">June 2024</td>
+<td class="right">July 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lenders, et al.</td>
-<td class="center">Expires 31 December 2024</td>
+<td class="center">Expires 9 January 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1052,12 +1051,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lenders-core-dnr-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-06-29" class="published">29 June 2024</time>
+<time datetime="2024-07-08" class="published">8 July 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-12-31">31 December 2024</time></dd>
+<dd class="expires"><time datetime="2025-01-09">9 January 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1121,7 +1120,7 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 31 December 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 January 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1183,10 +1182,13 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
             <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-change-log" class="internal xref">Change Log</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-since-draft-lenders-core-dn" class="internal xref">Since draft-lenders-core-dnr-01</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#appendix-A.1" class="auto internal xref">A.1</a>.  <a href="#name-since-draft-lenders-core-dn" class="internal xref">Since draft-lenders-core-dnr-02</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
-                <p id="section-toc.1-1.8.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-since-draft-lenders-core-dnr" class="internal xref">Since draft-lenders-core-dnr-00</a></p>
+                <p id="section-toc.1-1.8.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-since-draft-lenders-core-dnr" class="internal xref">Since draft-lenders-core-dnr-01</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#appendix-A.3" class="auto internal xref">A.3</a>.  <a href="#name-since-draft-lenders-core-dnr-" class="internal xref">Since draft-lenders-core-dnr-00</a></p>
 </li>
             </ul>
 </li>
@@ -1216,7 +1218,7 @@ In all theses cases, the SvcParams is used, but supports only DNS transfer based
 The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">DNS over CoAP <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span> provides a solution for encrypted DNS in constrained environments.
 The Constrained Application Protocol (CoAP) <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> is mostly agnostic to the transport layer CoAP can be transported over UDP, TCP, or WebSockets <span>[<a href="#RFC8323" class="cite xref">RFC8323</a>]</span>, and even less common transports such as Bluetooth GATT <span>[<a href="#I-D.amsuess-core-coap-over-gatt" class="cite xref">I-D.amsuess-core-coap-over-gatt</a>]</span> or SMS <span>[<a href="#lwm2m" class="cite xref">lwm2m</a>]</span> are discussed.
-<span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span> will cover the selection of different CoAP transports using SVCB records in a future version.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span> covers the selection of different CoAP transports using SVCB records.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">CoAP offers three security modes:<a href="#section-1-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1-6.1">
@@ -1381,7 +1383,7 @@ definition for authenticator-domain-name field, shall be part of future work.<a 
 <dd class="break"></dd>
 <dt id="I-D.ietf-ace-edhoc-oscore-profile">[I-D.ietf-ace-edhoc-oscore-profile]</dt>
         <dd>
-<span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Tiloca, M.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object Security for Constrained Environments (OSCORE) Profile for Authentication and Authorization for Constrained Environments (ACE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-edhoc-oscore-profile-04</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-04">https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-04</a>&gt;</span>. </dd>
+<span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Tiloca, M.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object Security for Constrained Environments (OSCORE) Profile for Authentication and Authorization for Constrained Environments (ACE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-edhoc-oscore-profile-05</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-05">https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-dns-over-coap">[I-D.ietf-core-dns-over-coap]</dt>
         <dd>
@@ -1389,7 +1391,7 @@ definition for authenticator-domain-name field, shall be part of future work.<a 
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-transport-indication">[I-D.ietf-core-transport-indication]</dt>
         <dd>
-<span class="refAuthor">Amsüss, C.</span> and <span class="refAuthor">M. S. Lenders</span>, <span class="refTitle">"CoAP Transport Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-05</span>, <time datetime="2024-03-18" class="refDate">18 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-05">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Amsüss, C.</span> and <span class="refAuthor">M. S. Lenders</span>, <span class="refTitle">"CoAP Transport Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-06</span>, <time datetime="2024-07-08" class="refDate">8 July 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-06">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.lenders-core-coap-dtls-svcb">[I-D.lenders-core-coap-dtls-svcb]</dt>
         <dd>
@@ -1452,32 +1454,44 @@ definition for authenticator-domain-name field, shall be part of future work.<a 
       <h2 id="name-change-log">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-change-log" class="section-name selfRef">Change Log</a>
       </h2>
-<div id="since-draft-lenders-core-dnr-01">
+<div id="since-draft-lenders-core-dnr-02">
 <section id="appendix-A.1">
         <h3 id="name-since-draft-lenders-core-dn">
-<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-since-draft-lenders-core-dn" class="section-name selfRef">Since <a href="https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01">draft-lenders-core-dnr-01</a></a>
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-since-draft-lenders-core-dn" class="section-name selfRef">Since <a href="https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02">draft-lenders-core-dnr-02</a></a>
         </h3>
 <ul class="normal">
 <li class="normal" id="appendix-A.1-1.1">
-            <p id="appendix-A.1-1.1.1">Remove parts specified in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span><a href="#appendix-A.1-1.1.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.1-1.1.1">Forward reference to upcoming changes in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span> updated<a href="#appendix-A.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-A.1-1.2">
-            <p id="appendix-A.1-1.2.1">Remove parts specified in <span>[<a href="#I-D.lenders-core-coap-dtls-svcb" class="cite xref">I-D.lenders-core-coap-dtls-svcb</a>]</span><a href="#appendix-A.1-1.2.1" class="pilcrow">¶</a></p>
+        </ul>
+</section>
+</div>
+<div id="since-draft-lenders-core-dnr-01">
+<section id="appendix-A.2">
+        <h3 id="name-since-draft-lenders-core-dnr">
+<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-since-draft-lenders-core-dnr" class="section-name selfRef">Since <a href="https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01">draft-lenders-core-dnr-01</a></a>
+        </h3>
+<ul class="normal">
+<li class="normal" id="appendix-A.2-1.1">
+            <p id="appendix-A.2-1.1.1">Remove parts specified in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span><a href="#appendix-A.2-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="appendix-A.1-1.3">
-            <p id="appendix-A.1-1.3.1">Remove solution sketches, set objectives to solve problem space<a href="#appendix-A.1-1.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="appendix-A.2-1.2">
+            <p id="appendix-A.2-1.2.1">Remove parts specified in <span>[<a href="#I-D.lenders-core-coap-dtls-svcb" class="cite xref">I-D.lenders-core-coap-dtls-svcb</a>]</span><a href="#appendix-A.2-1.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="appendix-A.2-1.3">
+            <p id="appendix-A.2-1.3.1">Remove solution sketches, set objectives to solve problem space<a href="#appendix-A.2-1.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
 </div>
 <div id="since-draft-lenders-core-dnr-00">
-<section id="appendix-A.2">
-        <h3 id="name-since-draft-lenders-core-dnr">
-<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-since-draft-lenders-core-dnr" class="section-name selfRef">Since <a href="https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00">draft-lenders-core-dnr-00</a></a>
+<section id="appendix-A.3">
+        <h3 id="name-since-draft-lenders-core-dnr-">
+<a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-since-draft-lenders-core-dnr-" class="section-name selfRef">Since <a href="https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00">draft-lenders-core-dnr-00</a></a>
         </h3>
 <ul class="normal">
-<li class="normal" id="appendix-A.2-1.1">
-            <p id="appendix-A.2-1.1.1">IANA has processed the "co" ALPN and it is now added to the registry<a href="#appendix-A.2-1.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="appendix-A.3-1.1">
+            <p id="appendix-A.3-1.1.1">IANA has processed the "co" ALPN and it is now added to the registry<a href="#appendix-A.3-1.1.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
