@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 9 January 2025                                                 
+Expires: 27 July 2025                                                   
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                             8 July 2024
+                                                         23 January 2025
 
 
     Discovery of Network-designated OSCORE-based Resolvers: Problem
@@ -61,11 +61,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 27 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -89,9 +89,10 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Change Log
-     A.1.  Since draft-lenders-core-dnr-02
-     A.2.  Since draft-lenders-core-dnr-01
-     A.3.  Since draft-lenders-core-dnr-00
+     A.1.  Since draft-lenders-core-dnr-03
+     A.2.  Since draft-lenders-core-dnr-02
+     A.3.  Since draft-lenders-core-dnr-01
+     A.4.  Since draft-lenders-core-dnr-00
    Acknowledgments
    Authors' Addresses
 
@@ -153,11 +154,10 @@ Table of Contents
 
    The SVCB-based discovery of a CoAP service in mode "no security" is
    covered in [I-D.ietf-core-transport-indication], and a CoAP service
-   in the mode "transport security" in
-   [I-D.lenders-core-coap-dtls-svcb].  The discovery of CoAP services in
-   mode "object security" is not specified.  To guide future
-   specifications, this document clarifies aspects when using SVCB in
-   the context of CoAP and object security.
+   in the mode "transport security" in [I-D.ietf-core-coap-dtls-alpn].
+   The discovery of CoAP services in mode "object security" is not
+   specified.  To guide future specifications, this document clarifies
+   aspects when using SVCB in the context of CoAP and object security.
 
 2.  Terminology
 
@@ -191,12 +191,12 @@ Table of Contents
    security.  There is an ALPN ID for CoAP over TLS that is defined in
    [RFC8323].  As using the same ALPN ID for different transport layers
    is not recommended, another ALPN ID for CoAP over DTLS is introduced
-   in [I-D.lenders-core-coap-dtls-svcb].  Object security may be
-   selected in addition to transport layer security or without it.
-   Additionally, different CoAP transports can be selected, which may be
-   orthogonal to the transport security.  For instance, DTLS can be used
-   over transports other than UDP.  The selection of CoAP transport
-   protocols will be covered in future versions of
+   in [I-D.ietf-core-coap-dtls-alpn].  Object security may be selected
+   in addition to transport layer security or without it.  Additionally,
+   different CoAP transports can be selected, which may be orthogonal to
+   the transport security.  For instance, DTLS can be used over
+   transports other than UDP.  The selection of CoAP transport protocols
+   will be covered in future versions of
    [I-D.ietf-core-transport-indication].  Defining an ALPN ID for each
    combination of object security, mode of transport layer security, and
    transport protocol might not be viable or scalable.  For some ways of
@@ -288,9 +288,9 @@ Table of Contents
    [I-D.amsuess-core-coap-over-gatt]
               Amsüss, C., "CoAP over GATT (Bluetooth Low Energy Generic
               Attributes)", Work in Progress, Internet-Draft, draft-
-              amsuess-core-coap-over-gatt-06, 18 March 2024,
+              amsuess-core-coap-over-gatt-07, 25 September 2024,
               <https://datatracker.ietf.org/doc/html/draft-amsuess-core-
-              coap-over-gatt-06>.
+              coap-over-gatt-07>.
 
    [I-D.ietf-ace-edhoc-oscore-profile]
               Selander, G., Mattsson, J. P., Tiloca, M., and R. Höglund,
@@ -298,31 +298,31 @@ Table of Contents
               Security for Constrained Environments (OSCORE) Profile for
               Authentication and Authorization for Constrained
               Environments (ACE)", Work in Progress, Internet-Draft,
-              draft-ietf-ace-edhoc-oscore-profile-05, 8 July 2024,
+              draft-ietf-ace-edhoc-oscore-profile-06, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
-              edhoc-oscore-profile-05>.
+              edhoc-oscore-profile-06>.
+
+   [I-D.ietf-core-coap-dtls-alpn]
+              Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
+              Wählisch, "ALPN ID Specification for CoAP over DTLS", Work
+              in Progress, Internet-Draft, draft-ietf-core-coap-dtls-
+              alpn-01, 16 December 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-core-
+              coap-dtls-alpn-01>.
 
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
               and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
-              Internet-Draft, draft-ietf-core-dns-over-coap-07, 28 June
-              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
-              core-dns-over-coap-07>.
+              Internet-Draft, draft-ietf-core-dns-over-coap-09, 21
+              October 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-core-dns-over-coap-09>.
 
    [I-D.ietf-core-transport-indication]
               Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
               Work in Progress, Internet-Draft, draft-ietf-core-
-              transport-indication-06, 8 July 2024,
+              transport-indication-07, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              transport-indication-06>.
-
-   [I-D.lenders-core-coap-dtls-svcb]
-              Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
-              Wählisch, "Service Binding and Parameter Specification for
-              CoAP over (D)TLS", Work in Progress, Internet-Draft,
-              draft-lenders-core-coap-dtls-svcb-00, 21 June 2024,
-              <https://datatracker.ietf.org/doc/html/draft-lenders-core-
-              coap-dtls-svcb-00>.
+              transport-indication-07>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
@@ -387,22 +387,27 @@ Table of Contents
 
 Appendix A.  Change Log
 
-A.1.  Since draft-lenders-core-dnr-02
+A.1.  Since draft-lenders-core-dnr-03
+      (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03)
+
+   *  Update [I-D.ietf-core-coap-dtls-alpn] reference
+
+A.2.  Since draft-lenders-core-dnr-02
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02)
 
    *  Forward reference to upcoming changes in
       [I-D.ietf-core-transport-indication] updated
 
-A.2.  Since draft-lenders-core-dnr-01
+A.3.  Since draft-lenders-core-dnr-01
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01)
 
    *  Remove parts specified in [I-D.ietf-core-transport-indication]
 
-   *  Remove parts specified in [I-D.lenders-core-coap-dtls-svcb]
+   *  Remove parts specified in [I-D.ietf-core-coap-dtls-alpn]
 
    *  Remove solution sketches, set objectives to solve problem space
 
-A.3.  Since draft-lenders-core-dnr-00
+A.4.  Since draft-lenders-core-dnr-00
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00)
 
    *  IANA has processed the "co" ALPN and it is now added to the
