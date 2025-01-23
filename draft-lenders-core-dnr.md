@@ -70,7 +70,7 @@ informative:
   I-D.ietf-ace-edhoc-oscore-profile: ace-edhoc
   I-D.ietf-core-dns-over-coap: doc
   I-D.ietf-core-transport-indication: coap-indication
-  I-D.lenders-core-coap-dtls-svcb: coap-dtls-svcb
+  I-D.ietf-core-coap-dtls-alpn: coap-dtls-alpn
   lwm2m:
     title: White Paper – Lightweight M2M 1.1
     author:
@@ -120,7 +120,7 @@ CoAP offers three security modes:
   OSCORE keys have a limited lifetime and need to be set up.
   Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile {{-ace-oscore}}, or, alternatively to support "zero-touch", through an EDHOC key exchange {{-edhoc}}, as described in the ACE EDHOC profile {{-ace-edhoc}}.
 
-The SVCB-based discovery of a CoAP service in mode "no security" is covered in {{-coap-indication}}, and a CoAP service in the mode "transport security" in {{-coap-dtls-svcb}}.
+The SVCB-based discovery of a CoAP service in mode "no security" is covered in {{-coap-indication}}, and a CoAP service in the mode "transport security" in {{-coap-dtls-alpn}}.
 The discovery of CoAP services in mode "object security" is not specified.
 To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.
 
@@ -145,7 +145,7 @@ using its Application-Layer Protocol Negotiation (ALPN) ID {{-alpn}}. While this
 identify classic transport layer security, the question is raised if this is needed or even helpful
 for when there is only object security. There is an ALPN ID for CoAP over TLS that is defined in
 {{-coap-tcp}}. As using the same ALPN ID for different transport layers is not recommended, another
-ALPN ID for CoAP over DTLS is introduced in {{-coap-dtls-svcb}}. Object security may be
+ALPN ID for CoAP over DTLS is introduced in {{-coap-dtls-alpn}}. Object security may be
 selected in addition to transport layer security or without it. Additionally, different
 CoAP transports can be selected, which may be orthogonal to the transport security.
 For instance, DTLS can be used over transports other than UDP. The selection of CoAP transport
@@ -198,6 +198,9 @@ This document has no IANA considerations.
 
 # Change Log
 
+## Since [draft-lenders-core-dnr-03]
+- Update {{-coap-dtls-alpn}} reference
+
 ## Since [draft-lenders-core-dnr-02]
 
 - Forward reference to upcoming changes in {{-coap-indication}} updated
@@ -205,7 +208,7 @@ This document has no IANA considerations.
 ## Since [draft-lenders-core-dnr-01]
 
 - Remove parts specified in {{-coap-indication}}
-- Remove parts specified in {{-coap-dtls-svcb}}
+- Remove parts specified in {{-coap-dtls-alpn}}
 - Remove solution sketches, set objectives to solve problem space
 
 ## Since [draft-lenders-core-dnr-00]
@@ -215,6 +218,7 @@ This document has no IANA considerations.
 [draft-lenders-core-dnr-00]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00
 [draft-lenders-core-dnr-01]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01
 [draft-lenders-core-dnr-02]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02
+[draft-lenders-core-dnr-03]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03
 
 # Acknowledgments
 {:numbered="false"}
