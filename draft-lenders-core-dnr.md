@@ -118,7 +118,9 @@ CoAP offers three security modes:
   addition to transport security.
 
   OSCORE keys have a limited lifetime and need to be set up.
-  Keys can be received from an ACE Authorization Server (AS), as described in the ACE OSCORE profile {{-ace-oscore}}, or, alternatively to support "zero-touch", through an EDHOC key exchange {{-edhoc}}, as described in the ACE EDHOC profile {{-ace-edhoc}}.
+  Keys can be established through an EDHOC key exchange {{-edhoc}},
+  received from an ACE Authorization Server (AS, as described in the ACE OSCORE profile {{-ace-oscore}}),
+  or through a combination of those (established with an EDHOC peer whose public key is confirmed by an AS, using the ACE EDHOC profile {{-ace-edhoc}}).
 
 The SVCB-based discovery of a CoAP service in mode "no security" is covered in {{-coap-indication}}, and a CoAP service in the mode "transport security" in {{-coap-dtls-alpn}}.
 The discovery of CoAP services in mode "object security" is not specified.
