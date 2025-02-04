@@ -170,7 +170,7 @@ scenarios that use pre-shared keys with OSCORE. This leaves 2 base scenarios for
 occur in combination, with scenarios using transport security, or alternative transport protocols:
 
 - DoC over OSCORE using EDHOC, and
-- DoC over OSCORE using ACE.
+- DoC using any ACE profile that eventually produces an OSCORE context.
 
 We mostly need to answer the question for additional SvcParamKeys. {{-svcb}} defines the keys
 "mandatory", "alpn", "no-default-alpn", "port", "ipv4hint", and "ipv6hint".
