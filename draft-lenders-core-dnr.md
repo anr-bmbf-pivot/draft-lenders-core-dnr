@@ -188,6 +188,61 @@ authentication server URI.
 Defining these SvcParamKeys, including their value formats and spaces, as well as the behavior
 definition for authenticator-domain-name field, shall be part of future work.
 
+## Scenarios
+
+Two example scenarios illustrate possible ways for which a solution should work;
+they are phrased in dialogue form rather than in terms of protocol elements to avoid bias on solutions.
+
+### Neighbor discovered server with EDHOC credential
+
+In which the DoC server restricts access by network address (or not at all),
+and the client trusts its router to advertise a suitable Encrypted DNS server.
+
+1. Client: Joins a network.
+2. Local router: Sends out an IPv6 Router Advertisement (RA) with Encrypted DNS option (see {{Section 6 of -dnr}}).
+
+   Next to the network address, this conveys Service Parameters indicating DoC
+   as well as a CWT Claims Set (CCS, {{rfc8392}}) that is to be used as an EDHOC credential.
+
+3. Client starts EDHOC with the server at the indicated address.
+   The client uses an ephemeral identity (i.e., authenticates with a CCS by value)
+   and verifies that the DoC server is in possession of the key indicated in the CCS
+   without explicit transmission of the CCS.
+
+### DHCP discovered server with ACE details
+
+In which both the DoC client and server have a preconfigured security association with an ACE server,
+and trust no one else.
+
+1. Client: Requests an address using DHCP
+2. DHCP server: Offers an address along with the DHCPv6 Encrypted DNS Option (see {{Section 5 of -dnr}}).
+
+   The option contains an address as well as an indication that ACE is used,
+   along with sufficient data for the client to obtain an ACE token.
+
+   This includes hints like the ACE Request Creation hints:
+   the address of the AS and an identifier of the DoC server understood by the AS (the "aud"ience).
+   The address of the AS should be provided in some resolved form, given that DNS is being bootstrapped.
+
+3. Client requests token from AS:
+
+   "I need a token for a host that is authorized to be my DNS server
+   with me being authorized to use it;
+   these hints were presented for me to obtain it."
+
+4. AS verifies that the hint represents a recognized DNS server,
+   that the client is authorized to use it,
+   and issues a token for a suitable ACE profile (e.g. ACE OSCORE profile or ACE EDHOC profile).
+
+5. Client establishes a security context with the DoC server as per the profile.
+
+<!--
+There's the funny variation where the DoC server is actually one like in the EDHOC scenario,
+but the AS has it on its list of good DoC servers … which might be an interesting discussion starter in ACE:
+For the ACE EDHOC profile, this would contain an rs-cnf, but no token – would this Just Work?
+For the ACE OSCORE profile, the token would be asymmetrically encrypted, which AIU was not explored previously but might also Just Work.
+-->
+
 # Security Considerations
 
 TODO Security
