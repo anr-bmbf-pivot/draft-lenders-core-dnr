@@ -83,6 +83,9 @@ Table of Contents
    2.  Terminology
    3.  Problem Space
    4.  Objectives
+     4.1.  Scenarios
+       4.1.1.  Neighbor discovered server with EDHOC credential
+       4.1.2.  DHCP discovered server with ACE details
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -146,11 +149,12 @@ Table of Contents
       in addition to transport security.
 
       OSCORE keys have a limited lifetime and need to be set up.  Keys
-      can be received from an ACE Authorization Server (AS), as
-      described in the ACE OSCORE profile [RFC9203], or, alternatively
-      to support "zero-touch", through an EDHOC key exchange [RFC9528],
-      as described in the ACE EDHOC profile
-      [I-D.ietf-ace-edhoc-oscore-profile].
+      can be established through an EDHOC key exchange [RFC9528],
+      received from an ACE Authorization Server (AS, as described in the
+      ACE OSCORE profile [RFC9203]), or through a combination of those
+      (established with an EDHOC peer whose public key is confirmed by
+      an AS, using the ACE EDHOC profile
+      [I-D.ietf-ace-edhoc-oscore-profile]).
 
    The SVCB-based discovery of a CoAP service in mode "no security" is
    covered in [I-D.ietf-core-transport-indication], and a CoAP service
@@ -221,7 +225,8 @@ Table of Contents
 
    *  DoC over OSCORE using EDHOC, and
 
-   *  DoC over OSCORE using ACE.
+   *  DoC using any ACE profile that eventually produces an OSCORE
+      context.
 
    We mostly need to answer the question for additional SvcParamKeys.
    [RFC9460] defines the keys "mandatory", "alpn", "no-default-alpn",
@@ -241,6 +246,67 @@ Table of Contents
    Defining these SvcParamKeys, including their value formats and
    spaces, as well as the behavior definition for authenticator-domain-
    name field, shall be part of future work.
+
+4.1.  Scenarios
+
+   Two example scenarios illustrate possible ways for which a solution
+   should work; they are phrased in dialogue form rather than in terms
+   of protocol elements to avoid bias on solutions.
+
+4.1.1.  Neighbor discovered server with EDHOC credential
+
+   In which the DoC server restricts access by network address (or not
+   at all), and the client trusts its router to advertise a suitable
+   Encrypted DNS server.
+
+   1.  Client: Joins a network.
+
+   2.  Local router: Sends out an IPv6 Router Advertisement (RA) with
+       Encrypted DNS option (see Section 6 of [RFC9463]).
+
+       Next to the network address, this conveys Service Parameters
+       indicating DoC as well as a CWT Claims Set (CCS, [RFC8392]) that
+       is to be used as an EDHOC credential.
+
+   3.  Client starts EDHOC with the server at the indicated address.
+       The client uses an ephemeral identity (i.e., authenticates with a
+       CCS by value) and verifies that the DoC server is in possession
+       of the key indicated in the CCS without explicit transmission of
+       the CCS.
+
+4.1.2.  DHCP discovered server with ACE details
+
+   In which both the DoC client and server have a preconfigured security
+   association with an ACE server, and trust no one else.
+
+   1.  Client: Requests an address using DHCP
+
+   2.  DHCP server: Offers an address along with the DHCPv6 Encrypted
+       DNS Option (see Section 5 of [RFC9463]).
+
+       The option contains an address as well as an indication that ACE
+       is used, along with sufficient data for the client to obtain an
+       ACE token.
+
+       This includes hints like the ACE Request Creation hints: the
+       address of the AS and an identifier of the DoC server understood
+       by the AS (the "aud"ience).  The address of the AS should be
+       provided in some resolved form, given that DNS is being
+       bootstrapped.
+
+   3.  Client requests token from AS:
+
+       "I need a token for a host that is authorized to be my DNS server
+       with me being authorized to use it; these hints were presented
+       for me to obtain it."
+
+   4.  AS verifies that the hint represents a recognized DNS server,
+       that the client is authorized to use it, and issues a token for a
+       suitable ACE profile (e.g. ACE OSCORE profile or ACE EDHOC
+       profile).
+
+   5.  Client establishes a security context with the DoC server as per
+       the profile.
 
 5.  Security Considerations
 
@@ -358,6 +424,10 @@ Table of Contents
               Application Protocol) over TCP, TLS, and WebSockets",
               RFC 8323, DOI 10.17487/RFC8323, February 2018,
               <https://www.rfc-editor.org/rfc/rfc8323>.
+
+   [RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,
+              "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
+              May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
 
    [RFC8484]  Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
