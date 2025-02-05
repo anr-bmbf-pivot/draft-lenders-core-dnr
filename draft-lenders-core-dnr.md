@@ -258,6 +258,9 @@ This document has no IANA considerations.
 
 ## Since [draft-lenders-core-dnr-03]
 - Update {{-coap-dtls-alpn}} reference
+- intro: overhaul explanation of OSCORE setup
+- objectives: Be open on ACE profiles
+- Add scenarios
 
 ## Since [draft-lenders-core-dnr-02]
 
