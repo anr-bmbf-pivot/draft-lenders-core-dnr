@@ -462,6 +462,12 @@ A.1.  Since draft-lenders-core-dnr-03
 
    *  Update [I-D.ietf-core-coap-dtls-alpn] reference
 
+   *  intro: overhaul explanation of OSCORE setup
+
+   *  objectives: Be open on ACE profiles
+
+   *  Add scenarios
+
 A.2.  Since draft-lenders-core-dnr-02
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02)
 
