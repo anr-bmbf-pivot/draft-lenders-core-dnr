@@ -61,6 +61,7 @@ informative:
   RFC7858: dot
   RFC7959: coap-block
   RFC8323: coap-tcp
+  RFC8392: cwt
   RFC8484: doh
   RFC8613: oscore
   RFC9250: doq
@@ -202,7 +203,7 @@ and the client trusts its router to advertise a suitable Encrypted DNS server.
 2. Local router: Sends out an IPv6 Router Advertisement (RA) with Encrypted DNS option (see {{Section 6 of -dnr}}).
 
    Next to the network address, this conveys Service Parameters indicating DoC
-   as well as a CWT Claims Set (CCS, {{rfc8392}}) that is to be used as an EDHOC credential.
+   as well as a CWT Claims Set (CCS, {{-cwt}}) that is to be used as an EDHOC credential.
 
 3. Client starts EDHOC with the server at the indicated address.
    The client uses an ephemeral identity (i.e., authenticates with a CCS by value)
