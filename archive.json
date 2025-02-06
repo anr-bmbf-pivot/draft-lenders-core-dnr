@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:05:51.336986+00:00",
+  "timestamp": "2025-02-06T00:05:55.805802+00:00",
   "repo": "anr-bmbf-pivot/draft-lenders-core-dnr",
   "labels": [
     {
@@ -55,16 +55,24 @@
       "id": "I_kwDOLV9kgc6C-PuY",
       "title": "Remove things that were moved into draft-lenders-core-coap-dtls-svcb ",
       "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/issues/5",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "chrysn",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Parts of this document are moved out as requested in the IETF119 CoRE meeting.\r\n\r\nOnce https://github.com/anr-bmbf-pivot/draft-lenders-core-coap-dtls-svcb is stripped down to what should be in there, those parts should be removed from this document.",
       "createdAt": "2024-03-20T11:58:17Z",
-      "updatedAt": "2024-03-20T11:58:17Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-02-04T12:19:38Z",
+      "closedAt": "2025-02-04T12:19:36Z",
+      "comments": [
+        {
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This was addressed",
+          "createdAt": "2025-02-04T12:19:36Z",
+          "updatedAt": "2025-02-04T12:19:36Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -475,6 +483,170 @@
         }
       ],
       "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLV9kgc6J-rrQ",
+      "title": "Suggestions for -04",
+      "url": "https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/8",
+      "state": "MERGED",
+      "author": "chrysn",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This has two major parts:\r\n\r\n* Rewording around how OSCORE comes from either EDHOC or ACE (it comes from EDHOC on its own or any ACE profile that can produce an OSCORE context), and\r\n* adding scenarios that serve both to make the text easier to approach, and as scaffolding for discussing examples.",
+      "createdAt": "2025-02-04T11:35:09Z",
+      "updatedAt": "2025-02-05T12:00:44Z",
+      "baseRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "baseRefName": "main",
+      "baseRefOid": "60fe0f456ad285f5fd3a90a476e35fdf795bbf2f",
+      "headRepository": "anr-bmbf-pivot/draft-lenders-core-dnr",
+      "headRefName": "chrysn-202502",
+      "headRefOid": "68611dd4d89314e55801cd92b2d84322ea4238e4",
+      "closedAt": "2025-02-05T12:00:41Z",
+      "mergedAt": "2025-02-05T12:00:41Z",
+      "mergedBy": "miri64",
+      "mergeCommit": {
+        "oid": "f476cd9fb7d4f07a701e800aaebee0e6d0d15e4f"
+      },
+      "comments": [
+        {
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Do you want to squash?",
+          "createdAt": "2025-02-04T22:38:41Z",
+          "updatedAt": "2025-02-04T22:38:41Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLV9kgc6akBNA",
+          "commit": {
+            "abbreviatedOid": "2ef5613"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-04T14:55:02Z",
+          "updatedAt": "2025-02-04T15:05:32Z",
+          "comments": [
+            {
+              "originalPosition": 38,
+              "body": "We should provide a reference to CWT (RFC 8392?) here.",
+              "createdAt": "2025-02-04T14:55:02Z",
+              "updatedAt": "2025-02-04T15:05:32Z"
+            },
+            {
+              "originalPosition": 29,
+              "body": "Are these just examples or is ACE via NDP / EDHOC via DHCP just not possible? I do not see any issue with either, so the text should reflect that.",
+              "createdAt": "2025-02-04T14:57:24Z",
+              "updatedAt": "2025-02-04T15:05:33Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "```suggestion\r\n   The option contains an address as well as an indication that ACE is used,\r\n```",
+              "createdAt": "2025-02-04T14:57:58Z",
+              "updatedAt": "2025-02-04T15:05:33Z"
+            },
+            {
+              "originalPosition": 58,
+              "body": "```suggestion\r\n   the address of the AS and an identifier of the DoC server understood by the AS (the \"aud\"ience).\r\n   The address of the AS should be provided in some resolved form, given that DNS is being bootstrapped.\r\n```",
+              "createdAt": "2025-02-04T14:59:59Z",
+              "updatedAt": "2025-02-04T15:05:33Z"
+            },
+            {
+              "originalPosition": 60,
+              "body": "```suggestion\r\n3. Client requests token from AS:\r\n```\r\n\r\nThat there is a preconfigured AS was already established above.\r\n\r\nOtherwise, if you want to emphasis it again\r\n\r\n```suggestion\r\n3. Client requests token from AS. The client must have a prior security association with the AS.\r\n```",
+              "createdAt": "2025-02-04T15:02:48Z",
+              "updatedAt": "2025-02-04T15:05:33Z"
+            },
+            {
+              "originalPosition": 77,
+              "body": "Should we do this as a visible `[^1]` comment? Search `cref` in https://github.com/cabo/kramdown-rfc?tab=readme-ov-file#experimental-features.",
+              "createdAt": "2025-02-04T15:05:27Z",
+              "updatedAt": "2025-02-04T15:05:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc6an0uM",
+          "commit": {
+            "abbreviatedOid": "2ef5613"
+          },
+          "author": "chrysn",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-04T21:41:52Z",
+          "updatedAt": "2025-02-04T21:46:08Z",
+          "comments": [
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nTwo example scenarios illustrate possible ways for which a solution should work;\r\n```\r\n\r\n(addressing https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/pull/8/files#r1941341732)",
+              "createdAt": "2025-02-04T21:41:52Z",
+              "updatedAt": "2025-02-04T21:46:08Z"
+            },
+            {
+              "originalPosition": 29,
+              "body": "These are really just examples; any combination is possible, as is a combination with `_dns.my-known-domain.example.com` (but I'm lacking imagination of how that would be used in a DoC context right now.)",
+              "createdAt": "2025-02-04T21:42:37Z",
+              "updatedAt": "2025-02-04T21:46:08Z"
+            },
+            {
+              "originalPosition": 38,
+              "body": "The reference should be on the whole CWT Claims Set term, but that too is 8392.\r\n```suggestion\r\n   as well as a CWT Claims Set (CCS, {{rfc8392}}) that is to be used as an EDHOC credential.\r\n```",
+              "createdAt": "2025-02-04T21:43:48Z",
+              "updatedAt": "2025-02-04T21:46:08Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "I should use a spelchecker more oftehn.",
+              "createdAt": "2025-02-04T21:44:39Z",
+              "updatedAt": "2025-02-04T21:46:08Z"
+            },
+            {
+              "originalPosition": 77,
+              "body": "Not at this point; that's more a note-to-self to start exploring that properly with ACE people, and I have too many threads open there right now.",
+              "createdAt": "2025-02-04T21:45:47Z",
+              "updatedAt": "2025-02-04T21:46:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLV9kgc6aoLY5",
+          "commit": {
+            "abbreviatedOid": "44d965b"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-02-04T22:38:22Z",
+          "updatedAt": "2025-02-05T11:50:00Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLV9kgc6as3Mw",
+          "commit": {
+            "abbreviatedOid": "44d965b"
+          },
+          "author": "miri64",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-02-05T11:52:24Z",
+          "updatedAt": "2025-02-05T11:52:28Z",
+          "comments": [
+            {
+              "originalPosition": 38,
+              "body": "This reference is not defined. I would prefer to add it to the informative references in the metadata, but `{{?RFC8392}}` would also be ok.",
+              "createdAt": "2025-02-05T11:52:25Z",
+              "updatedAt": "2025-02-05T11:52:28Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
