@@ -92,10 +92,11 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Change Log
-     A.1.  Since draft-lenders-core-dnr-03
-     A.2.  Since draft-lenders-core-dnr-02
-     A.3.  Since draft-lenders-core-dnr-01
-     A.4.  Since draft-lenders-core-dnr-00
+     A.1.  Since draft-lenders-core-dnr-04
+     A.2.  Since draft-lenders-core-dnr-03
+     A.3.  Since draft-lenders-core-dnr-02
+     A.4.  Since draft-lenders-core-dnr-01
+     A.5.  Since draft-lenders-core-dnr-00
    Acknowledgments
    Authors' Addresses
 
@@ -457,7 +458,13 @@ Table of Contents
 
 Appendix A.  Change Log
 
-A.1.  Since draft-lenders-core-dnr-03
+A.1.  Since draft-lenders-core-dnr-04
+      (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-04)
+
+   *  Avoid the term "security mode" as it has a specific definition in
+      RFC 7252
+
+A.2.  Since draft-lenders-core-dnr-03
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03)
 
    *  Update [I-D.ietf-core-coap-dtls-alpn] reference
@@ -468,13 +475,13 @@ A.1.  Since draft-lenders-core-dnr-03
 
    *  Add scenarios
 
-A.2.  Since draft-lenders-core-dnr-02
+A.3.  Since draft-lenders-core-dnr-02
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02)
 
    *  Forward reference to upcoming changes in
       [I-D.ietf-core-transport-indication] updated
 
-A.3.  Since draft-lenders-core-dnr-01
+A.4.  Since draft-lenders-core-dnr-01
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01)
 
    *  Remove parts specified in [I-D.ietf-core-transport-indication]
@@ -483,7 +490,7 @@ A.3.  Since draft-lenders-core-dnr-01
 
    *  Remove solution sketches, set objectives to solve problem space
 
-A.4.  Since draft-lenders-core-dnr-00
+A.5.  Since draft-lenders-core-dnr-00
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00)
 
    *  IANA has processed the "co" ALPN and it is now added to the
