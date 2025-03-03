@@ -256,6 +256,9 @@ This document has no IANA considerations.
 
 # Change Log
 
+## Since [draft-lenders-core-dnr-04]
+- Avoid the term "security mode" as it has a specific definition in RFC 7252
+
 ## Since [draft-lenders-core-dnr-03]
 - Update {{-coap-dtls-alpn}} reference
 - intro: overhaul explanation of OSCORE setup
@@ -280,6 +283,7 @@ This document has no IANA considerations.
 [draft-lenders-core-dnr-01]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01
 [draft-lenders-core-dnr-02]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02
 [draft-lenders-core-dnr-03]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03
+[draft-lenders-core-dnr-04]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-04
 
 # Acknowledgments
 {:numbered="false"}
