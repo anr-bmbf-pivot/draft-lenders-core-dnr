@@ -106,10 +106,10 @@ DNS over CoAP {{-doc}} provides a solution for encrypted DNS in constrained envi
 The Constrained Application Protocol (CoAP) {{-coap}} is mostly agnostic to the transport layer CoAP can be transported over UDP, TCP, or WebSockets {{-coap-tcp}}, and even less common transports such as Bluetooth GATT {{-coap-gatt}} or SMS {{lwm2m}} are discussed.
 {{-coap-indication}} covers the selection of different CoAP transports using SVCB records.
 
-CoAP offers three security modes:
+CoAP offers three ways of secure communication:
 
-- **No Security:** This plain CoAP mode does not support any encryption. It
-  is not recommended when using {{-doc}} but inherits core CoAP features
+- **No Security:** This plain CoAP mode does not support any encryption (NoSec in {{Section 9 of -coap}}).
+  It is not recommended when using {{-doc}} but inherits core CoAP features
   such as block-wise transfer {{-coap-block}} for datagram-based
   segmentation.  Such features are beneficial in constrained settings even
   without encryption.
@@ -123,8 +123,8 @@ CoAP offers three security modes:
   received from an ACE Authorization Server (AS, as described in the ACE OSCORE profile {{-ace-oscore}}),
   or through a combination of those (established with an EDHOC peer whose public key is confirmed by an AS, using the ACE EDHOC profile {{-ace-edhoc}}).
 
-The SVCB-based discovery of a CoAP service in mode "no security" is covered in {{-coap-indication}}, and a CoAP service in the mode "transport security" in {{-coap-dtls-alpn}}.
-The discovery of CoAP services in mode "object security" is not specified.
+The SVCB-based discovery of a CoAP service with no security is covered in {{-coap-indication}}, and a CoAP service with transport security in {{-coap-dtls-alpn}}.
+The discovery of CoAP services with object security is not specified.
 To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.
 
 # Terminology
