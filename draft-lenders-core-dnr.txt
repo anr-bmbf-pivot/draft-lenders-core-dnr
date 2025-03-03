@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 9 August 2025                                                  
+Expires: 4 September 2025                                               
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                         5 February 2025
+                                                            3 March 2025
 
 
     Discovery of Network-designated OSCORE-based Resolvers: Problem
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 August 2025.
+   This Internet-Draft will expire on 4 September 2025.
 
 Copyright Notice
 
@@ -132,14 +132,14 @@ Table of Contents
    [I-D.ietf-core-transport-indication] covers the selection of
    different CoAP transports using SVCB records.
 
-   CoAP offers three security modes:
+   CoAP offers three ways of secure communication:
 
    *  *No Security:* This plain CoAP mode does not support any
-      encryption.  It is not recommended when using
-      [I-D.ietf-core-dns-over-coap] but inherits core CoAP features such
-      as block-wise transfer [RFC7959] for datagram-based segmentation.
-      Such features are beneficial in constrained settings even without
-      encryption.
+      encryption (NoSec in Section 9 of [RFC7252]).  It is not
+      recommended when using [I-D.ietf-core-dns-over-coap] but inherits
+      core CoAP features such as block-wise transfer [RFC7959] for
+      datagram-based segmentation.  Such features are beneficial in
+      constrained settings even without encryption.
 
    *  *Transport Security:* CoAP may use DTLS when transferred over UDP
       [RFC7252] and TLS when transferred over TCP [RFC8323].
@@ -156,12 +156,12 @@ Table of Contents
       an AS, using the ACE EDHOC profile
       [I-D.ietf-ace-edhoc-oscore-profile]).
 
-   The SVCB-based discovery of a CoAP service in mode "no security" is
+   The SVCB-based discovery of a CoAP service with no security is
    covered in [I-D.ietf-core-transport-indication], and a CoAP service
-   in the mode "transport security" in [I-D.ietf-core-coap-dtls-alpn].
-   The discovery of CoAP services in mode "object security" is not
-   specified.  To guide future specifications, this document clarifies
-   aspects when using SVCB in the context of CoAP and object security.
+   with transport security in [I-D.ietf-core-coap-dtls-alpn].  The
+   discovery of CoAP services with object security is not specified.  To
+   guide future specifications, this document clarifies aspects when
+   using SVCB in the context of CoAP and object security.
 
 2.  Terminology
 
@@ -372,16 +372,16 @@ Table of Contents
               Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
               Wählisch, "ALPN ID Specification for CoAP over DTLS", Work
               in Progress, Internet-Draft, draft-ietf-core-coap-dtls-
-              alpn-01, 16 December 2024,
+              alpn-02, 3 March 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              coap-dtls-alpn-01>.
+              coap-dtls-alpn-02>.
 
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
               and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
-              Internet-Draft, draft-ietf-core-dns-over-coap-09, 21
-              October 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-dns-over-coap-09>.
+              Internet-Draft, draft-ietf-core-dns-over-coap-12, 14
+              February 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-core-dns-over-coap-12>.
 
    [I-D.ietf-core-transport-indication]
               Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
