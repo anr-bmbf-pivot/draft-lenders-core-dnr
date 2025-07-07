@@ -1,17 +1,19 @@
-# Discovery of Network-designated CoRE Resolvers
+<!-- regenerate: on (set to off if you edit this file) -->
 
-This is the working area for the individual Internet-Draft, "Discovery of Network-designated CoRE Resolvers".
+# Discovery of Network-designated OSCORE-based Resolvers: Problem Statement
 
-* [Editor's Copy](https://anr-bmbf-pivot.github.io/draft-lenders-core-dnr/#go.draft-lenders-core-dnr.html)
+This is the working area for the individual Internet-Draft, "Discovery of Network-designated OSCORE-based Resolvers: Problem Statement".
+
+* [Editor's Copy](https://netd-tud.github.io/draft-lenders-core-oscore-svcb/#go.draft-lenders-core-dnr.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-lenders-core-dnr)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr)
-* [Compare Editor's Copy to Individual Draft](https://anr-bmbf-pivot.github.io/draft-lenders-core-dnr/#go.draft-lenders-core-dnr.diff)
+* [Compare Editor's Copy to Individual Draft](https://netd-tud.github.io/draft-lenders-core-oscore-svcb/#go.draft-lenders-core-dnr.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/netd-tud/draft-lenders-core-oscore-svcb/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
