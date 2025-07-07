@@ -33,9 +33,9 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at https://anr-bmbf-
-   pivot.github.io/draft-lenders-core-dnr/draft-lenders-core-dnr.html.
-   Status information for this document may be found at
+   The latest revision of this draft can be found at https://netd-
+   tud.github.io/draft-lenders-core-oscore-svcb/draft-lenders-core-
+   dnr.html.  Status information for this document may be found at
    https://datatracker.ietf.org/doc/draft-lenders-core-dnr/.
 
    Discussion of this document takes place on the Constrained RESTful
@@ -44,7 +44,7 @@ About This Document
    Subscribe at https://www.ietf.org/mailman/listinfo/core/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/anr-bmbf-pivot/draft-lenders-core-dnr.
+   https://github.com/netd-tud/draft-lenders-core-oscore-svcb.
 
 Status of This Memo
 
@@ -92,11 +92,12 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Change Log
-     A.1.  Since draft-lenders-core-dnr-04
-     A.2.  Since draft-lenders-core-dnr-03
-     A.3.  Since draft-lenders-core-dnr-02
-     A.4.  Since draft-lenders-core-dnr-01
-     A.5.  Since draft-lenders-core-dnr-00
+     A.1.  Since draft-lenders-core-dnr-05
+     A.2.  Since draft-lenders-core-dnr-04
+     A.3.  Since draft-lenders-core-dnr-03
+     A.4.  Since draft-lenders-core-dnr-02
+     A.5.  Since draft-lenders-core-dnr-01
+     A.6.  Since draft-lenders-core-dnr-00
    Acknowledgments
    Authors' Addresses
 
@@ -459,13 +460,20 @@ Table of Contents
 
 Appendix A.  Change Log
 
-A.1.  Since draft-lenders-core-dnr-04
+A.1.  Since draft-lenders-core-dnr-05
+      (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-05)
+
+   *  Nits
+
+   *  Moving GitHub repo to netd-tud org
+
+A.2.  Since draft-lenders-core-dnr-04
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-04)
 
    *  Avoid the term "security mode" as it has a specific definition in
       RFC 7252
 
-A.2.  Since draft-lenders-core-dnr-03
+A.3.  Since draft-lenders-core-dnr-03
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03)
 
    *  Update [I-D.ietf-core-coap-dtls-alpn] reference
@@ -476,13 +484,13 @@ A.2.  Since draft-lenders-core-dnr-03
 
    *  Add scenarios
 
-A.3.  Since draft-lenders-core-dnr-02
+A.4.  Since draft-lenders-core-dnr-02
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02)
 
    *  Forward reference to upcoming changes in
       [I-D.ietf-core-transport-indication] updated
 
-A.4.  Since draft-lenders-core-dnr-01
+A.5.  Since draft-lenders-core-dnr-01
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-01)
 
    *  Remove parts specified in [I-D.ietf-core-transport-indication]
@@ -491,7 +499,7 @@ A.4.  Since draft-lenders-core-dnr-01
 
    *  Remove solution sketches, set objectives to solve problem space
 
-A.5.  Since draft-lenders-core-dnr-00
+A.6.  Since draft-lenders-core-dnr-00
       (https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-00)
 
    *  IANA has processed the "co" ALPN and it is now added to the
