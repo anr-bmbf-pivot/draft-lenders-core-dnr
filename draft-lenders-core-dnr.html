@@ -15,7 +15,7 @@ Object Security for Constrained RESTful Environments (OSCORE)  .
 As a consequence of learning about OSCORE, this discovery will allow a host to learn both CoAP servers and DNS over CoAP resolvers that use OSCORE to encrypt messages and Ephemeral Diffie-Hellman Over COSE (EDHOC)   for key exchange.
 Challenges arise because SVCB records are not meant to be used to exchange security contexts, which is required in OSCORE scenarios. 
     " name="description">
-<meta content="xml2rfc 3.28.0" name="generator">
+<meta content="xml2rfc 3.29.0" name="generator">
 <meta content="CoRE" name="keyword">
 <meta content="CoAP" name="keyword">
 <meta content="DoC" name="keyword">
@@ -23,18 +23,18 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
 <meta content="SVCB" name="keyword">
 <meta content="draft-lenders-core-dnr-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.28.0
-    Python 3.12.9
+  xml2rfc 3.29.0
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.5
-    lxml 5.3.0
-    platformdirs 4.3.6
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-lenders-core-dnr.xml" rel="alternate" type="application/rfc+xml">
@@ -1054,11 +1054,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">CoRE DNR</td>
-<td class="right">March 2025</td>
+<td class="right">July 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Lenders, et al.</td>
-<td class="center">Expires 4 September 2025</td>
+<td class="center">Expires 8 January 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-lenders-core-dnr-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-03" class="published">3 March 2025</time>
+<time datetime="2025-07-07" class="published">7 July 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-04">4 September 2025</time></dd>
+<dd class="expires"><time datetime="2026-01-08">8 January 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1140,7 +1140,7 @@ Challenges arise because SVCB records are not meant to be used to exchange secur
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1252,7 +1252,7 @@ First, the discovery of a DNS resolver that supports DNS resolution based on sec
 Second, the discovery of an IoT-friendly service beyond the DNS resolution.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2"><span>[<a href="#RFC9460" class="cite xref">RFC9460</a>]</span> specifies the "SVCB" ("Service Binding") DNS resource record to lookup information needed to connect to a network service. Service Parameters (SvcParams) carry
 that information within the SVCB record.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">The discovery of DNS resolvers can be enabled by the DNS itself <span>[<a href="#RFC9461" class="cite xref">RFC9461</a>]</span>, <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> or, in a local network, by Router Advertisements and DHCP <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>.
+<p id="section-1-3">The discovery of recursive DNS resolvers can be enabled by the DNS itself <span>[<a href="#RFC9461" class="cite xref">RFC9461</a>]</span>, <span>[<a href="#RFC9462" class="cite xref">RFC9462</a>]</span> or, in a local network, by Router Advertisements and DHCP <span>[<a href="#RFC9463" class="cite xref">RFC9463</a>]</span>.
 In all theses cases, the SvcParams is used, but supports only DNS transfer based on Transport Layer Security (TLS), namely DNS over TLS (DoT) <span>[<a href="#RFC7858" class="cite xref">RFC7858</a>]</span>, DNS over HTTPS (DoH) <span>[<a href="#RFC8484" class="cite xref">RFC8484</a>]</span>, and DNS over Dedicated QUIC (DoQ) <span>[<a href="#RFC9250" class="cite xref">RFC9250</a>]</span>.
 The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">DNS over CoAP <span>[<a href="#I-D.ietf-core-dns-over-coap" class="cite xref">I-D.ietf-core-dns-over-coap</a>]</span> provides a solution for encrypted DNS in constrained environments.
@@ -1281,8 +1281,8 @@ received from an ACE Authorization Server (AS, as described in the ACE OSCORE pr
 or through a combination of those (established with an EDHOC peer whose public key is confirmed by an AS, using the ACE EDHOC profile <span>[<a href="#I-D.ietf-ace-edhoc-oscore-profile" class="cite xref">I-D.ietf-ace-edhoc-oscore-profile</a>]</span>).<a href="#section-1-6.3.2" class="pilcrow">¶</a></p>
 </li>
       </ul>
-<p id="section-1-7">The SVCB-based discovery of a CoAP service with no security is covered in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span>, and a CoAP service with transport security in <span>[<a href="#I-D.ietf-core-coap-dtls-alpn" class="cite xref">I-D.ietf-core-coap-dtls-alpn</a>]</span>.
-The discovery of CoAP services with object security is not specified.
+<p id="section-1-7">The SVCB-based discovery of CoAP services with no security and transport security is covered in <span>[<a href="#I-D.ietf-core-transport-indication" class="cite xref">I-D.ietf-core-transport-indication</a>]</span>.
+The discovery of CoAP services, however, with object security is not specified.
 To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.<a href="#section-1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1499,19 +1499,19 @@ and issues a token for a suitable ACE profile (e.g. ACE OSCORE profile or ACE ED
 <dd class="break"></dd>
 <dt id="I-D.ietf-ace-edhoc-oscore-profile">[I-D.ietf-ace-edhoc-oscore-profile]</dt>
         <dd>
-<span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Tiloca, M.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object Security for Constrained Environments (OSCORE) Profile for Authentication and Authorization for Constrained Environments (ACE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-edhoc-oscore-profile-06</span>, <time datetime="2024-10-21" class="refDate">21 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-06">https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-06</a>&gt;</span>. </dd>
+<span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Tiloca, M.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Ephemeral Diffie-Hellman Over COSE (EDHOC) and Object Security for Constrained Environments (OSCORE) Profile for Authentication and Authorization for Constrained Environments (ACE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-edhoc-oscore-profile-08</span>, <time datetime="2025-07-07" class="refDate">7 July 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-08">https://datatracker.ietf.org/doc/html/draft-ietf-ace-edhoc-oscore-profile-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-coap-dtls-alpn">[I-D.ietf-core-coap-dtls-alpn]</dt>
         <dd>
-<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"ALPN ID Specification for CoAP over DTLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coap-dtls-alpn-02</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-dtls-alpn-02">https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-dtls-alpn-02</a>&gt;</span>. </dd>
+<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"ALPN ID Specification for CoAP over DTLS"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coap-dtls-alpn-04</span>, <time datetime="2025-04-01" class="refDate">1 April 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-dtls-alpn-04">https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-dtls-alpn-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-dns-over-coap">[I-D.ietf-core-dns-over-coap]</dt>
         <dd>
-<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Gündoğan, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"DNS over CoAP (DoC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-dns-over-coap-12</span>, <time datetime="2025-02-14" class="refDate">14 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-12">https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-12</a>&gt;</span>. </dd>
+<span class="refAuthor">Lenders, M. S.</span>, <span class="refAuthor">Amsüss, C.</span>, <span class="refAuthor">Gündoğan, C.</span>, <span class="refAuthor">Schmidt, T. C.</span>, and <span class="refAuthor">M. Wählisch</span>, <span class="refTitle">"DNS over CoAP (DoC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-dns-over-coap-15</span>, <time datetime="2025-06-19" class="refDate">19 June 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-15">https://datatracker.ietf.org/doc/html/draft-ietf-core-dns-over-coap-15</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-transport-indication">[I-D.ietf-core-transport-indication]</dt>
         <dd>
-<span class="refAuthor">Amsüss, C.</span> and <span class="refAuthor">M. S. Lenders</span>, <span class="refTitle">"CoAP Transport Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-07</span>, <time datetime="2024-10-21" class="refDate">21 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-07">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-07</a>&gt;</span>. </dd>
+<span class="refAuthor">Amsüss, C.</span> and <span class="refAuthor">M. S. Lenders</span>, <span class="refTitle">"CoAP Transport Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-08</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-08">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="lwm2m">[lwm2m]</dt>
         <dd>

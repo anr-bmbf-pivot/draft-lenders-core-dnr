@@ -5,12 +5,12 @@
 Constrained RESTful Environments                           M. S. Lenders
 Internet-Draft                                                TU Dresden
 Intended status: Informational                                 C. Amsüss
-Expires: 4 September 2025                                               
+Expires: 8 January 2026                                                 
                                                            T. C. Schmidt
                                                              HAW Hamburg
                                                              M. Wählisch
                                         TU Dresden & Barkhausen Institut
-                                                            3 March 2025
+                                                             7 July 2025
 
 
     Discovery of Network-designated OSCORE-based Resolvers: Problem
@@ -61,7 +61,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 September 2025.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -116,13 +116,14 @@ Table of Contents
    Service Parameters (SvcParams) carry that information within the SVCB
    record.
 
-   The discovery of DNS resolvers can be enabled by the DNS itself
-   [RFC9461], [RFC9462] or, in a local network, by Router Advertisements
-   and DHCP [RFC9463].  In all theses cases, the SvcParams is used, but
-   supports only DNS transfer based on Transport Layer Security (TLS),
-   namely DNS over TLS (DoT) [RFC7858], DNS over HTTPS (DoH) [RFC8484],
-   and DNS over Dedicated QUIC (DoQ) [RFC9250].  The use of DoT, DoH, or
-   DoQ, however, is not recommended in IoT scenarios.
+   The discovery of recursive DNS resolvers can be enabled by the DNS
+   itself [RFC9461], [RFC9462] or, in a local network, by Router
+   Advertisements and DHCP [RFC9463].  In all theses cases, the
+   SvcParams is used, but supports only DNS transfer based on Transport
+   Layer Security (TLS), namely DNS over TLS (DoT) [RFC7858], DNS over
+   HTTPS (DoH) [RFC8484], and DNS over Dedicated QUIC (DoQ) [RFC9250].
+   The use of DoT, DoH, or DoQ, however, is not recommended in IoT
+   scenarios.
 
    DNS over CoAP [I-D.ietf-core-dns-over-coap] provides a solution for
    encrypted DNS in constrained environments.  The Constrained
@@ -157,12 +158,12 @@ Table of Contents
       an AS, using the ACE EDHOC profile
       [I-D.ietf-ace-edhoc-oscore-profile]).
 
-   The SVCB-based discovery of a CoAP service with no security is
-   covered in [I-D.ietf-core-transport-indication], and a CoAP service
-   with transport security in [I-D.ietf-core-coap-dtls-alpn].  The
-   discovery of CoAP services with object security is not specified.  To
-   guide future specifications, this document clarifies aspects when
-   using SVCB in the context of CoAP and object security.
+   The SVCB-based discovery of CoAP services with no security and
+   transport security is covered in
+   [I-D.ietf-core-transport-indication].  The discovery of CoAP
+   services, however, with object security is not specified.  To guide
+   future specifications, this document clarifies aspects when using
+   SVCB in the context of CoAP and object security.
 
 2.  Terminology
 
@@ -365,31 +366,31 @@ Table of Contents
               Security for Constrained Environments (OSCORE) Profile for
               Authentication and Authorization for Constrained
               Environments (ACE)", Work in Progress, Internet-Draft,
-              draft-ietf-ace-edhoc-oscore-profile-06, 21 October 2024,
+              draft-ietf-ace-edhoc-oscore-profile-08, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
-              edhoc-oscore-profile-06>.
+              edhoc-oscore-profile-08>.
 
    [I-D.ietf-core-coap-dtls-alpn]
               Lenders, M. S., Amsüss, C., Schmidt, T. C., and M.
               Wählisch, "ALPN ID Specification for CoAP over DTLS", Work
               in Progress, Internet-Draft, draft-ietf-core-coap-dtls-
-              alpn-02, 3 March 2025,
+              alpn-04, 1 April 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              coap-dtls-alpn-02>.
+              coap-dtls-alpn-04>.
 
    [I-D.ietf-core-dns-over-coap]
               Lenders, M. S., Amsüss, C., Gündoğan, C., Schmidt, T. C.,
               and M. Wählisch, "DNS over CoAP (DoC)", Work in Progress,
-              Internet-Draft, draft-ietf-core-dns-over-coap-12, 14
-              February 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-dns-over-coap-12>.
+              Internet-Draft, draft-ietf-core-dns-over-coap-15, 19 June
+              2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              core-dns-over-coap-15>.
 
    [I-D.ietf-core-transport-indication]
               Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
               Work in Progress, Internet-Draft, draft-ietf-core-
-              transport-indication-07, 21 October 2024,
+              transport-indication-08, 3 March 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              transport-indication-07>.
+              transport-indication-08>.
 
    [lwm2m]    OMA SpecWorks, "White Paper – Lightweight M2M 1.1",
               October 2018, <https://omaspecworks.org/white-paper-
