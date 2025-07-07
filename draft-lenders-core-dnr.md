@@ -256,6 +256,10 @@ This document has no IANA considerations.
 
 # Change Log
 
+## Since [draft-lenders-core-dnr-05]
+- Nits
+- Moving GitHub repo to netd-tud org
+
 ## Since [draft-lenders-core-dnr-04]
 - Avoid the term "security mode" as it has a specific definition in RFC 7252
 
@@ -284,6 +288,7 @@ This document has no IANA considerations.
 [draft-lenders-core-dnr-02]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-02
 [draft-lenders-core-dnr-03]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-03
 [draft-lenders-core-dnr-04]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-04
+[draft-lenders-core-dnr-05]: https://datatracker.ietf.org/doc/html/draft-lenders-core-dnr-05
 
 # Acknowledgments
 {:numbered="false"}
