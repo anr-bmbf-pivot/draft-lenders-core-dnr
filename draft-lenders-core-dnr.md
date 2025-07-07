@@ -187,7 +187,7 @@ When using ACE, more SvcParamKeys might be needed, such as the OAuth audience, t
 authentication server URI.
 
 Defining these SvcParamKeys, including their value formats and spaces, as well as the behavior
-definition for authenticator-domain-name field, shall be part of future work.
+definition for the authenticator-domain-name field, shall be part of future work.
 
 ## Scenarios
 
