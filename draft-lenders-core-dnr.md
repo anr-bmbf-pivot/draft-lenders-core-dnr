@@ -22,8 +22,8 @@ venue:
   type: "Working Group"
   mail: "core@ietf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/core/"
-  github: "anr-bmbf-pivot/draft-lenders-core-dnr"
-  latest: "https://anr-bmbf-pivot.github.io/draft-lenders-core-dnr/draft-lenders-core-dnr.html"
+  github: "netd-tud/draft-lenders-core-oscore-svcb"
+  latest: "https://netd-tud.github.io/draft-lenders-core-oscore-svcb/draft-lenders-core-dnr.html"
 
 author:
  -  fullname: Martine Sophie Lenders
