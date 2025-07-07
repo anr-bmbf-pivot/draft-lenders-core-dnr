@@ -247,8 +247,8 @@ Table of Contents
    audience, the scope or the authentication server URI.
 
    Defining these SvcParamKeys, including their value formats and
-   spaces, as well as the behavior definition for authenticator-domain-
-   name field, shall be part of future work.
+   spaces, as well as the behavior definition for the authenticator-
+   domain-name field, shall be part of future work.
 
 4.1.  Scenarios
 
