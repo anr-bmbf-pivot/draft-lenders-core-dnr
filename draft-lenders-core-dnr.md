@@ -98,7 +98,7 @@ Second, the discovery of an IoT-friendly service beyond the DNS resolution.
 {{-svcb}} specifies the "SVCB" ("Service Binding") DNS resource record to lookup information needed to connect to a network service. Service Parameters (SvcParams) carry
 that information within the SVCB record.
 
-The discovery of DNS resolvers can be enabled by the DNS itself {{-svcb-for-dns}}, {{-ddr}} or, in a local network, by Router Advertisements and DHCP {{-dnr}}.
+The discovery of recursive DNS resolvers can be enabled by the DNS itself {{-svcb-for-dns}}, {{-ddr}} or, in a local network, by Router Advertisements and DHCP {{-dnr}}.
 In all theses cases, the SvcParams is used, but supports only DNS transfer based on Transport Layer Security (TLS), namely DNS over TLS (DoT) {{-dot}}, DNS over HTTPS (DoH) {{-doh}}, and DNS over Dedicated QUIC (DoQ) {{-doq}}.
 The use of DoT, DoH, or DoQ, however, is not recommended in IoT scenarios.
 
@@ -123,8 +123,8 @@ CoAP offers three ways of secure communication:
   received from an ACE Authorization Server (AS, as described in the ACE OSCORE profile {{-ace-oscore}}),
   or through a combination of those (established with an EDHOC peer whose public key is confirmed by an AS, using the ACE EDHOC profile {{-ace-edhoc}}).
 
-The SVCB-based discovery of a CoAP service with no security is covered in {{-coap-indication}}, and a CoAP service with transport security in {{-coap-dtls-alpn}}.
-The discovery of CoAP services with object security is not specified.
+The SVCB-based discovery of CoAP services with no security and transport security is covered in {{-coap-indication}}.
+The discovery of CoAP services, however, with object security is not specified.
 To guide future specifications, this document clarifies aspects when using SVCB in the context of CoAP and object security.
 
 # Terminology
